@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录 · TOPHOO Global</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/tophoo-global.ico">
+    <link rel="manifest" href="/static/tophoo-app.json">
+    <link rel="stylesheet" href="/static/css/login.css?v=20261021-chinese">
+</head>
+<body class="login-page login-screen">
+    <main class="login-layout">
+        <section class="login-form-panel">
+            <a class="login-brand" href="/"><span class="login-brand-mark">T<span></span></span><span>TOPHOO <strong>Global</strong></span></a>
+            <div class="login-form-wrap">
+                <p class="login-eyebrow">欢迎登录</p>
+                <h2>欢迎回来</h2>
+                <p class="login-intro">登录工作区，继续你的业务。</p>
+                <form id="login-form" class="login-form">
+                    <label><span>邮箱</span><input id="auth-email" type="email" required autocomplete="email" placeholder="name@example.com"></label>
+                    <label><span>密码</span><span class="login-password-field"><input id="auth-password" type="password" required minlength="8" autocomplete="current-password" placeholder="输入密码"><button class="login-password-toggle" type="button" aria-label="显示密码" aria-pressed="false" aria-controls="auth-password"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path class="login-eye-slash" d="m4 3 16 18"/></svg></button></span></label>
+                    <p id="auth-message" class="login-message" aria-live="polite"></p>
+                    <button id="auth-submit" type="submit">登录并进入工作台</button>
+                </form>
+                <div class="login-access-note">需要账号或重置密码？请联系你的工作区管理员。</div>
+            </div>
+        </section>
+        <section class="login-brand-panel" aria-label="TOPHOO Global">
+            <div class="login-art" aria-hidden="true">
+                <svg viewBox="0 0 700 760" fill="none" focusable="false">
+                    <defs>
+                        <linearGradient id="pane-back" x1="120" y1="50" x2="640" y2="680" gradientUnits="userSpaceOnUse"><stop stop-color="#b3e6ce" stop-opacity=".76"/><stop offset="1" stop-color="#419c7a" stop-opacity=".18"/></linearGradient>
+                        <linearGradient id="pane-dark" x1="520" y1="100" x2="230" y2="690" gradientUnits="userSpaceOnUse"><stop stop-color="#087252"/><stop offset="1" stop-color="#024c3a"/></linearGradient>
+                        <linearGradient id="pane-front" x1="220" y1="120" x2="470" y2="660" gradientUnits="userSpaceOnUse"><stop stop-color="#cff3df" stop-opacity=".92"/><stop offset=".48" stop-color="#7ac9a6" stop-opacity=".83"/><stop offset="1" stop-color="#36a17d" stop-opacity=".94"/></linearGradient>
+                        <filter id="pane-shadow" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dx="0" dy="24" stdDeviation="18" flood-color="#003f30" flood-opacity=".22"/></filter>
+                    </defs>
+                    <path d="M335 69Q372 36 391 84L595 590Q615 637 567 624L146 498Q100 484 132 449Z" fill="url(#pane-back)" stroke="#d5f7e5" stroke-opacity=".36"/>
+                    <path d="M489 141Q538 113 539 170L541 663Q540 713 495 686L105 450Q62 424 108 397Z" fill="url(#pane-dark)" filter="url(#pane-shadow)"/>
+                    <path d="M91 204Q90 154 133 180L594 448Q638 474 593 503L144 717Q99 739 99 686Z" fill="url(#pane-back)" stroke="#e0f8eb" stroke-opacity=".72"/>
+                    <path d="M247 180Q262 125 304 167L615 470Q653 508 600 526L170 651Q118 667 134 613Z" fill="url(#pane-front)" stroke="#e3ffef" stroke-opacity=".65" filter="url(#pane-shadow)"/>
+                </svg>
+                <div class="login-art-wordmark"><span class="login-art-symbol">T</span><span>TOPHOO<small>GLOBAL</small></span></div>
+            </div>
+            <div class="login-brand-copy"><p>全球业务工作台</p><h1>连接客户，让业务向前。</h1><span>让线索、沟通与合作，井然有序。</span></div>
+            <div class="login-brand-foot">TOPHOO Global · 外贸客户管理</div>
+        </section>
+    </main>
+    <script src="/static/js/auth.js?v=20261107-session-expiry"></script>
+</body>
+</html>
+

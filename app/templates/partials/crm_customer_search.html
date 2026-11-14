@@ -1,0 +1,108 @@
+<section class="customer-search" data-customer-search aria-labelledby="customer-search-title" hidden>
+    <h1 id="customer-search-title" class="cs-sr-only">客户查证</h1>
+
+    <div class="cs-workspace">
+        <aside class="cs-panel cs-queue" aria-labelledby="cs-queue-title">
+            <div class="cs-panel-heading">
+                <h2 id="cs-queue-title">名单</h2>
+                <button class="cs-reset cs-clear-queue" type="button" data-cs-clear-queue disabled>清空名单</button>
+            </div>
+            <div class="cs-form-actions">
+                <button class="cs-import" type="button" data-cs-import hidden>添加记录</button>
+                <button class="cs-reset" type="button" data-cs-manual aria-pressed="true">手动查证</button>
+            </div>
+            <ul class="cs-queue-list" data-cs-queue></ul>
+        </aside>
+
+        <form class="cs-panel cs-detail" data-cs-form novalidate autocomplete="off" tabindex="-1" aria-label="查证资料">
+            <div class="cs-panel-heading cs-detail-heading">
+                <div>
+                    <h2 data-cs-title>手动查证</h2>
+                </div>
+                <div class="cs-form-actions">
+                    <button class="cs-reset" type="button" data-cs-followup hidden>跟进</button>
+                    <button class="cs-reset" type="button" data-cs-outreach hidden>开发信</button>
+                    <button class="cs-import" type="button" data-cs-edit-record hidden>编辑线索资料</button>
+                    <label class="cs-preview-toggle" data-cs-preview-control hidden><input type="checkbox" data-cs-preview> 显示搜索词</label>
+                    <button class="cs-reset" type="reset" disabled>清空输入</button>
+                </div>
+            </div>
+            <p class="cs-muted" data-cs-edit-status role="status" hidden></p>
+            <section class="cs-detail-section" aria-labelledby="cs-company-title">
+                <h3 id="cs-company-title">公司资料</h3>
+                <div class="cs-fields cs-company-fields">
+                  <label>网址
+                      <input name="website" type="text" inputmode="url" maxlength="2048" placeholder="example.com 或完整网址" aria-describedby="cs-website-error">
+                      <small id="cs-website-error" data-cs-error="website" hidden>请输入有效的域名或 HTTP(S) 网址。</small>
+                  </label>
+                  <label>公司名称
+                      <input name="company" type="text" maxlength="240" placeholder="如 Acme Cooling Ltd">
+                  </label>
+                  <label>国家或地区
+                      <input name="country" type="text" maxlength="120" placeholder="用于地图搜索">
+                  </label>
+                </div>
+                <div data-cs-company-results></div>
+            </section>
+            <section class="cs-detail-section" aria-labelledby="cs-contact-title">
+                <div class="cs-contact-heading">
+                  <h3 id="cs-contact-title">联系人</h3>
+                  <select data-cs-contact aria-label="选择联系人" hidden></select>
+                </div>
+                <div class="cs-fields">
+                  <label>联系人
+                      <input name="person" type="text" maxlength="200" placeholder="如 Alex Chen">
+                  </label>
+                  <label>邮箱
+                      <input name="email" type="text" inputmode="email" maxlength="254" placeholder="如 sales@example.com" aria-describedby="cs-email-error">
+                      <small id="cs-email-error" data-cs-error="email" hidden>请输入一个完整的邮箱地址。</small>
+                  </label>
+                </div>
+                <div data-cs-contact-results></div>
+            </section>
+            <details class="cs-more-searches" data-cs-advanced hidden>
+                <summary>公开资料</summary>
+                <div data-cs-extra-results></div>
+            </details>
+        </form>
+    </div>
+
+    <dialog class="cs-picker" data-cs-picker aria-labelledby="cs-picker-title">
+        <header class="cs-picker-header">
+            <div class="cs-picker-titlebar">
+                <h2 id="cs-picker-title">添加记录</h2>
+                <button type="button" class="cs-picker-close" data-cs-picker-close aria-label="关闭">×</button>
+            </div>
+            <div class="cs-picker-filter">
+                <div class="cs-picker-sources" role="group" aria-label="来源">
+                    <button type="button" data-cs-source="leads" aria-pressed="true">线索</button>
+                    <button type="button" data-cs-source="contacts" aria-pressed="false">客户</button>
+                </div>
+                <input type="search" data-cs-record-search aria-label="搜索记录" placeholder="公司、官网、联系人或邮箱">
+            </div>
+        </header>
+        <div class="cs-picker-columns" aria-hidden="true"><span>公司 / 官网</span><span>国家</span></div>
+        <div class="cs-picker-scroll" data-cs-picker-scroll role="region" aria-label="记录列表" tabindex="0">
+            <p class="cs-picker-status" data-cs-picker-status role="status"></p>
+            <div data-cs-picker-results></div>
+            <button type="button" class="cs-reset cs-picker-more" data-cs-more hidden>显示更多</button>
+        </div>
+        <footer class="cs-picker-footer">
+            <span class="cs-muted" data-cs-selection role="status">已选 0 条</span>
+            <button type="button" class="cs-import" data-cs-add disabled>加入名单</button>
+        </footer>
+    </dialog>
+
+    <template data-cs-group>
+        <div class="cs-group">
+            <h3></h3>
+            <div class="cs-options"></div>
+        </div>
+    </template>
+    <template data-cs-link>
+        <a class="cs-link" target="_blank" rel="noopener noreferrer">
+            <span><strong></strong><small></small></span>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5H4.5v10.5H15V12M11 4h5v5m0-5-7 7"/></svg>
+        </a>
+    </template>
+</section>

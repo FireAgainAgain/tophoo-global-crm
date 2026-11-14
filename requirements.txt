@@ -1,0 +1,21 @@
+fastapi==0.141.1
+uvicorn[standard]==0.52.2
+SQLAlchemy==2.0.46
+PyMySQL==1.1.2
+python-dotenv==1.2.2
+email-validator==2.3.0
+Jinja2==3.1.6
+openpyxl==3.1.5
+reportlab==4.4.9
+pyjwt>=2.9.0
+python-multipart==0.0.32
+cryptography==43.0.3
+
+Pillow>=12.2.0,<13
+
+# Offline country clocks, localized city names and public-holiday rules.
+tzdata==2026.5
+Babel==2.18.0
+holidays==0.106
+beautifulsoup4==4.14.3
+pypdf==6.21.4

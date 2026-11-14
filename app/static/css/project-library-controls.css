@@ -1,0 +1,5 @@
+.project-libraries{--seo-ink:#14251f;--seo-muted:#61706b;--seo-line:#dce5df;--seo-panel:#fff;--seo-green:#16754f;--seo-orange:#f3a94d;--seo-shadow:0 12px 35px rgba(26,54,42,.08);color:var(--seo-ink);line-height:1.7}
+.project-libraries *{box-sizing:border-box}
+.seo-button{display:inline-flex;align-items:center;justify-content:center;border:1px solid transparent;border-radius:8px;padding:10px 15px;text-decoration:none;font:700 13px inherit;cursor:pointer}
+.seo-primary{background:var(--seo-green,#16754f);color:#fff}
+.seo-secondary{background:#fff;border-color:#cddbd2;color:#235840}

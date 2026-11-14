@@ -1,0 +1,50 @@
+/* Full-page reading layout; compact drawer previews keep their existing layout. */
+.crm-contact-records{max-width:1440px;padding:24px 28px 40px}
+.crm-contact-records .records-hero{padding:0 0 22px;border:0;border-bottom:1px solid #e1e7ee;border-radius:0;background:transparent;gap:24px}
+.crm-contact-records .records-hero h1{font-size:21px;letter-spacing:-.35px;line-height:1.5}
+.crm-contact-records .records-hero [data-record-back]{margin-bottom:14px;color:#758397;font-size:12px}
+.crm-contact-records .records-hero p{font-size:12px;color:#758397;margin-top:8px}
+.crm-contact-records .records-hero>button:last-child{padding:10px 16px;border-radius:8px;box-shadow:0 2px 4px #13382b0a}
+.crm-contact-records .records-timeline{max-width:none;margin:22px 0 0}
+.crm-contact-records .record-card{padding:0;border:1px solid #e1e7ee;border-radius:12px;box-shadow:0 2px 7px #23314903;overflow:hidden;margin-bottom:20px}
+.crm-contact-records .record-card>header{padding:16px 22px;align-items:center;border-bottom:1px solid #edf0f4;background:#fff}
+.crm-contact-records .record-card .record-meta{margin:0;gap:8px 18px;align-items:center;font-size:12px}
+.crm-contact-records .record-meta>span:first-child{color:#344256;font-weight:600}
+.crm-contact-records .record-meta>span:last-child{padding:3px 9px;border-radius:5px;background:#f0f5f3;color:#43816c;font-size:11px}
+.crm-contact-records .record-card-actions button{border-color:transparent;background:transparent;padding:5px 9px;color:#6a7b90}
+.crm-contact-records .record-card-actions button:hover{border-color:#dfe6ed;background:#f6f8fa;color:#253044}
+.crm-contact-records .record-card-actions .danger{color:#ac7474}
+.crm-contact-records .record-reading-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+.crm-contact-records .record-original,.crm-contact-records .record-reading-grid>.record-translation{min-width:0;padding:22px 24px 28px;margin:0;border:0;border-radius:0;background:#fff}
+.crm-contact-records .record-reading-grid>.record-translation{border-left:1px solid #e9eef1;background:#f7faf9}
+.crm-contact-records .record-section-label,.crm-contact-records .record-reading-grid>.record-translation>strong{display:block;margin:0 0 18px;color:#7a8797;font-size:11px;font-weight:600;letter-spacing:1px}
+.crm-contact-records .record-reading-grid>.record-translation>strong{color:#4b836f}
+.crm-contact-records .record-original>p,.crm-contact-records .record-reading-grid>.record-translation>p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.9;color:#3c495c}
+:root .crm-contact-records .record-original>.record-rich-content{margin:0;padding:0;max-height:none;height:auto;overflow:visible;border:0;border-radius:0;background:transparent;white-space:normal;font:13px/1.9 Arial,sans-serif;color:#3c495c;overflow-wrap:anywhere}
+.crm-contact-records .record-original .record-rich-content p{margin:0 0 7px;line-height:1.9}
+.crm-contact-records .record-original .record-rich-content p:empty{display:none}
+.crm-contact-records .record-original .record-rich-content table{width:auto;max-width:100%;table-layout:fixed}
+.crm-contact-records .record-original .record-rich-content :is(td,th){overflow-wrap:anywhere}
+.crm-contact-records .record-original .record-rich-content img{max-width:100%;height:auto}
+.crm-contact-records .record-reading-grid>.record-translation-empty>p{color:#96a2b0;font-size:12px}
+.crm-contact-records .record-editor{padding:20px 24px;overflow:visible}
+.crm-contact-records .record-editor>header{padding:0 0 14px}
+.crm-contact-records .record-editor-grid{margin-top:18px}
+.crm-contact-records .record-outreach-source{margin:0;padding:12px 24px;border-top:1px solid #edf0f4}
+.workflow-detail-overlay .record-reading-grid{display:block}
+.workflow-detail-overlay .record-section-label{display:none}
+.workflow-detail-overlay .record-original>p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7}
+@media(max-width:1000px){
+  .crm-contact-records .record-reading-grid{grid-template-columns:minmax(0,1fr)}
+  .crm-contact-records .record-reading-grid>.record-translation{border-left:0;border-top:1px solid #e9eef1}
+}
+@media(max-width:600px){
+  .crm-contact-records{padding:16px 12px 28px}
+  .crm-contact-records .records-hero{padding-bottom:18px;gap:16px}
+  .crm-contact-records .records-hero h1{font-size:18px;letter-spacing:0}
+  .crm-contact-records .records-hero>button:last-child{align-self:flex-start}
+  .crm-contact-records .record-card>header{padding:13px 16px;gap:10px}
+  .crm-contact-records .record-card .record-meta{gap:6px 12px}
+  .crm-contact-records .record-original,.crm-contact-records .record-reading-grid>.record-translation{padding:18px 16px 22px}
+  .crm-contact-records .record-editor{padding:16px}
+}

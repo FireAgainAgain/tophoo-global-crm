@@ -1,0 +1,39 @@
+<section data-crm-rfq hidden class="rfq-page">
+  <header class="rfq-page-head">
+    <div class="rfq-title-row"><div class="rfq-list-heading"><h1>询价单</h1></div>
+    <div class="rfq-toolbar">
+      <input type="search" data-rfq-search aria-label="搜索询价单" placeholder="搜索编号、客户、联系方式或需求">
+      <div class="rfq-toolbar-actions">
+        <button type="button" class="rfq-secondary" data-rfq-reset>重置</button>
+        <button type="button" class="rfq-secondary" data-rfq-refresh>刷新</button>
+        <button type="button" data-rfq-add>＋ 新建询价单</button>
+      </div>
+    </div>
+    </div>
+    <div class="rfq-list-overview">
+    <div class="rfq-summary-row">
+    <div class="rfq-dashboard" role="group" aria-label="当前项目询价概览" aria-live="polite">
+      <button type="button" class="rfq-metric" data-rfq-stat="" aria-pressed="true" title="查看全部询价，清除其他筛选" disabled><span>全部询价</span><strong data-rfq-total>—</strong></button>
+      <button type="button" class="rfq-metric is-pending" data-rfq-stat="待处理" aria-pressed="false" title="查看待处理询价，清除其他筛选" disabled><span>待处理</span><strong data-rfq-metric="pending">—</strong></button>
+      <button type="button" class="rfq-metric is-active" data-rfq-stat="推进中" aria-pressed="false" title="查看推进中询价，清除其他筛选" disabled><span>推进中</span><strong data-rfq-metric="active">—</strong></button>
+      <button type="button" class="rfq-metric is-quoted" data-rfq-stat="已报价" aria-pressed="false" title="查看已报价询价，清除其他筛选" disabled><span>已报价</span><strong data-rfq-metric="quoted">—</strong></button>
+      <button type="button" class="rfq-metric is-won" data-rfq-stat="已成交" aria-pressed="false" title="查看已成交询价，清除其他筛选" disabled><span>已成交</span><strong data-rfq-metric="won">—</strong></button>
+      <button type="button" class="rfq-metric is-closed" data-rfq-stat="已关闭" aria-pressed="false" title="查看已关闭询价，清除其他筛选" disabled><span>已关闭</span><strong data-rfq-metric="closed">—</strong></button>
+    </div>
+    </div>
+      <div class="rfq-filter-controls">
+        <select data-rfq-status aria-label="筛选状态"><option value="">全部状态</option><option>待处理</option><option>推进中</option><option>已报价</option><option>已成交</option><option>已关闭</option></select>
+        <select data-rfq-source aria-label="筛选来源"><option value="">全部来源</option></select>
+        <select data-rfq-owner aria-label="筛选归属用户" hidden><option value="">全部归属</option></select>
+      </div>
+    </div>
+  </header>
+  <section data-rfq-records>
+    <div class="rfq-list-context"><strong>询价记录</strong><div data-rfq-filters aria-label="当前筛选条件"></div></div>
+
+    <div class="rfq-wrap"><table><thead><tr><th aria-sort="descending">编号 ↓</th><th>询价日期</th><th>询盘来源</th><th>状态</th><th>客户信息</th><th>全球时间</th></tr></thead><tbody data-rfq-rows></tbody></table></div>
+    <footer class="rfq-pagination"><span data-rfq-summary aria-live="polite"></span><div><select data-rfq-size aria-label="每页条数"><option value="10">10 条 / 页</option><option value="20" selected>20 条 / 页</option><option value="30">30 条 / 页</option><option value="custom">自定义</option></select><label class="rfq-custom-size" data-rfq-custom-size hidden><input type="number" data-rfq-custom-count aria-label="自定义每页条数" min="1" max="1000" step="1" value="20"><span>条 / 页</span></label><button type="button" data-rfq-prev class="rfq-secondary">上一页</button><span data-rfq-page></span><button type="button" data-rfq-next class="rfq-secondary">下一页</button></div></footer>
+  </section>
+  <section class="rfq-preview-modal" data-rfq-preview hidden role="dialog" aria-modal="true" aria-labelledby="rfq-preview-title"><div class="rfq-preview-backdrop" data-close-rfq-preview></div><article class="rfq-preview-card"><header><div class="rfq-window-heading"><small>询价管理 · 详情</small><h3 id="rfq-preview-title" data-rfq-preview-title>询价单详情</h3></div><button type="button" class="rfq-secondary" data-close-rfq-preview aria-label="关闭详情">×</button></header><div class="rfq-preview-content" data-rfq-preview-content></div><footer class="rfq-detail-footer" data-rfq-detail-actions aria-label="询价单 操作"></footer></article></section>
+</section>
+<script src="/static/js/crm-rfq.js?v=20261111-inquiry-rows" defer></script>

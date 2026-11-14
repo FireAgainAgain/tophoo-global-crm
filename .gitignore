@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environments
+env/
+venv/
+.venv/
+
+# Environment and secrets
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Test and tooling output
+.pytest_cache/
+.coverage
+htmlcov/
+tmp/
+.codex-weekly-report/
+.workbuddy/
+
+# IDE
+.idea/
+.vscode/
+backups/
+output/
+
+# Local document rendering intermediates
+.codex/tmp/
+.codex/
+
+# Local database dumps do not belong in a reusable source project
+*.sql
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.sqlite3-*
+*.db
+*.db-*
+/data/
+uploads/

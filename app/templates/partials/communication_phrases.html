@@ -1,0 +1,15 @@
+<section class="phrase-library" data-phrase-library hidden>
+  <aside class="phrase-sidebar"><header><strong>话术分类</strong><button type="button" data-phrase-add-category aria-label="新增分类" title="新增分类" hidden>＋</button></header><div data-phrase-categories></div></aside>
+  <main class="phrase-main">
+    <header class="phrase-toolbar">
+      <div class="phrase-heading"><h2 data-phrase-heading>沟通话术</h2><span data-phrase-count aria-live="polite"></span></div>
+      <div class="phrase-search"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="m13 13 4 4"/></svg><input type="search" data-phrase-search aria-label="搜索话术、翻译或场景" placeholder="搜索话术、翻译或场景"><button type="button" data-phrase-clear-search aria-label="清空搜索" hidden>×</button></div>
+      <button type="button" data-phrase-export hidden title="导出当前分类的全部话术，包含所有场景">导出全部 PDF</button><button type="button" data-phrase-sort hidden aria-pressed="false">调整顺序</button><button type="button" data-phrase-add hidden>＋ 新增话术</button>
+    </header>
+    <section class="phrase-scenes" data-phrase-scenes-panel aria-label="场景模块" hidden><div class="phrase-scene-header"><strong>选择场景</strong><span data-phrase-scene-hint></span><button type="button" data-phrase-add-scene hidden>＋ 新增场景</button></div><div class="phrase-scene-tabs" data-phrase-scenes></div></section>
+    <p class="phrase-error" data-phrase-error role="alert" hidden></p><div class="phrase-scroll" data-phrase-scroll tabindex="0" aria-label="话术列表，可滚动浏览"><div data-phrase-list></div><button type="button" class="phrase-more" data-phrase-more hidden>加载更多</button></div>
+  </main>
+  <dialog class="phrase-dialog" data-phrase-dialog aria-labelledby="phrase-dialog-title"><header><h3 id="phrase-dialog-title"></h3><button type="button" data-phrase-close aria-label="关闭窗口">×</button></header><form data-phrase-form><div class="phrase-dialog-body" data-phrase-body></div><p class="phrase-error" data-phrase-form-error role="alert" hidden></p><footer data-phrase-actions></footer></form></dialog>
+  <div class="phrase-toast" data-phrase-toast role="status" hidden></div>
+</section>
+<script defer src="/static/js/communication-phrases.js?v=20261110-phrase-reading"></script>

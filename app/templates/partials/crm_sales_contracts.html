@@ -1,0 +1,43 @@
+<section class="quote-page sales-contracts" data-crm-contracts data-permission-module="customer_list" hidden aria-label="客户合同">
+  <header class="contract-toolbar">
+    <span data-contract-count></span>
+    <button type="button" class="quote-primary" data-contract-add>＋ 新建合同</button>
+  </header>
+  <p class="quote-feedback" data-contract-feedback role="status" hidden></p>
+  <div class="quote-table-wrap contract-table-wrap">
+    <table class="quote-table"><thead><tr><th>合同号</th><th>签订日期</th><th>金额</th><th>状态</th><th>操作</th></tr></thead><tbody data-contract-rows></tbody></table>
+  </div>
+  <dialog class="quote-template-dialog contract-template-picker" data-contract-template-picker aria-labelledby="contract-template-title">
+    <header><div><h2 id="contract-template-title">选择合同模板</h2><p>选择适用的合同版式，接着填写合同内容。</p></div><button type="button" data-contract-template-cancel aria-label="关闭">×</button></header>
+    <div class="quote-template-body">
+      <div class="quote-template-cards">
+        <button class="quote-template-card" type="button" data-contract-template="domestic">
+          <strong>内销中文合同</strong><small>人民币大写、税费与发票、验收条款及盖章栏</small><span class="quote-template-use">使用此模板 →</span>
+        </button>
+        <button class="quote-template-card" type="button" data-contract-template="export">
+          <strong>外销英文合同</strong><small>英文合同抬头、贸易条件、HS 编码及双方签署栏</small><span class="quote-template-use">使用此模板 →</span>
+        </button>
+      </div>
+      <p class="quote-feedback" role="status" data-contract-template-status hidden></p>
+    </div>
+    <footer><button type="button" data-contract-template-cancel>取消</button></footer>
+  </dialog>
+  <dialog class="quote-editor contract-editor" data-contract-editor aria-labelledby="contract-editor-title">
+    <header><div><h2 id="contract-editor-title"></h2><p data-contract-source hidden></p></div><button type="button" data-contract-close aria-label="关闭">×</button></header>
+    <nav class="quote-section-nav" aria-label="合同编辑章节">
+      <button type="button" data-contract-jump="parties">双方信息</button><button type="button" data-contract-jump="items">产品明细</button>
+      <button type="button" data-contract-jump="terms">付款与交付</button><button type="button" data-contract-jump="receipt">收款与签署</button>
+    </nav>
+    <form data-contract-form>
+      <div class="quote-form-content" data-contract-fields></div>
+      <footer><span role="status" data-contract-form-status></span><button type="button" data-contract-preview>预览 PDF</button><button type="submit" class="quote-primary" data-contract-save>保存草稿</button></footer>
+    </form>
+  </dialog>
+  <dialog class="quote-pdf contract-pdf" data-contract-pdf aria-label="合同 PDF 预览">
+    <header><h2>合同 PDF 预览</h2><a data-contract-pdf-download download>下载 PDF</a><button type="button" data-contract-pdf-close aria-label="关闭 PDF 预览">×</button></header>
+    <iframe title="合同 PDF"></iframe>
+  </dialog>
+  <input type="file" data-contract-signed-input accept=".pdf,application/pdf" hidden>
+</section>
+<script src="/static/js/sales-contracts.js?v=20261112-crm-integrity" defer></script>
+

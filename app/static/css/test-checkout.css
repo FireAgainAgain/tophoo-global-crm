@@ -1,0 +1,28 @@
+.checkout-layout{min-height:100vh;padding:30px 44px 60px}
+.account-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:46px}
+.account-brand{color:#173d2d}
+.account-brand .login-brand-mark{background:#173d2d;color:#fff}
+.account-back{color:#587164;font-size:13px;text-decoration:none}
+.checkout-shell{width:min(100%,560px);margin:0 auto;padding:34px;border:1px solid var(--login-line);border-radius:16px;background:#fff;box-shadow:0 16px 42px #173d2d12;text-align:center}
+.checkout-notice{display:inline-block;margin-bottom:22px;padding:6px 10px;border-radius:999px;background:#fff4df;color:#936314;font-size:12px;font-weight:700}
+.checkout-shell h1{margin:0;font-size:31px;letter-spacing:-1px}
+.checkout-intro{margin:11px auto 24px;max-width:430px;color:var(--login-muted);font-size:14px;line-height:1.75}
+.checkout-order{display:grid;gap:8px;padding:18px;border:1px solid #dbe8df;border-radius:11px;background:#f3f9f5}
+.checkout-order span{color:#365845;font-size:13px;font-weight:700}
+.checkout-order strong{font-size:31px}
+.checkout-order strong small,.checkout-order em{color:#63746a;font-size:12px;font-style:normal;font-weight:400}
+.checkout-methods{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}
+.checkout-method{display:grid;gap:5px;min-height:82px;padding:13px;border:1px solid var(--login-line);border-radius:10px;background:#fff;color:#365845;cursor:pointer;font:inherit}
+.checkout-method.active{border-color:var(--login-green);background:#f3f9f5}
+.checkout-method b{font-size:15px}
+.checkout-method span{color:#697970;font-size:11px}
+.checkout-submit{width:100%;min-height:44px;border:0;border-radius:9px;background:var(--login-green);color:#fff;font:700 14px inherit;cursor:pointer}
+.checkout-submit:disabled{background:#98b9a7;cursor:wait}
+.checkout-message{min-height:18px;margin:14px 0 0;color:#16754f;font-size:13px}
+.checkout-footnote{margin:19px 0 0;padding-top:17px;border-top:1px solid #edf1ee;color:#829087;font-size:11px;line-height:1.7}
+@media(max-width:620px){
+.checkout-layout{padding:22px 18px 42px}
+.checkout-shell{padding:28px 21px}
+.checkout-methods{grid-template-columns:1fr}
+
+}

@@ -1,0 +1,55 @@
+/* mobile */
+@media (max-width: 760px){
+html{-webkit-text-size-adjust: 100%}
+body{min-width: 320px;overflow-x: hidden}
+button,input,select,textarea{font-size: 16px}
+.app{display: block}
+.sidebar{position: static;width: 100%;min-height: 0;border-right: 0;border-bottom: 1px solid var(--border)}
+.sidebar-current-project,.sidebar-project-manager{min-height: 38px;flex: 0 0 auto}
+.crm-navigation{display: flex;flex: 0 0 auto;gap: 6px;padding: 8px 12px 10px;overflow-x: auto;border-top: 1px solid #edf3ef;scrollbar-width: thin}
+.crm-nav-section{display: contents;margin: 0;padding: 0;border: 0!important}
+.crm-nav-item{width: auto;min-height: 38px;margin: 0;padding: 8px 12px;flex: 0 0 auto;white-space: nowrap;box-shadow: none!important}
+.crm-nav-item::before{display: none}
+.sidebar-account{display: flex;flex-wrap: wrap;gap: 7px;padding: 10px 12px 12px;border-top: 1px solid #edf3ef}
+.sidebar-account > *{flex: 0 0 auto;min-height: 36px}
+.sidebar-user{width: auto}
+.sidebar-profile,.sidebar-logout{padding: 0 11px}
+.main{width: 100%;margin-left: 0}
+.main-inner{padding: 18px 12px 32px}
+.rfq-page header,.pm-current-head,.pm-section-head{align-items: stretch;flex-direction: column;gap: 10px}
+.rfq-page header button,.pm-section-head-actions{width: 100%}
+.rfq-wrap,.admin-table-wrap{position: relative;max-width: 100%;border-radius: 10px;-webkit-overflow-scrolling: touch}
+.rfq-wrap::after,.admin-table-wrap::after{content: "左右滑动查看全部字段";position: sticky;left: 0;display: block;width: max-content;padding: 5px 8px;color: #718b7d;font-size: 10px;background: #f6faf7}
+.rfq-wrap th,.rfq-wrap td{min-height: 44px}
+.pm-page{padding: 0}
+.pm-projects-section,.pm-current-project,.pm-members{padding: 14px;border-radius: 12px}
+.pm-current-actions,.pm-member-role{width: 100%;flex-wrap: wrap}
+.pm-current-actions > *,.pm-member-role > *{flex: 1;min-height: 38px}
+.pm-member-add,.pm-member-add input,.pm-member-add select,.pm-member-add button{width: 100%;min-width: 0}
+.pm-member-row{grid-template-columns: 1fr;align-items: stretch}
+.rfq-page{padding: 14px}
+.rfq-page h2{font-size: 21px}
+.rfq-editor{padding: 14px;border-radius: 10px}
+.rfq-editor-head{align-items: flex-start;flex-direction: column}
+.rfq-editor-head button{width: 100%;min-height: 40px}
+.admin-layout,.pricing-layout,.checkout-layout{padding: 20px 14px 36px}
+.account-top{align-items: flex-start;margin-bottom: 24px;gap: 12px}
+.account-top .account-back{padding-top: 7px;white-space: nowrap}
+.admin-grid,.plan-editor-grid,.pricing-grid{grid-template-columns: 1fr}
+.admin-card,.plan-editor,.pricing-card,.checkout-shell{padding: 18px 14px;border-radius: 12px}
+.admin-heading h1,.pricing-heading h1,.checkout-shell h1{font-size: 27px}
+.admin-card-heading{align-items: flex-start;flex-direction: column}
+.plan-editor-heading,.plan-editor-foot{align-items: flex-start;flex-direction: column}
+.plan-editor-foot > div,.plan-editor-foot button{width: 100%}
+#plan-message:not(:empty){right: 12px;bottom: 12px;left: 12px}
+
+}
+@media (max-width: 420px){
+.main-inner{padding-right: 10px;padding-left: 10px}
+.sidebar-account{display: grid;grid-template-columns: 1fr 1fr}
+.sidebar-account > *{min-width: 0;width: 100%}
+.pm-project-row{align-items: flex-start;flex-wrap: wrap}
+.pm-card-tools{margin-left: 26px}
+.rfq-page{padding: 10px}
+
+}

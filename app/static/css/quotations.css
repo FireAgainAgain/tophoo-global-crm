@@ -1,0 +1,352 @@
+/* Sales quotations: neutral list surfaces and coordinated form sections. */
+:root .quote-page{color:hsl(220 23% 24%);font-size:13px;padding:0 0 20px;min-width:0}
+:root .quote-page [hidden]{display:none!important}
+:root .quote-page button,:root .quote-page input,:root .quote-page select,:root .quote-page textarea{font:inherit;box-sizing:border-box}
+:root .quote-page button,:root .quote-pdf a{border:1px solid hsl(215 24% 86%);border-radius:9px;background:white;color:hsl(220 23% 28%);padding:8px 12px;cursor:pointer;text-decoration:none;line-height:1.4}
+:root .quote-page button:not(.quote-primary):hover:not(:disabled){background:hsl(214 45% 96%)}
+:root .quote-page button:disabled{opacity:.45;cursor:not-allowed}
+:root .quote-page .quote-primary{background:var(--primary,#6550ab);color:white;border-color:transparent;font-weight:600}
+:root .quote-page button.quote-primary:hover:not(:disabled),:root .quote-page button.quote-primary:active:not(:disabled){background:var(--primary-hover,#51408c);color:white;box-shadow:0 2px 5px rgb(30 40 60 / 12%)}
+:root .quote-page button:focus-visible{outline:2px solid var(--primary,#6550ab);outline-offset:3px}
+:root .quote-page .quote-danger{color:hsl(0 52% 46%);margin-right:auto}
+:root .quote-tools{background:hsl(220 14% 98%);border:1px solid hsl(215 24% 89%);border-radius:14px 14px 0 0;padding:16px 18px}
+:root .quote-tools>header,:root .quote-tools>header>div,:root .quote-actions,:root .quote-filters,:root .quote-pagination,:root .quote-pagination>div{display:flex;align-items:center;gap:12px}
+:root .quote-tools>header{justify-content:space-between;margin-bottom:14px}
+:root .quote-tools h2{font-size:18px;margin:0}
+:root .quote-tools [data-quote-count]{font-size:12px;color:hsl(215 13% 50%)}
+:root .quote-filters input,:root .quote-filters select,:root .quote-pagination input{height:35px;border:1px solid hsl(215 24% 86%);border-radius:8px;background:white;padding:6px 10px;color:hsl(220 23% 28%)}
+:root .quote-filters input{width:min(360px,40%);min-width:150px}
+:root .quote-feedback{font-size:12px;padding:10px 14px;margin:8px 0;border:1px solid hsl(213 30% 88%);background:hsl(212 50% 97%);border-radius:8px}
+:root .quote-feedback.is-error{color:hsl(0 55% 42%);background:hsl(0 50% 98%)}
+:root .quote-table-wrap,:root .quote-items-wrap{overflow-x:auto;min-width:0}
+:root .quote-table{width:100%;border-collapse:collapse;table-layout:fixed;background:hsl(212 60% 99%);border:1px solid hsl(215 24% 89%)}
+:root .quote-table th{background:hsl(212 52% 97%);font-size:12px;color:hsl(220 18% 42%);font-weight:600;text-align:left;padding:12px 14px;white-space:nowrap}
+:root .quote-table td{padding:8px 12px;border-top:1px solid hsl(215 30% 93%);vertical-align:middle;overflow-wrap:anywhere;font-size:13px}
+:root .quote-table tr:hover td{background:hsl(212 58% 96%)}
+:root .quote-table small{display:block;color:hsl(215 13% 50%);font-size:12px;margin-top:5px;font-weight:400}
+:root .quote-table strong{font-weight:600}
+:root .quote-table button{font-size:12px;padding:5px 8px;border-radius:7px}
+:root .quote-table .quote-number{border:0;background:transparent;color:var(--primary);font-weight:600;padding:0;text-align:left}
+:root .quote-money{font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+:root .quote-empty{height:180px;text-align:center!important;color:hsl(215 13% 50%)}
+:root .quote-pagination{justify-content:space-between;padding:13px 14px;border:1px solid hsl(215 24% 89%);border-top:0;border-radius:0 0 12px 12px;background:white;font-size:12px;color:hsl(215 13% 46%)}
+:root .quote-pagination input{width:65px;height:31px}
+:root .quote-pagination button{padding:5px 9px;font-size:12px}
+:root .quote-page dialog{padding:0;color:hsl(220 23% 24%);border:1px solid hsl(215 24% 87%);border-radius:16px;background:hsl(220 24% 98%);box-shadow:0 22px 75px hsl(220 25% 18% / .2);max-width:none;max-height:none}
+:root .quote-page dialog::backdrop{background:hsl(220 25% 20% / .38);backdrop-filter:blur(2px)}
+:root .quote-editor{width:min(1120px,calc(100vw - 48px));height:min(920px,calc(100dvh - 48px))}
+:root .quote-editor[open],:root .quote-detail[open],:root .quote-pdf[open]{display:flex;flex-direction:column}
+:root .quote-page dialog>header{display:flex;align-items:center;justify-content:space-between;gap:12px;background:white;border-bottom:1px solid hsl(215 24% 90%);padding:16px 20px;flex:none}
+:root .quote-page dialog>header h2{font-size:17px;margin:0;overflow-wrap:anywhere}
+:root .quote-page dialog>header p,:root .quote-page dialog>header small{font-size:12px;color:hsl(215 13% 50%);margin:5px 0 0}
+:root .quote-editor form{display:flex;flex-direction:column;min-height:0;flex:1}
+:root .quote-form-content{overflow:auto;padding:16px 20px;display:flex;flex-direction:column;gap:14px;flex:1;min-height:0}
+:root .quote-form-section{flex:none;border:1px solid hsl(215 27% 89%);background:linear-gradient(135deg,hsl(215 50% 99%),hsl(0 0% 100%));border-radius:13px;padding:15px;box-shadow:0 3px 10px hsl(220 25% 20% / .025),inset 0 1px 0 white}
+:root .quote-form-section h3,:root .quote-form-section summary{font-size:13px;font-weight:600;margin:0 0 12px;color:hsl(219 30% 31%)}
+:root .quote-form-section summary{cursor:pointer;margin:0}
+:root .quote-form-section[open]>summary{margin-bottom:14px}
+:root .quote-buyer{background:linear-gradient(135deg,hsl(213 65% 98%),white)}
+:root .quote-terms{background:linear-gradient(135deg,hsl(40 50% 98%),white);border-color:hsl(40 27% 88%)}
+:root .quote-seller{background:linear-gradient(135deg,hsl(263 36% 98%),white)}
+:root .quote-bank{background:linear-gradient(135deg,hsl(156 30% 98%),white)}
+:root .quote-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 14px}
+:root .quote-grid label,:root .quote-payment-options label,:root .quote-amount-label-grid label,:root .quote-inline-fields label,:root .quote-product>label{display:flex;flex-direction:column;gap:6px;font-size:12px;color:hsl(220 15% 42%);min-width:0}
+:root .quote-grid input,:root .quote-payment-options input:not([type=checkbox]),:root .quote-amount-label-grid input,:root .quote-grid select,:root .quote-inline-fields input,:root .quote-product>label input,:root .quote-form-section>textarea{width:100%;height:37px;padding:7px 10px;border:1px solid hsl(215 24% 86%);border-radius:8px;background:white;color:hsl(220 23% 25%);font-size:13px}
+:root .quote-page input:focus,:root .quote-page select:focus,:root .quote-page textarea:focus{outline:2px solid hsl(215 70% 90%);outline-offset:1px;border-color:hsl(215 42% 63%)}
+:root .quote-inline-fields{display:flex;gap:12px;margin:12px 0}
+:root .quote-inline-fields label{width:130px}
+:root .quote-items{width:100%;border-collapse:collapse;table-layout:fixed;font-size:12px}
+:root .quote-items th{background:hsl(212 50% 97%);font-size:11px;text-align:left;color:hsl(215 18% 44%);font-weight:500;padding:9px 7px;border-bottom:1px solid hsl(215 24% 88%)}
+:root .quote-items th:first-child{width:32px}:root .quote-items th:nth-child(2){width:auto}:root .quote-items th:nth-child(3),:root .quote-items th:nth-child(4){width:115px}:root .quote-items th:nth-child(5){width:130px}:root .quote-items th:nth-child(6){width:38px}
+:root .quote-items td{padding:9px 6px;border-bottom:1px solid hsl(215 25% 91%);vertical-align:middle;overflow-wrap:anywhere}
+:root .quote-items input,:root .quote-items textarea{width:100%;border:1px solid hsl(215 24% 86%);border-radius:7px;padding:7px 8px;font-size:13px;background:white;min-height:36px;color:hsl(220 23% 25%)}
+:root .quote-items textarea{resize:none;overflow-y:hidden;line-height:1.5;min-height:56px;max-height:none}
+:root .quote-items [data-line-amount]{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;font-weight:600}
+:root .quote-items [data-remove-line]{padding:3px 7px;border:0;background:transparent;color:hsl(215 15% 50%)}
+:root [data-quote-add-line]{margin-top:10px;padding:6px 10px;font-size:12px}
+:root .quote-live-totals{display:flex;justify-content:flex-end;gap:24px;background:hsl(212 45% 98%);padding:12px;border-radius:9px;margin-top:12px;font-size:12px;color:hsl(215 15% 46%);flex-wrap:wrap}
+:root .quote-live-totals b{font-size:15px;color:hsl(220 25% 25%);margin-left:7px;font-variant-numeric:tabular-nums}
+:root .quote-page .quote-check{display:flex;align-items:center;gap:7px;margin:0 0 13px;font-size:12px}
+:root .quote-check input{width:16px;height:16px;accent-color:var(--primary)}
+:root .quote-form-section>textarea{height:auto;min-height:90px;line-height:1.7;resize:vertical}
+:root .quote-editor form>footer,:root .quote-detail>footer{display:flex;align-items:center;justify-content:flex-end;gap:9px;padding:13px 20px;border-top:1px solid hsl(215 24% 89%);background:white;flex:none}
+:root [data-quote-form-status]{margin-right:auto;font-size:12px;color:hsl(215 16% 46%);max-width:60%;overflow-wrap:anywhere}
+:root .quote-page .quote-detail{width:min(780px,100vw);height:100dvh;margin:0 0 0 auto;border-radius:16px 0 0 16px}
+:root .quote-detail-content{padding:20px;overflow:auto;flex:1;min-height:0}
+:root .quote-detail-buyer h3{font-size:19px;margin:0 0 16px}
+:root .quote-detail dl{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:14px 0 20px}
+:root .quote-detail dl>div{min-width:0}
+:root .quote-detail dt{font-size:11px;color:hsl(215 13% 50%);margin-bottom:4px}
+:root .quote-detail dd{font-size:13px;margin:0;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.6}
+:root .quote-detail .quote-items th:nth-child(3),:root .quote-detail .quote-items th:nth-child(4){width:80px}
+:root .quote-detail .quote-items th:nth-child(5){width:100px}
+:root .quote-pdf{width:min(1000px,calc(100vw - 32px));height:calc(100dvh - 32px)}
+:root .quote-pdf iframe{flex:1;min-height:0;width:100%;border:0;background:hsl(215 12% 91%)}
+:root .quote-pdf>header h2{margin-right:auto}
+@media(max-width:1100px){:root .quote-table{min-width:960px}:root .quote-filters{flex-wrap:wrap}}
+@media(max-width:650px){:root .quote-tools{padding:12px}:root .quote-tools>header{align-items:flex-start;gap:8px}:root .quote-tools>header>div:first-child{align-items:flex-start;flex-direction:column;gap:3px}:root .quote-actions{gap:6px}:root .quote-actions button{padding:7px 9px;font-size:12px}:root .quote-filters{gap:8px}:root .quote-filters input{flex:1;width:100%;min-width:170px}:root .quote-pagination{flex-wrap:wrap;gap:10px}:root .quote-pagination>div{gap:7px}:root .quote-editor{width:calc(100vw - 16px);height:calc(100dvh - 16px)}:root .quote-page dialog>header{padding:12px}:root .quote-form-content{padding:10px;gap:10px}:root .quote-form-section{padding:12px}:root .quote-grid{grid-template-columns:minmax(0,1fr);gap:11px}:root .quote-items{min-width:700px}:root .quote-detail .quote-items{min-width:550px}:root .quote-live-totals{flex-direction:column;gap:8px;align-items:flex-end}:root .quote-editor form>footer,:root .quote-detail>footer{padding:10px;gap:6px;flex-wrap:wrap}:root [data-quote-form-status]{max-width:none;width:100%;min-height:14px}:root .quote-editor form>footer button{flex:1}:root .quote-detail dl{grid-template-columns:1fr}:root .quote-detail-content{padding:14px}}
+@media(max-width:650px){
+:root .quote-editor .quote-items{min-width:0;display:block}
+:root .quote-editor .quote-items thead{display:none}
+:root .quote-editor .quote-items tbody{display:flex;flex-direction:column;gap:10px}
+:root .quote-editor .quote-items tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;position:relative;border:1px solid hsl(215 24% 89%);border-radius:10px;padding:12px;background:white}
+:root .quote-editor .quote-items td{display:block;padding:0;border:0;min-width:0}
+:root .quote-editor .quote-items td:first-child{display:none}
+:root .quote-editor .quote-items td:nth-child(2){grid-column:1/-1;padding-top:17px}
+:root .quote-editor .quote-items td:nth-child(2)::before{content:'型号 / 规格'}
+:root .quote-editor .quote-items td:nth-child(3)::before{content:'数量'}
+:root .quote-editor .quote-items td:nth-child(4)::before{content:'单价'}
+:root .quote-editor .quote-items td:nth-child(2)::before,:root .quote-editor .quote-items td:nth-child(3)::before,:root .quote-editor .quote-items td:nth-child(4)::before{display:block;font-size:11px;color:hsl(215 15% 48%);margin-bottom:5px}
+:root .quote-editor .quote-items td:nth-child(5){grid-column:1/-1;text-align:right;padding-top:4px}
+:root .quote-editor .quote-items td:nth-child(5)::before{content:'金额 ';font-size:11px;color:hsl(215 15% 48%);font-weight:400}
+:root .quote-editor .quote-items td:nth-child(6){position:absolute;right:8px;top:5px}
+:root .quote-editor .quote-items input{font-size:16px}
+}
+:root .quote-table td:last-child{padding:10px 8px;white-space:nowrap}
+:root .quote-table td:last-child button{font-size:11px;padding:5px 7px}
+:root .quote-detail-extra{border:1px solid hsl(215 24% 90%);border-radius:10px;padding:12px;margin:12px 0;background:white}
+:root .quote-detail-extra summary{cursor:pointer;font-size:12px;font-weight:600;color:hsl(220 18% 35%)}
+/* Quotation branding, simplified list and grouped detail drawer. */
+:root .quote-table{min-width:640px}
+:root .quote-table .quote-number{white-space:normal;overflow-wrap:anywhere;line-height:1.6}
+:root .quote-brand{background:linear-gradient(135deg,hsl(220 50% 98%),white)}
+:root .quote-logo-editor{display:flex;align-items:center;gap:18px;min-width:0}
+:root .quote-logo-preview{width:156px;height:78px;flex:none;border:1px dashed hsl(215 26% 83%);border-radius:10px;background:white;display:flex;align-items:center;justify-content:center;padding:8px;box-sizing:border-box;color:hsl(215 14% 58%);font-size:12px}
+:root .quote-logo-preview img{max-width:100%;max-height:100%;object-fit:contain}
+:root .quote-logo-controls{display:flex;flex-direction:column;gap:9px;min-width:0}
+:root .quote-logo-controls>div{display:flex;align-items:center;gap:9px}
+:root .quote-logo-upload{display:inline-flex;align-items:center;cursor:pointer;border:1px solid hsl(215 24% 86%);border-radius:8px;padding:8px 12px;background:white;font-size:12px;color:var(--primary)}
+:root .quote-logo-controls small{font-size:12px;line-height:1.6;color:hsl(215 15% 48%)}
+:root .quote-logo-controls button{font-size:12px;padding:8px 12px}
+:root .quote-detail>header h2{display:flex;align-items:center;flex-wrap:wrap;gap:10px;font-size:16px;line-height:1.7}
+:root .quote-detail>header h2>span:first-child{overflow-wrap:anywhere;min-width:0}
+:root .quote-detail-content{background:hsl(216 28% 98%);display:flex;flex-direction:column;gap:14px}
+:root .quote-detail-hero{display:flex;align-items:center;gap:16px;padding:4px 2px 8px}
+:root .quote-detail-hero>img{width:100px;height:55px;object-fit:contain;flex:none;background:white;border-radius:8px;padding:6px;box-sizing:border-box;border:1px solid hsl(215 24% 91%)}
+:root .quote-detail-hero h3{font-size:19px;margin:0;line-height:1.5;overflow-wrap:anywhere}
+:root .quote-detail-hero p{margin:5px 0 0;font-size:12px;color:hsl(215 15% 48%)}
+:root .quote-detail-section{background:white;border:1px solid hsl(215 26% 90%);border-radius:12px;padding:15px;flex:none;min-width:0}
+:root .quote-detail-section>h3{font-size:13px;margin:0 0 14px;color:hsl(220 24% 31%)}
+:root .quote-detail-section dl{margin:0;gap:14px 18px}
+:root .quote-detail-section dd{font-size:13px;line-height:1.65}
+:root .quote-detail-product-title{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin-bottom:12px;font-size:13px}
+:root .quote-detail-product-title strong{font-weight:500}
+:root .quote-detail-product-title>span{font-size:11px;color:hsl(215 15% 49%);white-space:nowrap}
+:root .quote-detail .quote-items th:nth-child(2){width:auto}
+:root .quote-detail .quote-items td:nth-child(2){white-space:pre-wrap;line-height:1.75}
+:root .quote-detail .quote-items th:nth-child(3){width:65px}
+:root .quote-detail .quote-items th:nth-child(4),:root .quote-detail .quote-items th:nth-child(5){width:105px}
+:root .quote-detail-totals{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+:root .quote-detail-totals>div{display:flex;flex-direction:column;gap:5px;background:hsl(214 40% 98%);border:1px solid hsl(215 26% 91%);border-radius:9px;padding:12px;min-width:0}
+:root .quote-detail-totals span{font-size:11px;color:hsl(215 15% 48%)}
+:root .quote-detail-totals strong{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+:root .quote-detail-totals>.quote-total-main{grid-column:1/-1;flex-direction:row;justify-content:space-between;align-items:center;background:hsl(216 55% 97%)}
+:root .quote-total-main strong{font-size:20px;color:hsl(220 25% 25%)}
+:root .quote-detail-extra{margin:0;flex:none;background:white}
+:root .quote-detail-extra[open]>summary{margin-bottom:14px}
+:root .quote-detail-extra dl{margin:0}
+:root .quote-internal-note{white-space:pre-wrap;font-size:12px;line-height:1.8;color:hsl(215 15% 43%);margin:0;overflow-wrap:anywhere}
+:root .quote-detail>footer{box-shadow:0 -3px 12px hsl(220 25% 20% / .025)}
+@media(max-width:650px){
+:root .quote-logo-editor{align-items:flex-start;gap:12px;flex-direction:column}
+:root .quote-logo-preview{width:142px;height:72px}
+:root .quote-detail-hero{align-items:flex-start;gap:11px}
+:root .quote-detail-hero>img{width:78px;height:45px}
+:root .quote-detail-hero h3{font-size:17px}
+:root .quote-detail-content{gap:11px}
+:root .quote-detail-section{padding:12px}
+:root .quote-detail-product-title{flex-direction:column;gap:5px}
+:root .quote-detail-totals strong{font-size:14px}
+:root .quote-total-main strong{font-size:18px}
+:root .quote-detail>footer{gap:7px}
+:root .quote-detail>footer button{font-size:12px;padding:8px 10px}
+}
+
+/* Document order shared by editing and reading, matching the exported quotation. */
+:root .quote-form-content,:root .quote-detail-content{background:hsl(215 20% 96%);gap:12px}
+:root .quote-form-section,:root .quote-detail-section{box-shadow:0 2px 8px rgb(30 40 60 / 3%);border-color:hsl(215 24% 89%)}
+:root .quote-seller{background:linear-gradient(135deg,#f8f6fc,#fff)}
+:root .quote-buyer{background:linear-gradient(135deg,#f5f9fe,#fff)}
+:root .quote-product,:root .quote-amounts{background:linear-gradient(135deg,#f8fafc,#fff)}
+:root .quote-terms{background:linear-gradient(135deg,#fdfaf3,#fff)}
+:root .quote-bank{background:linear-gradient(135deg,#f5faf7,#fff)}
+:root .quote-signoff,:root .quote-base{background:#fff}
+:root .quote-document-title{text-align:center;font-size:22px;font-weight:700;letter-spacing:1.5px;padding:5px 0;color:#253044;flex:none}
+:root .quote-document-title span{display:block;font-size:11px;font-weight:400;letter-spacing:2px;color:#748095;margin-top:3px}
+:root .quote-letterhead{display:grid;grid-template-columns:180px minmax(0,1fr);gap:20px;align-items:start}
+:root .quote-letterhead .quote-logo-editor{flex-direction:column;align-items:flex-start;gap:10px}
+:root .quote-letterhead .quote-logo-controls{gap:6px}
+:root .quote-letterhead .quote-logo-controls small{font-size:11px}
+:root .quote-letterhead .quote-grid,:root .quote-buyer .quote-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+:root .quote-letterhead label:nth-child(-n+2),:root .quote-buyer label:has([name=buyer_address]){grid-column:1/-1}
+:root .quote-terms .quote-grid{grid-template-columns:minmax(0,1fr)}
+:root .quote-terms .quote-grid label{display:grid;grid-template-columns:130px minmax(0,1fr);align-items:center;gap:12px}
+:root .quote-amounts .quote-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:center}
+:root .quote-amounts .quote-check{flex-direction:row;margin:20px 0 0;align-self:center}
+:root .quote-amounts .quote-check input{width:16px;height:16px;padding:0}
+:root .quote-amounts .quote-live-totals{flex-direction:column;align-items:stretch;gap:0;background:transparent;padding:0;margin:10px 0}
+:root .quote-amounts .quote-live-totals>span{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #edf0f5;padding:10px 0;gap:16px}
+:root .quote-amounts .quote-live-totals>.quote-grand-total{background:#f0f5fc;border-radius:8px;padding:12px 10px;color:#253044;font-weight:600}
+:root .quote-signoff .quote-grid{grid-template-columns:minmax(0,1fr)}
+
+
+:root .quote-notes-label{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#566174;margin-top:14px}
+:root .quote-notes-label textarea{width:100%;box-sizing:border-box;min-height:90px;padding:9px 10px;border:1px solid #d4dce7;border-radius:8px;resize:vertical;font:inherit;line-height:1.6;background:white;color:#253044}
+:root .quote-detail .quote-terms dl{grid-template-columns:minmax(0,1fr);gap:10px}
+:root .quote-detail .quote-terms dl>div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:12px;align-items:baseline}
+:root .quote-detail .quote-terms dt{margin:0}
+:root .quote-detail .quote-detail-hero h3{font-size:16px}
+:root .quote-detail .quote-detail-hero p{line-height:1.7;overflow-wrap:anywhere}
+@media(max-width:650px){
+:root .quote-letterhead{grid-template-columns:minmax(0,1fr);gap:14px}
+:root .quote-letterhead .quote-logo-editor{flex-direction:row;align-items:center}
+:root .quote-letterhead .quote-logo-preview{width:110px;height:65px}
+:root .quote-letterhead .quote-grid,:root .quote-buyer .quote-grid,:root .quote-amounts .quote-grid{grid-template-columns:minmax(0,1fr)}
+:root .quote-terms .quote-grid label{grid-template-columns:minmax(0,1fr);gap:6px}
+:root .quote-amounts .quote-check{margin:0}
+:root .quote-detail .quote-terms dl>div{grid-template-columns:88px minmax(0,1fr);gap:8px}
+
+}
+
+:root .quote-buyer .quote-fill-tools{grid-template-columns:repeat(2,minmax(0,1fr));padding:10px;background:#f1f4f8;border:1px solid #e4e9f0;border-radius:9px;margin-bottom:14px}
+@media(max-width:650px){:root .quote-buyer .quote-fill-tools{grid-template-columns:minmax(0,1fr)}}
+
+/* Keep the common row actions visible and group the rest in a popover. */
+:root .quote-table th:first-child{width:28%}
+:root .quote-table th.quote-date-column{width:120px}
+:root .quote-table th.quote-action-column{width:160px;box-sizing:border-box}
+:root .quote-table .quote-number:hover{text-decoration:underline;text-underline-offset:3px}
+:root .quote-table .quote-template-tag + small{display:inline;margin-left:8px}
+:root .quote-row-actions{display:flex;align-items:center;gap:6px}
+:root .quote-row-actions button{border-radius:8px;padding:6px 9px;min-height:32px;font-size:12px;white-space:nowrap}
+:root .quote-row-actions .quote-preview-action{color:var(--primary,#275e9e);background:var(--accent-soft,#edf4fc);border-color:transparent;font-weight:600}
+:root .quote-row-actions .quote-more-action{min-width:34px;font-size:16px;padding:4px 8px}
+:root .quote-row-menu{position:fixed;inset:auto;margin:0;padding:5px;width:148px;max-height:calc(100dvh - 16px);box-sizing:border-box;border:1px solid var(--border,#dfe5ee);border-radius:10px;background:var(--surface,#fff);color:inherit;box-shadow:0 8px 24px rgb(30 40 60 / 15%)}
+:root .quote-row-menu button{display:block;width:100%;text-align:left;border-color:transparent;background:transparent}
+:root .quote-row-actions .quote-danger{margin:4px 0 0;color:#b34545;border-top:1px solid #f2e4e4;border-radius:0 0 6px 6px}
+:root .quote-row-actions .quote-danger:hover:not(:disabled){background:#f9e6e6}
+:root .quote-internal-notes{margin-top:12px;padding-top:10px;border-top:1px solid #edf0f5}
+:root .quote-internal-notes summary{font-size:12px;color:#748095;font-weight:400}
+:root .quote-internal-notes[open]>summary{margin-bottom:0}
+
+:root .quote-buyer-columns{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:18px;align-items:start}
+:root .quote-buyer-columns .quote-grid{grid-template-columns:minmax(0,1fr)}
+:root .quote-from-contact{padding:12px;border:1px solid #e2e7ed;border-radius:10px;background:#f5f7fa}
+:root .quote-from-contact small{font-size:11px;line-height:1.6;color:#748095}
+@media(max-width:650px){:root .quote-buyer-columns{grid-template-columns:minmax(0,1fr);gap:14px}}
+
+/* Quotation list actions and read-only detail. */
+:root .quote-table{min-width:640px}
+:root .quote-detail .quote-buyer-columns dl{grid-template-columns:minmax(0,1fr)}
+:root .quote-detail [data-quote-detail-status]{flex:none;margin:10px 16px 0}
+
+:root .quote-buyer .quote-link-hint{margin:0 0 10px;font-size:12px;line-height:1.6;color:hsl(220 12% 47%)}
+
+/* Template cards and management share the quotation visual language. */
+:root .quote-page .quote-template-dialog{padding:0;width:min(940px,94vw);max-height:90dvh;border:1px solid #dce3ec;border-radius:18px;background:#f8fafc;color:#263449;box-shadow:0 24px 90px #15233a35;overflow:hidden}
+:root .quote-template-dialog[open]{display:flex;flex-direction:column}
+:root .quote-template-dialog::backdrop{background:#15233a70;backdrop-filter:blur(3px)}
+:root .quote-template-dialog>header{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;padding:22px 24px;border-bottom:1px solid #e4e9f1;background:white;flex:none}
+:root .quote-template-dialog h2{font-size:20px;margin:0 0 5px}
+:root .quote-template-dialog header p{margin:0;font-size:12px;color:#718096;line-height:1.6}
+:root .quote-template-dialog button{min-height:34px;border:1px solid #d9e1eb;border-radius:8px;background:white;color:#34465e;padding:6px 12px;cursor:pointer;font:inherit;font-size:12px}
+:root .quote-template-dialog button:hover{border-color:#83a8ce;background:#f0f6fc}
+:root .quote-template-dialog button:focus-visible{outline:3px solid #a6cbed;outline-offset:2px}
+:root .quote-template-dialog button:disabled{opacity:.45;cursor:default}
+:root .quote-template-dialog button.quote-primary{background:#166c51;color:white;border-color:#166c51}
+:root .quote-template-dialog form{display:flex;flex-direction:column;flex:1;min-height:0;overflow:hidden;margin:0}
+:root .quote-template-body{padding:22px 24px;overflow:auto;min-height:0}
+:root .quote-template-dialog footer{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:14px 24px;background:white;border-top:1px solid #e4e9f1;flex:none}
+:root .quote-template-dialog footer>span{margin-right:auto;font-size:12px;color:#718096}
+:root .quote-template-cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+:root .quote-template-dialog .quote-template-card{display:flex;flex-direction:column;text-align:left;border:1px solid #e0e7ef;border-radius:14px;padding:16px;background:white;overflow:hidden;box-shadow:0 3px 12px #26344905}
+:root button.quote-template-card:hover{border-color:#6d9d88;box-shadow:0 6px 22px #166c5112;background:white;transform:translateY(-1px)}
+:root .quote-template-art{height:155px;border:1px solid #e3e8ee;display:flex;flex-wrap:wrap;align-content:flex-start;gap:10px;background:white;padding:18px 16px;pointer-events:none;overflow:hidden;color:#34465e}
+:root .quote-template-art img{width:58px;height:32px;object-fit:contain}
+:root .quote-template-monogram{font-size:24px;font-weight:700;width:58px;text-align:center;color:#17775c}
+:root .quote-template-art>div:not(.quote-template-paper-grid){flex:1;min-width:0}
+:root .quote-template-art strong{font-size:8px;line-height:1.3;display:block;max-height:22px;overflow:hidden}
+:root .quote-template-art i{display:block;height:2px;background:#e4e9ef;width:80%;margin-top:4px}
+:root .quote-template-art>b{width:100%;font-size:9px;text-align:center;border-top:2px double #566578;padding-top:7px}
+:root .quote-template-paper-grid{height:46px;width:100%;border:1px solid #ccd6e1;background:repeating-linear-gradient(0deg,transparent,transparent 14px,#e6ebf1 14px,#e6ebf1 15px),repeating-linear-gradient(90deg,transparent,transparent 24%,#e6ebf1 24%,#e6ebf1 25%)}
+:root .quote-template-caption{padding:14px 0 10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+:root .quote-template-caption>strong{font-size:15px;overflow-wrap:anywhere}
+:root .quote-template-caption>small{width:100%;font-size:11px;color:#7a889a}
+:root .quote-template-badge{font-size:10px;background:#e7f5ee;color:#1b7458;padding:3px 7px;border-radius:6px}
+:root .quote-template-badge.is-muted{background:#f0f2f5;color:#7a889a}
+:root .quote-template-use{color:#167354;font-size:12px;font-weight:600;margin-top:4px}
+:root .quote-template-actions{display:flex;gap:6px;flex-wrap:wrap;border-top:1px solid #edf0f4;padding-top:12px}
+:root .quote-template-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-size:12px;color:#718096}
+:root .quote-template-dialog .quote-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:14px}
+:root .quote-template-dialog label{display:flex;flex-direction:column;gap:6px;font-size:12px;color:#52647a;min-width:0}
+:root .quote-template-dialog input:not([type=checkbox]):not([type=file]),:root .quote-template-dialog select{box-sizing:border-box;width:100%;height:38px;padding:8px 10px;border:1px solid #d6dfeb;border-radius:8px;background:white;color:#263449;font-size:13px}
+:root .quote-template-dialog .quote-check{flex-direction:row;align-items:center;gap:8px}
+:root .quote-template-dialog .quote-form-section{padding:16px;background:white;border:1px solid #e1e7ef;border-radius:12px;margin-top:16px}
+:root .quote-template-dialog h3,:root .quote-template-dialog summary{font-size:14px;margin:0 0 12px;font-weight:600}
+:root .quote-template-logo{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+:root .quote-template-logo img{width:100px;height:56px;object-fit:contain}
+:root .quote-template-logo input{font-size:11px;max-width:210px}
+:root .quote-template-current{grid-column:1/-1;margin:0 0 4px;padding:10px 12px;background:#edf6f2;border:1px solid #dbece3;border-radius:9px;font-size:12px}
+:root .quote-template-current span{margin-left:12px;font-size:11px;color:#6b8176}
+:root .quote-table .quote-template-tag{display:inline-block;font-size:10px;color:#537969;background:#edf5f0;border-radius:5px;padding:2px 6px;margin:4px 0 0}
+:root .quote-template-placeholder{padding:16px;margin-top:12px;border:1px dashed hsl(215 24% 85%);border-radius:9px;color:hsl(220 12% 52%);font-size:12px;background:white}
+:root .quote-grid label.quote-check{flex-direction:row;align-items:center;justify-content:flex-start;gap:8px}
+@media(max-width:640px){:root .quote-template-cards{grid-template-columns:1fr}:root .quote-template-dialog .quote-grid{grid-template-columns:1fr}:root .quote-template-body{padding:14px}:root .quote-template-dialog>header{padding:16px}:root .quote-template-dialog footer{padding:12px;flex-wrap:wrap}:root .quote-template-current span{display:block;margin:4px 0 0}}
+
+/* Buyer and seller company names repeated in the quotation footer. */
+:root .quote-signatures{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;margin-top:18px;padding-top:12px;border-top:1px solid #e7ebf1;font-size:12px;color:#253044;line-height:1.6}
+:root .quote-signatures>span{display:grid;grid-template-columns:52px minmax(0,1fr);gap:8px;align-items:start;font-weight:600}
+:root .quote-signatures b{display:block;color:#253044;font-size:12px;font-weight:600;overflow-wrap:anywhere}
+@media(max-width:650px){:root .quote-signatures{grid-template-columns:1fr;gap:12px}}
+
+
+:root .quote-amount-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}
+:root .quote-amount-settings,:root .quote-amount-preview{min-width:0;background:#fff;border:1px solid #e1e7ef;border-radius:9px;padding:12px}
+:root .quote-amount-layout h4{margin:0 0 9px;color:#253044;font-size:13px}
+:root .quote-payment-options{display:flex;align-items:end;gap:14px;flex-wrap:wrap}
+:root .quote-payment-options>label:not(.quote-check){width:170px;max-width:100%}
+:root .quote-payment-options>:is([data-local-charge-fields],[data-deposit-percent]){width:125px;max-width:100%}
+:root .quote-payment-options select{height:37px;padding:6px 9px;border:1px solid #d6dfeb;border-radius:8px;background:white;color:#263449}
+:root .quote-payment-options .quote-check{flex-direction:row;align-self:auto;margin:0 0 9px;gap:7px}
+:root .quote-fee-options{margin-top:12px;border-top:1px solid #edf0f5;padding-top:12px;align-items:center}
+:root .quote-fee-options .quote-check{margin:0}
+:root .quote-amounts [hidden]{display:none!important}
+:root .quote-amount-preview .quote-live-totals{margin:0}
+:root .quote-amount-preview .quote-live-totals>span{padding:5px 8px;gap:8px}
+:root .quote-amount-preview .quote-live-totals>span:last-child{border-bottom:0}
+:root .quote-amount-preview .quote-live-totals>.quote-grand-total{padding:7px 8px}
+:root .quote-amount-preview .quote-live-totals b{margin:0;flex-shrink:0;font-size:13px;text-align:right}
+:root .quote-amount-preview .quote-live-totals small{display:block;color:#64748b;overflow-wrap:anywhere}
+:root .quote-amount-labels{margin-top:12px;border-top:1px solid #e1e7ef;padding-top:10px}
+:root .quote-amount-labels summary{width:fit-content;color:var(--primary,#167253);font-size:12px;font-weight:600;cursor:pointer}
+:root .quote-amount-labels p{margin:8px 0;color:#64748b;font-size:12px}
+:root .quote-amount-label-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+:root .quote-template-editor .quote-amount-layout{grid-template-columns:1fr}
+@media(max-width:700px){:root .quote-amount-layout{grid-template-columns:1fr}:root .quote-amount-label-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){:root .quote-amount-label-grid{grid-template-columns:1fr}}
+
+/* Keep navigation and save controls visible while editing the document. */
+:root .quote-editor>header{padding-block:12px}
+:root .quote-section-nav{display:flex;gap:6px;overflow-x:auto;flex:none;padding:8px 18px;background:#fff;border-bottom:1px solid #e5ebf2;scrollbar-width:thin}
+:root .quote-section-nav button{padding:5px 9px;background:#f6f8fb;border-color:#e5ebf2;font-size:12px;white-space:nowrap}
+:root .quote-editor [data-quote-step]{scroll-margin-top:10px;min-width:0}
+:root .quote-editor .quote-editor-letterhead{padding:12px 15px}
+:root .quote-editor-letterhead summary{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+:root .quote-editor-letterhead summary::before{content:'▸';color:var(--primary,#167253)}
+:root .quote-editor-letterhead[open] summary::before{content:'▾'}
+:root .quote-editor-letterhead summary strong{font-size:12px;font-weight:500;color:#617189;overflow-wrap:anywhere}
+:root .quote-editor .quote-editor-basics{grid-template-columns:minmax(0,2fr) minmax(0,1fr);padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #e5ebf2}
+:root .quote-editor .quote-template-current{padding:4px 0;border:0;background:transparent}
+:root .quote-editor .quote-buyer-columns .quote-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+:root .quote-editor .quote-buyer-columns label:has([name="buyer_address"]),:root .quote-editor .quote-from-contact small{grid-column:1/-1}
+:root .quote-editor .quote-product-fields{grid-template-columns:minmax(0,1fr) minmax(90px,130px) minmax(90px,130px);margin-bottom:12px}
+:root .quote-editor .quote-items td{vertical-align:top}
+:root .quote-editor .quote-editor-terms{margin-top:14px;padding-top:14px;border-top:1px solid #e5ebf2}
+:root .quote-editor-end{display:grid;gap:10px}
+:root .quote-editor-end>.quote-internal-notes{margin:0}
+@media(max-width:650px){
+  :root .quote-section-nav{padding-inline:10px}
+  :root .quote-editor .quote-buyer-columns .quote-grid{grid-template-columns:minmax(0,1fr)}
+  :root .quote-editor .quote-product-fields{grid-template-columns:repeat(2,minmax(0,1fr))}
+  :root .quote-editor .quote-product-fields>label:first-child{grid-column:1/-1}
+}

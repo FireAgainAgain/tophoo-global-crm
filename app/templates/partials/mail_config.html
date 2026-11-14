@@ -1,0 +1,30 @@
+<section class="mail-config" data-mail-config hidden>
+  <header class="mail-page-heading"><div><h1>邮箱配置</h1><p>管理发件邮箱、签名与连接状态，发送开发信时可切换。</p></div><button type="button" class="mail-primary" data-mail-account-add>＋ 添加邮箱</button></header>
+  <div class="mail-accounts-layout"><aside class="mail-accounts-panel"><header><strong>我的邮箱</strong><span data-mail-account-count>0</span></header><div data-mail-account-list>正在读取…</div></aside>
+  <section class="mail-settings-card" data-mail-settings>
+    <header><div class="mail-card-heading"><h2>发件邮箱</h2><span class="mail-personal-note">仅本人使用</span></div><span class="mail-status" data-mail-test-status>正在读取…</span></header>
+    <div class="mail-saved-view" data-mail-saved hidden>
+      <div class="mail-account-summary"><span class="mail-account-icon" aria-hidden="true">✉</span><div><strong data-mail-saved-email></strong><span data-mail-saved-name></span></div><button type="button" data-mail-edit>编辑配置</button></div>
+      <dl class="mail-account-details"><div><dt>SMTP 服务器</dt><dd data-mail-saved-server></dd></div><div><dt>加密方式</dt><dd data-mail-saved-encryption></dd></div><div><dt>登录账号</dt><dd data-mail-saved-username></dd></div><div><dt>授权码</dt><dd data-mail-saved-secret></dd></div></dl>
+      <details class="mail-signature-view" data-mail-signature-view hidden><summary>查看邮件签名</summary><iframe title="已保存的邮件签名" sandbox="" data-mail-signature-preview></iframe></details>
+      <div class="mail-account-management"><button type="button" data-mail-account-default>设为默认发件邮箱</button><button type="button" class="mail-account-delete" data-mail-account-delete>删除邮箱</button></div>
+      <div class="mail-saved-actions"><span>修改配置后需要重新测试连接</span><button type="button" data-mail-test>测试连接</button><button type="button" data-mail-test-message>发送测试邮件给自己</button></div>
+    </div>
+    <form data-mail-form hidden>
+      <div class="mail-settings-fields">
+        <label>发件人名称<input name="sender_name" maxlength="160" placeholder="如：Sam · Example Company" autocomplete="name"></label>
+        <label>发件邮箱<input name="email" type="email" required maxlength="260" placeholder="name@company.com" autocomplete="email"></label>
+        <label>SMTP 服务器<input name="host" required maxlength="260" placeholder="例如 smtp.163.com，不是网页地址" spellcheck="false"></label>
+        <div class="mail-connection-fields"><label>端口<input name="port" type="number" min="1" max="65535" required value="465"></label><label>加密方式<select name="encryption"><option value="ssl">SSL / TLS</option><option value="starttls">STARTTLS</option></select></label></div>
+        <label>登录账号<input name="username" required maxlength="260" placeholder="通常与发件邮箱相同" autocomplete="username"></label>
+        <label>授权码 / 客户端专用密码<div class="mail-secret-field"><input name="password" type="password" maxlength="2000" placeholder="首次配置请填写；已保存后留空保留" autocomplete="new-password"><button type="button" data-mail-reveal aria-pressed="false">显示</button></div></label>
+      </div>
+      <details class="mail-setup-help"><summary>如何填写服务器和授权码？</summary><p>从邮箱服务商的“客户端设置 / SMTP 服务”中获取。163 邮箱填写 smtp.163.com、端口 465、SSL / TLS，密码使用邮箱生成的授权码。测试连接只验证登录，不发送邮件。</p></details>
+      <details class="mail-signature"><summary>邮件签名 <span>选填</span></summary><label><span class="sr-only">邮件签名</span><textarea name="signature" maxlength="3000000" rows="4" placeholder="姓名、公司、电话、网站；发送预览中可按需添加"></textarea></label></details>
+      <footer><span data-mail-save-hint>填写后保存，再测试连接</span><button type="button" data-mail-cancel hidden>取消</button><button type="submit" class="mail-primary">保存配置</button></footer>
+    </form>
+    <p class="mail-feedback" data-mail-feedback role="status"></p>
+  </section>
+  </div>
+  <section class="mail-history-card"><header><div><h2>最近发送</h2><p>本人最近 50 次 · 服务器接受不等于送达或已读</p></div><button type="button" data-mail-history-refresh>刷新</button></header><div data-mail-history>正在读取…</div></section>
+</section>

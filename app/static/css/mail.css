@@ -1,0 +1,45 @@
+/* Personal mailbox and explicit send preview. */
+.mail-config{max-width:1100px;width:100%;margin:0 auto;padding:24px;overflow:auto;color:var(--text,#253044)}
+.mail-config[hidden]{display:none}
+.mail-config [hidden]{display:none!important}
+.mail-settings-card>header,.mail-history-card>header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.mail-config h2{font-size:15px;margin:0}
+.mail-config p{font-size:12px;color:var(--text-secondary,#566174);line-height:1.7}
+.mail-history-card header p{margin:5px 0 0}
+.mail-card-heading{display:flex;align-items:center;gap:10px;min-width:0}
+.mail-personal-note{font-size:11px;color:var(--text-secondary,#566174)}
+.mail-settings-card,.mail-history-card{padding:20px 24px;background:var(--card,#fff);border:1px solid var(--border,#dce6df);border-radius:14px;margin-bottom:18px}
+.mail-settings-fields{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px 24px;margin-top:22px}
+.mail-config label,.mail-send-dialog label{display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--text,#253044);min-width:0}
+.mail-config input,.mail-config textarea,.mail-config select,.mail-send-dialog input{box-sizing:border-box;width:100%;min-width:0;border:1px solid var(--border,#dce6df);border-radius:8px;background:var(--card,#fff);color:var(--text,#253044);font:inherit;font-size:13px;padding:10px 12px;line-height:1.5}
+.mail-config :is(input,textarea,select):focus,.mail-send-dialog input:focus{outline:2px solid var(--primary,#16754f);outline-offset:1px}
+.mail-connection-fields{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px}.mail-secret-field{display:flex;gap:8px}
+.mail-config button,.mail-send-dialog button{flex-shrink:0;min-height:34px;border:1px solid var(--border,#dce6df);border-radius:8px;background:var(--card,#fff);color:var(--text,#253044);padding:7px 12px;font:inherit;font-size:12px;cursor:pointer}
+.mail-config button:disabled,.mail-send-dialog button:disabled{opacity:.5;cursor:not-allowed}
+.mail-config .mail-primary,.mail-send-dialog .mail-primary{background:var(--primary,#16754f);border-color:var(--primary,#16754f);color:white}
+.mail-setup-help{margin:14px 0 8px}.mail-setup-help summary{font-size:12px;color:var(--text-secondary,#566174);cursor:pointer}.mail-setup-help p{margin:8px 0;padding:10px 12px;background:var(--bg,#f6f7f9);border-radius:8px}.mail-signature summary{font-size:13px;cursor:pointer;padding:6px 0}.mail-signature summary span{font-size:12px;color:var(--text-secondary,#566174);margin-left:6px}.mail-signature textarea{margin-top:8px;resize:vertical}
+.mail-status{font-size:12px;padding:5px 10px;border-radius:20px;background:#f3f4f6;color:#566174;white-space:nowrap}
+.mail-status.is-passed{background:#eaf7f0;color:#14613e}.mail-status.is-failed,.mail-feedback.is-error{color:#b42318}.mail-status.is-failed{background:#fff0ef}
+.mail-config .mail-feedback{margin:12px 0 0;overflow-wrap:anywhere}.mail-config .mail-feedback:empty{display:none}
+.mail-config [data-mail-form]>footer{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;padding-top:14px;border-top:1px solid var(--border,#dce6df)}
+.mail-config [data-mail-form]>footer>span{margin-right:auto;color:var(--text-secondary,#566174);font-size:11px}
+.mail-history-card>header{margin-bottom:14px}.mail-history-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:13px 0;border-top:1px solid var(--border,#dce6df);font-size:13px;overflow-wrap:anywhere}.mail-history-row strong{font-weight:600}.mail-history-row p{margin:4px 0 0}.mail-history-row small{font-size:11px;color:var(--text-secondary,#566174)}
+.mail-history-row details{grid-column:1/-1;font-size:12px}.mail-history-row summary{cursor:pointer}.mail-history-row pre{white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;line-height:1.7;max-height:250px;overflow:auto}
+.mail-send-dialog{width:min(880px,calc(100vw - 32px));height:min(850px,calc(100dvh - 48px));max-width:none;max-height:none;padding:0;margin:auto;border:1px solid var(--border,#dce6df);border-radius:14px;background:var(--card,#fff);color:var(--text,#253044);overflow:hidden}
+.mail-send-dialog:not([open]){display:none}.mail-send-dialog[open]{display:flex;flex-direction:column}.mail-send-dialog::backdrop{background:#172c405c;backdrop-filter:blur(3px)}
+.mail-send-dialog>header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px;border-bottom:1px solid var(--border,#dce6df);flex-shrink:0}.mail-send-dialog h2{font-size:17px;margin:0}
+.mail-send-content{padding:18px 22px;flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:16px}
+.mail-send-from{font-size:13px;color:var(--text-secondary,#566174);overflow-wrap:anywhere}.mail-send-content h3{font-size:15px;margin:0;overflow-wrap:anywhere}.mail-send-content pre{font:inherit;font-size:13px;line-height:1.8;white-space:pre-wrap;overflow-wrap:anywhere;margin:0;padding:14px;background:var(--bg,#f6f7f9);border:1px solid var(--border,#dce6df);border-radius:8px;max-height:320px;min-height:120px;overflow:auto;flex-shrink:0}
+.mail-send-files small{font-size:11px;color:var(--text-secondary,#566174)}.mail-send-files ul{margin:0;padding-left:18px;font-size:12px;line-height:1.8}
+.mail-send-dialog>footer{padding:14px 22px;display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px;border-top:1px solid var(--border,#dce6df);flex-shrink:0}.mail-send-dialog>footer [role=status]{flex-basis:100%;min-height:20px;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+@media(max-width:650px){.mail-config{padding:16px}.mail-settings-card,.mail-history-card{padding:16px}.mail-settings-fields{grid-template-columns:minmax(0,1fr);gap:14px}.mail-settings-card>header{align-items:center;flex-wrap:wrap;gap:10px}.mail-status{white-space:normal}.mail-config [data-mail-form]>footer>span{flex-basis:100%}.mail-history-row{grid-template-columns:minmax(0,1fr)}.mail-send-dialog{width:100vw;height:100dvh;border:0;border-radius:0}.mail-send-dialog>header,.mail-send-content,.mail-send-dialog>footer{padding:14px 16px}}
+
+.mail-account-summary{display:flex;align-items:center;gap:13px;margin:22px 0 18px;min-width:0}
+.mail-account-icon{display:grid;place-items:center;width:44px;height:44px;flex-shrink:0;border:1px solid hsl(213 65% 89%);border-radius:12px;background:hsl(213 80% 97%);color:hsl(215 60% 40%);font-size:23px}
+.mail-account-summary>div{flex:1;min-width:0}.mail-account-summary strong{display:block;font-size:18px;font-weight:650;overflow-wrap:anywhere;line-height:1.5}.mail-account-summary>div>span{display:block;font-size:12px;color:var(--text-secondary,#566174);margin-top:3px}
+.mail-account-details{display:grid;grid-template-columns:1.4fr .8fr 1.4fr .8fr;gap:18px;margin:0;padding:15px 0;border-top:1px solid var(--border,#dce6df)}
+.mail-account-details>div{min-width:0}.mail-account-details dt{font-size:11px;color:var(--text-secondary,#566174);margin-bottom:7px}.mail-account-details dd{margin:0;font-size:13px;line-height:1.6;overflow-wrap:anywhere}
+.mail-signature-view{padding:3px 0 14px}.mail-signature-view summary{cursor:pointer;font-size:12px;color:var(--text-secondary,#566174)}.mail-signature-view iframe{display:block;width:100%;height:190px;margin-top:12px;padding:12px;border:1px solid var(--border,#dce6df);border-radius:9px;background:var(--card,#fff)}
+.mail-saved-actions{display:flex;align-items:center;justify-content:flex-end;gap:8px;padding-top:14px;border-top:1px solid var(--border,#dce6df)}.mail-saved-actions>span{margin-right:auto;color:var(--text-secondary,#566174);font-size:11px}
+.mail-empty{padding:24px 12px;text-align:center;color:var(--text-secondary,#566174);font-size:13px;border-top:1px solid var(--border,#dce6df)}
+@media(max-width:650px){.mail-config{padding-top:16px}.mail-account-summary{gap:10px;flex-wrap:wrap;margin-top:18px}.mail-account-icon{width:36px;height:36px;font-size:20px;border-radius:10px}.mail-account-summary strong{font-size:16px}.mail-account-details{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.mail-saved-actions{flex-wrap:wrap}.mail-saved-actions>span{flex-basis:100%}.mail-saved-actions>button{flex:1}.mail-status{font-size:11px;line-height:1.5}.mail-personal-note{display:none}}

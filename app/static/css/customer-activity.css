@@ -1,0 +1,93 @@
+.workflow-activity-buttons{display:grid;grid-template-columns:58px minmax(0,1fr) minmax(0,1fr);align-items:start;gap:10px;padding:4px 2px}
+.workflow-activity-item{display:flex;flex-direction:column;align-items:center;min-width:0;gap:6px}
+.workflow-status-summary{display:flex;flex-direction:column;align-items:stretch;gap:1px;width:100%;min-width:0}
+:root .customer-workflow .workflow-status-empty{display:block;margin:1px 0 0;color:#9aa4b1;font-size:10px;line-height:18px;font-weight:400;text-align:center;white-space:nowrap}
+:root .customer-workflow .workflow-status-link{--status-hue:215;display:grid;grid-template-columns:4px minmax(0,1fr) auto;align-items:center;gap:4px;min-width:0;width:100%;padding:2px 3px;margin:0;border:0;border-radius:4px;background:transparent;color:hsl(var(--status-hue) 32% 42%);font-family:inherit;font-size:11px;line-height:16px;white-space:nowrap;text-align:left;cursor:pointer;transition:background .15s}
+:root .customer-workflow .workflow-status-link:hover{background:hsl(var(--status-hue) 65% 94%)}
+.workflow-status-link i{width:4px;height:4px;border-radius:50%;background:hsl(var(--status-hue) 60% 56%)}
+.workflow-status-link b{font-size:10px;font-weight:600;font-variant-numeric:tabular-nums}
+.workflow-status-link.status-pending,.workflow-status-link.status-draft{--status-hue:32!important}
+.workflow-status-link.status-quoted{--status-hue:269!important}
+.workflow-status-link.status-won{--status-hue:158!important}
+:root .customer-workflow .workflow-status-link.status-closed{--status-hue:218;color:#929ca9}
+.workflow-status-more summary{padding:1px 3px;font-size:10px;line-height:18px;list-style:none;color:#9aa4b1;cursor:pointer;text-align:center}
+.workflow-status-more summary::-webkit-details-marker{display:none}
+.workflow-status-more summary:hover{color:#506980}
+.workflow-status-more[open] summary{color:#506980}
+.workflow-document-numbers{display:flex;align-items:flex-start;gap:3px;min-width:0;margin-top:3px;padding-top:4px;border-top:1px dashed #e3e9f2}
+:root .customer-workflow .workflow-document-number{display:block;min-width:0;max-width:100%;margin:0;padding:0;border:0;border-radius:3px;background:transparent;color:#60738c;font:10px/17px ui-monospace,Consolas,monospace;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.workflow-document-numbers>.workflow-document-number{flex:1}
+:root .customer-workflow .workflow-document-number:hover{color:#2563a5;background:#edf4fc}
+.workflow-document-more{flex:none;min-width:0}
+.workflow-document-more summary{padding:0 2px;border-radius:3px;background:#edf1f7;color:#718096;font:10px/17px ui-monospace,Consolas,monospace;cursor:pointer;list-style:none}
+.workflow-document-more summary::-webkit-details-marker{display:none}
+.workflow-document-numbers:has(.workflow-document-more[open]){flex-wrap:wrap}
+.workflow-document-more[open]{width:100%;padding-bottom:2px}
+.workflow-document-more[open] summary{text-align:center;margin-bottom:3px}
+.workflow-document-more[open]>div{display:grid;gap:2px;max-height:120px;overflow:auto}
+:root .customer-workflow .workflow-activity-button{--action-hue:210;position:relative;display:inline-flex;align-items:center;justify-content:center;min-width:58px;min-height:29px;padding:5px 10px;border:1px solid hsl(var(--action-hue) 55% 87%);border-radius:7px;background:hsl(var(--action-hue) 70% 97%);color:hsl(var(--action-hue) 54% 38%);font-family:inherit;font-weight:500;font-size:12px;line-height:17px;white-space:nowrap;cursor:pointer;box-shadow:0 1px 2px hsl(var(--action-hue) 40% 30% / .03);transition:background .15s,border-color .15s}
+:root .customer-workflow .workflow-activity-button.action-followups{--action-hue:162}
+:root .customer-workflow .workflow-activity-button.action-rfqs{--action-hue:213}
+:root .customer-workflow .workflow-activity-button.action-quotations{--action-hue:269}
+:root .customer-workflow .workflow-activity-button.action-outreach{--action-hue:28}
+:root .customer-workflow .workflow-activity-button.action-verify{--action-hue:191}
+:root .customer-workflow .workflow-activity-button[data-activity-state="pending"]{--action-hue:30}
+:root .customer-workflow .workflow-activity-button[data-activity-state="active"]{--action-hue:213}
+:root .customer-workflow .workflow-activity-button[data-activity-state="quoted"]{--action-hue:269}
+:root .customer-workflow .workflow-activity-button[data-activity-state="won"]{--action-hue:158}
+:root .customer-workflow .workflow-activity-button[data-activity-state="empty"],
+:root .customer-workflow .workflow-activity-button[data-activity-state="closed"]{background:#f5f7fa;border-color:#e0e5ec;color:#8793a3;box-shadow:none}
+:root .customer-workflow .workflow-activity-button[data-activity-state="empty"] .workflow-activity-count,
+:root .customer-workflow .workflow-activity-button[data-activity-state="closed"] .workflow-activity-count{background:#a3adba}
+:root .customer-workflow .workflow-status-empty.workflow-followup-state.has-followup{color:#218168;font-weight:500}
+:root .customer-workflow .workflow-status-empty.workflow-followup-state.no-followup{color:#9aa4b1}
+:root .customer-workflow .workflow-activity-button:hover{background:hsl(var(--action-hue) 68% 93%);border-color:hsl(var(--action-hue) 50% 73%)}
+:root .customer-workflow .workflow-activity-button[data-activity-state="empty"]:hover,
+:root .customer-workflow .workflow-activity-button[data-activity-state="closed"]:hover{background:#edf0f5;border-color:#cbd3de}
+:root .workflow-activity-button:disabled{opacity:.5;cursor:default}
+:root .customer-workflow .workflow-activity-count{position:absolute;top:-7px;right:-5px;min-width:17px;height:17px;padding:0 4px;border:2px solid white;border-radius:10px;background:hsl(var(--action-hue) 54% 48%);color:white;font:600 10px/13px Arial,sans-serif;text-align:center;font-variant-numeric:tabular-nums;box-sizing:border-box}
+:root .customer-workflow[data-list-view="leads"] td.workflow-fixed-outreach{padding-top:14px;padding-bottom:14px}
+:root [data-workflow-detail] .workflow-detail-card>footer .detail-records-button{background:hsl(213 80% 97%);border:1px solid hsl(213 65% 87%);color:hsl(213 55% 42%)}
+:root [data-workflow-detail] .workflow-detail-card>footer .detail-records-button:hover{background:hsl(213 80% 93%)}
+:is(.workflow-customer-status,.customer-quick-filter)[data-tone="following"] { --status-ink:#865b18; --status-bg:#fff6e5; --status-border:#efdfbb; }
+:is(.workflow-customer-status,.customer-quick-filter)[data-tone="won"] { --status-ink:#23674b; --status-bg:#eaf6ee; --status-border:#cce7d5; }
+:is(.workflow-customer-status,.customer-quick-filter)[data-tone="quoting"] { --status-ink:#684686; --status-bg:#f5effa; --status-border:#e4d5ef; }
+:is(.workflow-customer-status,.customer-quick-filter)[data-tone="inquiring"] { --status-ink:#275a89; --status-bg:#edf4fb; --status-border:#d3e3f4; }
+:is(.workflow-customer-status,.customer-quick-filter)[data-tone="closed"] { --status-ink:#80505a; --status-bg:#faf0f1; --status-border:#efd7db; }
+
+:root .customer-list-summary > .customer-quick-filter {
+  gap: 6px;
+  border-color: #e4eaf0;
+  border-radius: 8px;
+  background: #fff;
+}
+:root .customer-list-summary > .customer-quick-filter + .customer-quick-filter { margin-left: 3px; }
+.customer-status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--status-ink); }
+:root .customer-list-summary > .customer-quick-filter > strong {
+  min-width: 16px;
+  padding: 1px 4px;
+  border-radius: 5px;
+  background: #f1f4f7;
+  color: #4f6277;
+  font-size: 11px;
+  text-align: center;
+}
+:root .customer-list-summary > .customer-quick-filter:is(:hover,[aria-pressed="true"]) {
+  border-color: var(--status-border,#c9d8e7);
+  background: var(--status-bg,#eef4fa);
+}
+:root .customer-list-summary > .customer-quick-filter[aria-pressed="true"] > span,
+:root .customer-list-summary > .customer-quick-filter[aria-pressed="true"] > strong {
+  color: var(--status-ink,#285377);
+  font-weight: 650;
+}
+:root .customer-list-summary > .customer-quick-filter[aria-pressed="true"] > strong { background: #ffffffb3; }
+
+:root .customer-workflow .workflow-activity-button.action-followups[data-activity-state="future"]{--action-hue:211}
+:root .customer-workflow .workflow-activity-button.action-followups[data-activity-state="today"]{--action-hue:34}
+:root .customer-workflow .workflow-activity-button.action-followups[data-activity-state="overdue"]{--action-hue:0}
+:root .customer-workflow .workflow-followup-state.is-future{color:hsl(211 55% 43%)}
+:root .customer-workflow .workflow-followup-state.is-today{color:hsl(34 65% 40%)}
+:root .customer-workflow .workflow-followup-state.is-overdue{color:hsl(0 55% 45%)}
+
+.customer-workflow[data-list-view="contacts"] .workflow-activity-buttons{gap:6px;padding:2px 0}

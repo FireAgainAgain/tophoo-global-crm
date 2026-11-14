@@ -1,0 +1,74 @@
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const {spawnSync}=require('node:child_process');
+(async()=>{
+ const sample=spawnSync('python',['-c',"from app.services.lead_list_excel import export_lead_list_excel; import sys; sys.stdout.buffer.write(export_lead_list_excel([{'company_name':'Excel UI sample','notes':'Company notes','outreach_draft':{'content':'Subject: Test draft','content_translation':'Draft translation'}}]))"]);
+ assert.equal(sample.status,0,sample.stderr.toString());
+ const browser=await chromium.launch({channel:'msedge',headless:true});
+ try{
+  const context=await browser.newContext({viewport:{width:1440,height:1000}});
+  const template=fs.readFileSync('app/templates/partials/crm_customer_list.html','utf8');
+  const css=fs.readFileSync('app/templates/index.html','utf8').match(/<link rel="stylesheet"[^>]+>/g).join('\n');
+  const items=Array.from({length:32},(_,i)=>({id:i+1,company_name:`Company ${String(i).padStart(2,'0')}`,notes:i<28?'Target':'Other',country:i<26?'德国':'美国',company_type:'manufacturer',source_type:'MIC RFQ',workflow_status:i%2?'contacted':'ready',owner_user_id:4,email:`buyer${i}@example.com`,created_at:`2026-10-${String(i+1).padStart(2,'0')}T12:00:00`,updated_at:i<30?`2026-11-${String(i+1).padStart(2,'0')}T23:59:59`:'2026-12-01T00:00:00'}));
+  const exports=[],errors=[];let fail=false;
+  await context.route('http://crm.test/**',route=>{
+   const request=route.request(),url=new URL(request.url());
+   if(url.pathname==='/test')return route.fulfill({contentType:'text/html',body:`<!doctype html><html data-ui-theme="green"><head><meta charset="UTF-8">${css}</head><body data-workspace="crm"><main class="main"><header class="crm-topbar">导航</header><div class="main-inner"><section id="page-crm" class="page active"><div id="global-crm-content">${template}</div></section></div></main><script>localStorage.setItem('tophoo-global-selected-project','7')</script><script src="/static/js/company-types.js"></script><script src="/static/js/crm-customer-workflow.js"></script></body></html>`});
+   if(url.pathname.startsWith('/static/'))return route.fulfill({path:path.resolve('app'+url.pathname)});
+   if(url.pathname.endsWith('/export/xlsx')){
+    exports.push(request.postDataJSON());
+    return fail?route.fulfill({status:409,json:{detail:'部分线索已变更，请刷新后重试'}}):route.fulfill({contentType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',body:sample.stdout});
+   }
+   assert.equal(request.method(),'GET','No business writes allowed');
+   return route.fulfill({json:{items,is_top_admin:true,owners:[{id:4,name:'Sam'}]}});
+  });
+  const page=await context.newPage();page.on('pageerror',error=>errors.push(error.message));
+  await page.goto('http://crm.test/test');
+  const root=page.locator('[data-customer-workflow]'),button=root.locator('[data-leads-export]');
+  const view=async value=>{await page.evaluate(view=>document.dispatchEvent(new CustomEvent('tophoo-customer-workflow-view',{detail:{view}})),value);await page.waitForFunction(()=>document.querySelector('[data-customer-workflow]').getAttribute('aria-busy')==='false');};
+  await view('leads');assert.equal(await button.innerText(),'导出 Excel · 32 条');
+  if(await root.locator('[data-customer-filters-toggle]').isVisible())await root.locator('[data-customer-filters-toggle]').click();
+  await root.locator('[data-workflow-search]').fill('Target');
+  await root.locator('[data-filter-country]').fill('德国');
+  await root.locator('[data-filter-company-type]').selectOption('manufacturer');
+  await root.locator('[data-filter-source-type]').selectOption('MIC RFQ');
+  await root.locator('[data-filter-contacted]').selectOption('ready');
+  await root.locator('[data-filter-completeness]').selectOption('phone');
+  await root.locator('[data-workflow-owner]').selectOption('4');
+  await root.locator('[data-filter-date-from]').fill('2026-10-02');
+  await root.locator('[data-filter-date-to]').fill('2026-10-26');
+  await root.locator('[data-filter-updated-from]').fill('2026-11-03');
+  await root.locator('[data-filter-updated-to]').fill('2026-11-25');
+  await root.locator('[data-workflow-sort]').selectOption('name');
+  assert.equal(await button.innerText(),'导出 Excel · 12 条');
+  await root.locator('[data-page-next]').click();
+  await root.locator('[data-select]').first().check();
+  const event=page.waitForEvent('download');await button.click();const download=await event;
+  assert.match(download.suggestedFilename(),/^线索列表_检索结果_\d{4}-\d{2}-\d{2}\.xlsx$/);
+  assert.ok(fs.readFileSync(await download.path()).subarray(0,2).equals(Buffer.from('PK')));
+  assert.deepEqual(exports[0].ids,Array.from({length:12},(_,i)=>3+i*2));
+  assert.ok(exports[0].scope.includes('搜索：Target')&&exports[0].scope.includes('MIC RFQ')&&exports[0].scope.includes('背调中'));
+  assert.ok(exports[0].scope.includes('更新日期：2026-11-03 至 2026-11-25'));
+  assert.equal(await root.locator('[data-page-number]').innerText(),'2 / 2');
+  assert.equal(await root.locator('[data-select]:checked').count(),1);
+  await page.setViewportSize({width:390,height:844});
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  fs.mkdirSync('output/ui',{recursive:true});await page.screenshot({path:'output/ui/lead-list-excel-mobile.png'});
+  await page.setViewportSize({width:1440,height:1000});await page.screenshot({path:'output/ui/lead-list-excel-desktop.png'});
+  fail=true;await button.click();await page.waitForFunction(()=>document.querySelector('[data-workflow-toast]').textContent.includes('部分线索已变更'));
+  assert.equal(await button.isEnabled(),true);
+  await root.locator('[data-filter-updated-from]').fill('2026-11-25');
+  assert.equal(await button.innerText(),'导出 Excel · 1 条');
+  assert.equal(await root.locator('[data-workflow-row]').getAttribute('data-workflow-row'),'25');
+  await root.locator('[data-workflow-search]').fill('No matches');await page.waitForTimeout(180);
+  assert.equal(await button.isDisabled(),true);assert.equal(await button.innerText(),'导出 Excel · 0 条');
+  await view('contacts');assert.equal(await button.isVisible(),false);
+  if(await root.locator('[data-customer-filters-toggle]').isVisible())await root.locator('[data-customer-filters-toggle]').click();
+  assert.equal(await root.locator('[data-updated-date-range]').isVisible(),false);
+  await view('customer-pool');assert.equal(await button.isVisible(),false);
+  assert.deepEqual(errors,[]);
+  console.log('PASS: all search/filter/date/owner criteria, sorted results across pages, selection ignored, Excel download, unchanged page/selection, errors, empty results, responsive layout and lead-only action. All requests mocked.');
+ }finally{await browser.close();}
+})().catch(error=>{console.error(error);process.exitCode=1;});

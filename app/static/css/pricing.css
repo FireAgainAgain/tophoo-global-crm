@@ -1,0 +1,28 @@
+@import url("/static/css/mobile.css");
+.pricing-layout{width:100%;max-width:none;margin:0;padding:30px 44px 60px}
+.account-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:46px}
+.account-brand{color:#173d2d}
+.account-brand .login-brand-mark{background:#173d2d;color:#fff}
+.account-back{color:#587164;font-size:13px;text-decoration:none}
+.pricing-heading{max-width:720px;margin:0 auto 30px;text-align:center}
+.pricing-heading h1{margin:0;font-size:36px;letter-spacing:-1.2px}
+.pricing-heading p:not(.login-eyebrow){color:var(--login-muted);font-size:14px;line-height:1.8}
+.pricing-grid{display:grid;grid-template-columns:repeat(2,minmax(300px,440px));justify-content:center;gap:18px}
+.pricing-card{display:flex;flex-direction:column;min-height:400px;padding:28px;border:1px solid var(--login-line);border-radius:16px;background:#fff;box-shadow:0 12px 30px #173d2d0b;text-align:center}
+.pricing-card.current{border-color:#78b892;background:#f7fcf8}
+.pricing-tag{color:#5e7668;font-size:11px;font-weight:700;letter-spacing:1px}
+.pricing-card h2{margin:15px 0 7px;font-size:25px}
+.pricing-card>p{min-height:44px;margin:0;color:var(--login-muted);font-size:13px;line-height:1.7}
+.pricing-price{margin-top:21px;font-size:33px}
+.pricing-price small{font-size:13px;font-weight:400;color:var(--login-muted)}
+.pricing-card ul{display:grid;justify-items:center;gap:9px;margin:24px 0;padding:17px 0 0;border-top:1px solid #e4ede6;list-style:none;color:#405b4b;font-size:13px}
+.pricing-card li::before{content:"✓";margin-right:8px;color:var(--login-green);font-weight:700}
+.pricing-card button,.pricing-checkout{margin-top:auto;min-height:42px;border:0;border-radius:8px;background:var(--login-green);color:#fff;font:700 13px inherit;cursor:pointer}
+.pricing-checkout{display:grid;place-items:center;text-decoration:none}
+.pricing-card button:disabled{background:#dfe9e2;color:#607368;cursor:default}
+@media(max-width:650px){
+.pricing-layout{padding:22px 18px 42px}
+.pricing-grid{grid-template-columns:1fr}
+.pricing-heading h1{font-size:30px}
+
+}

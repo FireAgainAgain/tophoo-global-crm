@@ -1,0 +1,43 @@
+// Compact lead toolbar: all data is a fixture and business writes are blocked.
+const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('fs');
+(async()=>{const browser=await chromium.launch({channel:'msedge',headless:true});try{
+ const context=await browser.newContext({viewport:{width:1440,height:1000}});
+ const css=fs.readFileSync('app/templates/index.html','utf8').match(/<link rel="stylesheet"[^>]+>/g).join('');
+ const template=fs.readFileSync('app/templates/partials/crm_customer_list.html','utf8');
+ await context.route('**/__lead_toolbar',r=>r.fulfill({contentType:'text/html',body:`<!doctype html><html data-ui-theme="green"><head><meta charset="UTF-8">${css}</head><body><main>${template}</main><script>localStorage.setItem('tophoo-global-selected-project','7')</script><script src="/static/js/company-types.js"></script><script src="/static/js/crm-customer-workflow.js"></script></body></html>`}));
+ const statuses=['unviewed','checking','ready','contacted','replied','unfit'];
+ const items=Array.from({length:16},(_,i)=>({id:i+1,company_name:'Equipment '+(i+1),country:i%2?'Germany':'Japan',company_type:'manufacturer',company_address:'Industrial Park',company_website:'https://equipment.example.test',contact_name:'Buyer '+(i+1),email:`buyer${i+1}@example.test`,phone:'12345678',workflow_status:i===14?'checked':i===15?null:statuses[i%6],is_contacted:i===15,source_type:'MIC询盘',updated_at:`2026-11-${String(16-i).padStart(2,'0')}T09:00:00`,created_at:`2026-10-${String(i+1).padStart(2,'0')}T09:00:00`}));
+ let mutations=0;
+ await context.route('**/api/**',r=>{if(r.request().method()!=='GET'){mutations++;return r.fulfill({status:418,json:{detail:'Business writes blocked'}});}const leads=new URL(r.request().url()).pathname.includes('/leads');return r.fulfill({json:{items:leads?items:[],customers:[],is_top_admin:true,owners:[]}});});
+ const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:8002/__lead_toolbar');
+ const root=page.locator('[data-customer-workflow]'),toggle=root.locator('[data-customer-filters-toggle]');
+ const activate=async view=>{await page.evaluate(view=>document.dispatchEvent(new CustomEvent('tophoo-customer-workflow-view',{detail:{view}})),view);await page.waitForFunction(()=>document.querySelector('[data-customer-workflow]').getAttribute('aria-busy')==='false');};
+ const count=key=>root.locator(`[data-lead-summary-status="${key}"] strong`).innerText().then(Number);
+ await activate('leads');assert.equal(await toggle.getAttribute('aria-expanded'),'false');assert.equal(await root.locator('.workflow-filters').isVisible(),false);assert.equal(await root.locator('[data-workflow-sort]').isVisible(),true);
+ const firstId=()=>root.locator('[data-workflow-row]').first().getAttribute('data-workflow-row');
+ assert.equal(await root.locator('th').nth(2).innerText(),'添加时间 ↓');assert.equal(await root.locator('th').count(),9);
+ assert.equal(await firstId(),'16');await root.locator('[data-sort-added]').click();assert.equal(await firstId(),'1');assert.equal(await root.locator('[data-sort-added]').locator('..').getAttribute('aria-sort'),'ascending');
+ await root.locator('[data-page-next]').click();assert.equal(await firstId(),'11');await root.locator('[data-sort-added]').click();assert.equal(await firstId(),'16');assert.equal(await root.locator('[data-page-number]').innerText(),'1 / 2');
+ assert.equal(await root.locator('[data-workflow-row]').first().locator('td').count(),9);assert.equal(await root.locator('[data-workflow-row]').first().locator('td').nth(2).innerText(),'2026-10-16');
+ await root.locator('[data-sort-updated]').click();assert.equal(await firstId(),'1');
+ await root.locator('[data-sort-updated]').click();assert.equal(await firstId(),'16');
+ await root.locator('[data-sort-added]').click();assert.equal(await firstId(),'16');
+ assert.equal(await count('all'),16);assert.equal(await root.locator('[data-workflow-row]').count(),10);assert.equal(await count('ready'),6);assert.equal(await count('contacted'),3);
+ assert.equal((await root.locator('[data-lead-summary-status]:not([data-lead-summary-status="all"]) strong').allTextContents()).map(Number).reduce((a,b)=>a+b,0),16);
+ await root.locator('[data-lead-summary-status="replied"]').click();assert.equal(await root.locator('[data-filter-contacted]').inputValue(),'replied');assert.equal(await root.locator('[data-workflow-row]').count(),2);assert.equal(await count('all'),16);assert.match(await toggle.innerText(),/1/);
+ await root.locator('[data-lead-summary-status="all"]').click();await toggle.click();await root.locator('[data-filter-country]').fill('Germany');await toggle.click();assert.equal(await count('all'),8);assert.equal(await root.locator('[data-workflow-row]').count(),8);assert.equal(await root.locator('.workflow-filters').isVisible(),false);
+ await root.locator('[data-workflow-reset]').click();assert.equal(await count('all'),16);assert.equal(await root.locator('.workflow-filters').isVisible(),false);
+ await root.locator('[data-workflow-search]').fill('no-such-company');await page.waitForFunction(()=>document.querySelector('[data-lead-summary-status="all"] strong').textContent==='0');assert.equal(await count('ready'),0);await root.locator('[data-workflow-reset]').click();
+ for(const theme of ['green','blue','purple']){await page.evaluate(theme=>document.documentElement.dataset.uiTheme=theme,theme);assert.ok((await root.locator('.workflow-control-card').boundingBox()).height<180);}
+ await page.evaluate(()=>document.documentElement.dataset.uiTheme='green');fs.mkdirSync('output/ui',{recursive:true});await page.screenshot({path:'output/ui/lead-toolbar-desktop.png',fullPage:false});
+ await page.setViewportSize({width:2160,height:1000});
+ const widths=await root.locator('thead th').evaluateAll(nodes=>nodes.map(n=>n.getBoundingClientRect().width));
+ assert.ok(widths[1]/widths.reduce((a,b)=>a+b,0)<.25,'Company column stays below a quarter of the wide list');
+ assert.ok(widths[2]/widths.reduce((a,b)=>a+b,0)<.10,'Date column stays compact');
+ await root.locator('[data-workflow-row]').first().locator('.workflow-company strong').evaluate(n=>n.textContent='Example Lead');
+ await page.screenshot({path:'output/ui/lead-toolbar-wide.png',fullPage:false});
+ await page.setViewportSize({width:390,height:844});assert.ok(await root.locator('.workflow-control-card').evaluate(el=>el.scrollWidth<=el.clientWidth));await page.screenshot({path:'output/ui/lead-toolbar-mobile.png',fullPage:false});await page.setViewportSize({width:1440,height:1000});
+ await toggle.click();await activate('contacts');assert.equal(await toggle.getAttribute('aria-expanded'),'false','Customer and lead disclosure states are independent');await activate('leads');assert.equal(await toggle.getAttribute('aria-expanded'),'true');
+ await activate('customer-pool');assert.equal(await root.locator('[data-customer-list-overview]').isVisible(),false);assert.equal(await toggle.isVisible(),false);assert.equal(await root.locator('[data-workflow-sort-slot] .workflow-sort-control').isVisible(),true);
+ assert.equal(mutations,0);assert.deepEqual(errors,[]);console.log('PASS lead toolbar: compact layouts, all-page status counts, legacy status normalization, quick filters, search/country scope, independent disclosures, themes and mobile. No business writes.');
+}finally{await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1});

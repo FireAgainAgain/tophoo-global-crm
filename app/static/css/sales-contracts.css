@@ -1,0 +1,56 @@
+/* Customer sales contracts use the quotation dialogs and table surfaces. */
+.contract-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;margin-bottom:12px;border:1px solid var(--border,#dce4ed);border-radius:10px;background:var(--surface,#fff)}
+.contract-toolbar>span{color:var(--text-secondary,#596777);font-size:12px}
+.contract-template-picker .quote-template-card{gap:9px}
+.contract-template-picker .quote-template-card strong{font-size:15px}
+.contract-template-picker .quote-template-card small{color:#52647b;font-size:12px;line-height:1.5}
+.contract-template-picker footer{justify-content:flex-end}
+.contract-template-picker [data-contract-template-status]{margin-bottom:0}
+.contract-table-wrap{border-radius:10px;border:1px solid var(--border,#dce4ed)}
+.contract-table-wrap .quote-table{min-width:570px;border:0}
+.contract-table-wrap th:first-child{width:32%}
+.contract-table-wrap th:last-child{width:166px}
+.contract-money{font-variant-numeric:tabular-nums}
+.contract-state{display:inline-block;padding:4px 8px;border-radius:6px;background:#edf1f5;color:#4f5f72;white-space:nowrap}
+.contract-state[data-state="已发出"]{background:#e9f0fb;color:#2c5992}
+.contract-state[data-state="已签署"]{background:#e7f4ed;color:#236b4d}
+.contract-state[data-state="已作废"]{background:#f7edef;color:#895460}
+.contract-card{flex:none;min-width:0;border:1px solid var(--border,#dce4ed);background:#fff;border-radius:12px;padding:15px;scroll-margin-top:5px}
+.contract-card h3,.contract-party h4{margin:0 0 12px;color:#334962;font-size:14px}
+.contract-party h4{font-size:13px}
+.contract-parties{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.contract-party,.contract-line{min-width:0;background:#f7f9fc;padding:12px;border:1px solid #e3e9f0;border-radius:9px}
+.contract-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.contract-top{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:12px}
+.contract-grid label,.contract-line-amount{display:flex;flex-direction:column;gap:5px;min-width:0;color:#52647b;font-size:12px}
+.contract-wide{grid-column:1/-1}
+.contract-grid :is(input,textarea,select){width:100%;min-width:0;padding:7px 9px;border:1px solid #ced9e5;border-radius:8px;background:white;color:#203249;line-height:1.45}
+.contract-grid textarea{min-height:55px;resize:vertical}
+.contract-line textarea{resize:none;overflow:hidden}
+.contract-line{margin-bottom:8px}
+.contract-line-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+.contract-line-top button{font-size:12px}
+.contract-line .line-grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+.contract-line-amount output{padding-block:7px;font-weight:650;overflow-wrap:anywhere}
+.contract-charges{margin-top:12px}
+.contract-totals{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px 18px;padding:10px 12px;border-radius:7px;background:#edf3fb;color:#425c76}
+.contract-totals strong{margin-left:5px;font-variant-numeric:tabular-nums}
+[data-contract-qr],[data-contract-logo]{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+[data-contract-qr] img,[data-contract-logo] img{display:block;max-width:94px;max-height:94px;object-fit:contain}
+[data-contract-form-status]{margin-right:auto;color:#48647d;overflow-wrap:anywhere}
+[data-contract-form-status].is-error{color:#a63745}
+:root .customer-workflow .workflow-activity-button.action-contracts{--action-hue:156}
+:root .customer-workflow.workflow-compact[data-list-view="contacts"]{--list-action-width:232px}
+@media(max-width:720px){
+  .contract-parties,.contract-top{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contract-line .line-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:490px){
+  .contract-parties{grid-template-columns:1fr}
+  .contract-card{padding:10px}
+  .contract-grid{gap:8px}
+  .contract-line .line-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contract-editor .quote-section-nav{flex-wrap:wrap;gap:4px}
+  .contract-editor .quote-section-nav button{padding:5px 7px;font-size:11px}
+  .contract-editor form>footer{flex-wrap:wrap}
+}

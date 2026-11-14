@@ -1,0 +1,9 @@
+<section class="crm-communication-scripts" data-crm-communication-scripts hidden aria-label="知识库">
+  <div class="script-workbench">
+    <aside class="script-tree-panel"><header class="script-tree-toolbar"><strong>分类目录</strong><span data-script-library-summary title="知识库统计">0</span><button type="button" data-script-add-category title="新建知识分类">＋ 分类</button></header><label class="script-search"><input type="search" data-script-search placeholder="搜索知识或分类" aria-label="搜索知识库标题、正文、分类"><button type="button" data-script-clear-search aria-label="清除知识库搜索" title="清除搜索" hidden>×</button></label><button type="button" class="script-all" data-script-all>▦ 全部知识</button><div class="script-tree" data-script-tree></div></aside>
+    <div class="script-divider"></div>
+    <main class="script-detail"><header class="script-detail-head"><div><small data-script-path>当前项目 / 全部知识</small><strong data-script-detail-title>全部知识</strong></div><div class="script-detail-actions"><button type="button" data-script-toggle-directory aria-expanded="true">收起目录</button><button type="button" data-script-export-category hidden>导出分类 PDF</button><button type="button" data-script-add hidden>＋ 条目</button></div></header><div class="script-detail-content" data-script-detail></div></main>
+  </div>
+  <dialog class="script-content-preview" data-script-content-preview aria-label="知识正文全屏预览"><button type="button" class="script-content-preview-close" data-script-preview-close aria-label="关闭全屏预览" title="关闭（Esc）">×</button><div class="script-content-preview-body script-markdown-render" data-script-preview-body></div></dialog>
+  <section class="script-dialog" data-script-category-dialog hidden><form data-script-category-form><label>分类名称<input name="name" required maxlength="180"></label><label>父级分类<select name="parent_id"></select></label><div><button type="button" data-script-category-cancel>取消</button><button type="submit">保存</button></div></form></section>
+</section>

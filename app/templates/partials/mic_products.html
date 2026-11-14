@@ -1,0 +1,62 @@
+<section class="project-library-view" hidden data-module="mic-products">
+  <section class="mic-workspace">
+    <header class="mic-list-top">
+    <div class="mic-list-heading"><div><div class="mic-heading-title"><h3 id="mic-list-anchor" tabindex="-1">产品记录</h3><span id="mic-result-count" aria-live="polite"></span></div><p id="mic-active-filters"></p></div><div class="mic-list-tools"><details id="mic-source-details" class="mic-source-details" hidden><summary>目录说明 <span>原始编号与缺号信息</span></summary><p id="mic-source-notice" class="mic-source-notice" hidden></p></details><button id="mic-sort-order" type="button" data-order="desc" aria-pressed="true" aria-label="编号倒序，点击切换为正序" title="当前：编号倒序；点击切换为正序"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4v16m-3-3 3 3 3-3M11 6h10M11 12h7M11 18h4"/></svg></button><label class="mic-page-size">每页 <input id="mic-page-size" type="number" min="1" max="100" step="1" required value="10" aria-label="每页产品数量"> 个</label><button id="mic-add" class="mic-primary" type="button">＋ 新增产品</button></div></div>
+    <div class="mic-filters"><label class="mic-search"><span aria-hidden="true">⌕</span><input id="mic-search" type="search" placeholder="搜索编号、名称或内容" aria-label="搜索产品记录"></label><button id="mic-reset" type="button">重置筛选</button></div>
+    <section id="mic-overview" class="mic-compact-overview" aria-label="产品筛选与统计">
+      <details class="mic-assistant" data-mic-assistant><summary>MIC 发布助手</summary><div class="mic-assistant-body"><div class="mic-assistant-filters"><select id="mic-status-filter" aria-label="产品状态"><option value="">全部状态</option><option value="pending">待发布</option><option value="publishing">正在发布</option><option value="optimizing">待优化</option><option value="published">已发布</option></select><label class="mic-name-view-label"><select id="mic-name-view" aria-label="名称显示方式"><option value="all">全部名称</option><option value="unpublished">只看未发布</option><option value="published">只看已发布</option><option value="optimizing">待优化标题</option></select></label></div><div class="mic-status-strip"><span class="mic-strip-label">MIC标题</span><button class="mic-status-all" type="button" data-title-state="all">全部标题</button><div id="mic-label-summary" class="mic-label-summary"></div><span class="mic-auto-rule">按发布编号自动判断</span></div>
+      
+      <div class="mic-group-status-strip" aria-label="产品组状态与数量"><span class="mic-strip-label">产品组</span><button type="button" class="mic-group-status-all" data-mic-status="">全部产品组</button><div id="mic-group-status-summary" class="mic-label-summary"></div></div>
+      </div></details><details class="mic-assistant" data-mic-assistant><summary>社媒发布助手</summary><div class="mic-assistant-body"><div class="mic-social-filter-strip" aria-label="按社媒发布状态筛选产品"><span class="mic-strip-label">社媒发布</span><button type="button" class="mic-social-all" data-social-filter="" aria-pressed="true">全部</button><div id="mic-social-summary" class="mic-social-summary"></div></div></div></details>
+    </section>
+    </header>
+    <div class="mic-catalogue">
+      <div class="mic-table-scroll" tabindex="0" role="region" aria-label="产品列表，可滚动查看更多产品"><table class="mic-record-table"><thead><tr><th scope="col">产品图片</th><th scope="col">产品编号</th><th scope="col">名称</th><th scope="col">网站 SEO 名称 / 描述</th><th scope="col">操作</th></tr></thead><tbody id="mic-list"><tr><td colspan="5" class="mic-empty">选择项目后查看产品记录。</td></tr></tbody></table></div>
+      <footer class="mic-pagination"><div><button id="mic-prev" type="button">上一页</button><span id="mic-page"></span><button id="mic-next" type="button">下一页</button></div></footer>
+    </div>
+  </section>
+  <p id="mic-message" class="mic-message" role="status" hidden></p>
+  <dialog id="mic-editor" class="mic-editor" aria-labelledby="mic-editor-title">
+    <header class="mic-editor-heading"><div><h3 id="mic-editor-title">编辑产品</h3></div><button type="button" data-mic-close aria-label="关闭产品编辑">×</button></header>
+    <div class="mic-editor-tabs" role="tablist" aria-label="产品编辑">
+      <button type="button" id="mic-edit-tab-product" role="tab" data-mic-editor-tab="product" aria-controls="mic-edit-product" aria-selected="true">产品信息</button>
+      <button type="button" id="mic-edit-tab-social" role="tab" data-mic-editor-tab="social" aria-controls="mic-social-editor" aria-selected="false" tabindex="-1">社媒文案</button>
+      <button type="button" id="mic-edit-tab-mic" role="tab" data-mic-editor-tab="mic" aria-controls="mic-edit-mic" aria-selected="false" tabindex="-1">MIC</button>
+    </div>
+    <form id="mic-form">
+      <div class="mic-editor-body">
+        <section id="mic-edit-product" role="tabpanel" aria-labelledby="mic-edit-tab-product"><div class="mic-product-basics"><section class="mic-single-image"><label class="mic-form-label">产品图片 <small>一张</small></label><div id="mic-image-preview"></div><div class="mic-image-actions"><label class="mic-upload-button">选择图片<input id="mic-image-upload" type="file" accept="image/jpeg,image/png,image/webp"></label><button id="mic-remove-image" type="button" hidden>移除图片</button></div><p class="mic-field-hint">JPG / PNG / WebP · 最大 8 MB</p></section><div class="mic-basic-fields">
+          <label>产品编号<input name="record_code" maxlength="80"></label>
+          <label>名称 <b class="mic-required">*</b><input name="product_name" required maxlength="500"></label>
+          <label class="mic-english-field">网站 SEO 名称<input name="english_title" maxlength="1000"></label>
+          <label>SEO 描述<textarea name="seo_description" rows="3" maxlength="1000"></textarea></label>
+          <label class="mic-content-field">产品内容<textarea name="content" maxlength="32000" rows="10" placeholder="可填写简介、产品参数和联系方式"></textarea></label>
+        </div></div>
+        </section><section id="mic-edit-mic" role="tabpanel" aria-labelledby="mic-edit-tab-mic" hidden><section class="mic-progress-card" aria-label="MIC 发布进度"><h4>发布进度</h4><div class="mic-mic-fields"><label>MIC 编号范围<input name="product_code" maxlength="80" placeholder="例如 31-40；未分配留空"></label><label class="mic-publish-field">MIC 发布至编号<input name="published_through" maxlength="80" placeholder="例如 316；未发布留空"></label><div class="mic-status-field"><span>MIC 发布状态</span><output id="mic-editor-status" class="pending">待发布</output></div></div></section><section class="mic-names-section"><div class="mic-names-heading"><h4>MIC 标题 <span id="mic-name-count"></span></h4><div class="mic-title-editor-actions"><button type="button" id="mic-open-publish-tools" hidden>标题发布工具</button><button id="mic-add-name" type="button">＋ 添加标题</button></div></div><p id="mic-missing-note" class="mic-missing-note" hidden></p><div id="mic-name-fields"></div></section></section>
+      </div><p id="mic-editor-error" class="mic-editor-error" role="alert" hidden></p><footer class="mic-editor-footer"><span id="mic-record-feedback" role="status"></span><div><button type="button" data-mic-close>取消</button><button id="mic-save" class="mic-primary" type="submit">保存产品</button></div></footer>
+    </form>
+  <dialog id="mic-social-editor" class="mic-editor mic-social-editor mic-social-studio mic-product-social-studio" role="tabpanel" aria-labelledby="mic-edit-tab-social" hidden data-embedded data-permission-module="mic_products">
+    <form id="mic-social-form">
+      <header class="mic-editor-heading"><div><p class="mic-eyebrow">产品记录</p><h3 id="mic-social-title">社媒内容</h3><p id="mic-social-product" class="mic-field-hint"></p></div><button type="button" data-social-close aria-label="关闭社媒内容">×</button></header>
+      <div class="mic-studio-layout">
+        <main class="mic-studio-main"><section id="mic-social-workspace">
+          <div class="mic-social-selected"><span id="mic-social-code"></span><h4 id="mic-social-selected-title"></h4><p id="mic-social-title-warning" hidden>产品名称已修改，请核对文案是否仍适用。</p></div>
+          <div class="mic-studio-toolbar"><div id="mic-social-tabs" role="tablist" aria-label="社媒平台"></div></div>
+          <div id="mic-social-fields"></div>
+        </section></main>
+      </div>
+      <p id="mic-social-error" class="mic-editor-error" role="alert" hidden></p>
+      <footer class="mic-editor-footer"><span id="mic-social-feedback" role="status"></span><div><button id="mic-social-save" class="mic-primary" type="submit">保存社媒内容</button></div></footer>
+    </form>
+  </dialog>
+    <p id="mic-social-editor-note" class="mic-editor-body" hidden></p>
+  </dialog>
+
+  <dialog id="mic-titles-dialog" class="mic-editor mic-titles-editor" aria-labelledby="mic-titles-title">
+    <header class="mic-editor-heading"><div><p class="mic-eyebrow">MIC · 标题发布</p><h3 id="mic-titles-title">MIC名称</h3><p id="mic-titles-product" class="mic-field-hint"></p></div><button type="button" data-titles-close aria-label="关闭MIC名称">×</button></header>
+    <div class="mic-titles-toolbar"><div><select id="mic-titles-view" aria-label="弹窗标题筛选"><option value="all">全部名称</option><option value="unpublished">只看未发布</option><option value="published">只看已发布</option><option value="optimizing">待优化标题</option></select><span id="mic-titles-counts"></span></div></div>
+    <div id="mic-titles-body" class="mic-editor-body"></div>
+    <p id="mic-titles-error" class="mic-editor-error" role="alert" hidden></p>
+    <footer class="mic-editor-footer"><span id="mic-titles-feedback" role="status"></span><div><button id="mic-titles-edit" type="button">编辑名称、关键词与建议</button><button type="button" class="mic-primary" data-titles-close>完成</button></div></footer>
+  </dialog>
+</section>

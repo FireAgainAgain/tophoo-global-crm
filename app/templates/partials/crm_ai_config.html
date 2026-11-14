@@ -1,0 +1,31 @@
+<section class="crm-ai-config" data-ai-config hidden>
+  <header class="ai-page-head"><div><h2>AI 模型连接</h2><p>当前项目：<strong data-ai-project-name>—</strong> · 个人连接 · 仅使用本人的 Key 和额度</p></div><div><button type="button" class="ai-button" data-ai-refresh>刷新</button><button type="button" class="ai-button primary" data-ai-new disabled>＋ 添加连接</button></div></header>
+  <p class="ai-usage-summary" data-ai-usage-summary aria-live="polite">正在加载…</p>
+  <p class="ai-integration-note" data-ai-integration-note hidden>自动获客目前使用搜索接口、官网读取与规则筛选，不调用 AI。当前模型连接可保存备用，尚无业务功能绑定。</p>
+  <section class="ai-card"><div class="ai-model-list" data-ai-model-list><div class="ai-empty">正在加载模型连接…</div></div></section>
+  <section class="ai-card" data-ai-binding-section hidden><header class="ai-card-head"><div><h2>业务功能使用的模型</h2><p>每个功能选择一个通过测试的可用连接。</p></div></header><div data-ai-features></div></section>
+  <dialog class="ai-dialog" data-ai-editor aria-labelledby="ai-editor-title">
+    <form data-ai-form>
+      <header class="ai-dialog-head"><div><h2 id="ai-editor-title" data-ai-editor-title>添加连接</h2><p data-ai-editor-project>当前项目</p></div><button type="button" class="ai-close" data-ai-close aria-label="关闭">×</button></header>
+      <div class="ai-dialog-body">
+        <div class="ai-form-grid">
+          <label>服务商<select name="provider" required></select></label>
+          <label>连接名称<input name="name" required maxlength="100" placeholder="例如：百炼主连接"><small>用于识别，可自行命名。</small></label>
+          <label class="ai-full">模型 ID<input name="model" required maxlength="160" placeholder="填写服务商控制台中的模型 ID"><small>与服务商提供的名称一致。</small></label>
+          <label class="ai-full">API Key<div class="ai-secret"><input name="api_key" type="password" autocomplete="new-password" maxlength="1000" placeholder="填写服务商生成的 API Key"><button type="button" data-ai-reveal>显示</button></div><small data-ai-key-hint>保存后不回显，编辑时留空保留原密钥。</small></label>
+        </div>
+        <p class="ai-endpoint-hint">服务地址：<span data-ai-endpoint-summary>—</span><button type="button" data-ai-edit-endpoint>修改</button></p>
+        <details class="ai-advanced" data-ai-advanced><summary>高级设置 <span>服务地址、温度、输出长度、超时</span></summary><div class="ai-form-grid">
+          <label class="ai-full">服务地址（Base URL）<input name="base_url" required type="url" maxlength="500" placeholder="https://服务商地址/v1"><small>使用 Chat Completions 兼容接口地址，可填写完整 /chat/completions 地址。</small></label>
+          <label>温度<input name="temperature" type="number" min="0" max="2" step="0.1" value="0.1" required></label>
+          <label>最大输出 Token<input name="max_tokens" type="number" min="32" max="32000" value="1024" required><small>限制单次回复长度。</small></label>
+          <label>请求超时（秒）<input name="request_timeout_seconds" type="number" min="5" max="120" value="60" required></label>
+        </div></details>
+        <div class="ai-test-box"><span class="ai-badge" data-ai-test-badge>待测试</span><p data-ai-test-message>测试只检查连接；测试通过不代表业务功能已经接入。</p></div>
+        <p class="ai-editor-error" data-ai-editor-error role="alert" hidden></p>
+        <div class="ai-form-grid ai-notes-field"><label class="ai-full">备注（选填）<textarea name="notes" rows="2" maxlength="2000" placeholder="记录用途、额度到期时间或配置说明"></textarea></label></div>
+      </div>
+      <footer class="ai-dialog-footer"><button type="button" class="ai-button" data-ai-test>仅测试</button><div><button type="button" class="ai-button" data-ai-save-draft>保存草稿</button><button type="submit" class="ai-button primary" data-ai-save>测试并保存</button></div></footer>
+    </form>
+  </dialog>
+</section>

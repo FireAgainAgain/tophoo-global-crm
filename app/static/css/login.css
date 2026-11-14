@@ -1,0 +1,60 @@
+/* Shared account-page primitives; the login composition is scoped to .login-screen. */
+:root{--login-ink:#14231a;--login-muted:#68766e;--login-green:#16754f;--login-line:#dce6df;--login-wash:#f4f7f5;}
+*{box-sizing:border-box;}
+body.login-page{min-height:100vh;margin:0;background:var(--login-wash);color:var(--login-ink);font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;}
+.login-brand{display:flex;align-items:center;gap:10px;color:#fff;font-size:18px;font-weight:700;text-decoration:none;}
+.login-brand-mark{display:grid;width:34px;height:34px;place-items:center;border-radius:10px;background:#fff;color:var(--login-green);font-size:15px;}
+.login-eyebrow{margin:0 0 11px;color:var(--login-green);font-size:11px;font-weight:700;letter-spacing:1.8px;}
+
+/* Green glass composition: quiet form on the left, layered geometry on the right. */
+body.login-screen{display:grid;place-items:center;min-height:100svh;padding:clamp(18px,3.6vw,58px);background:radial-gradient(ellipse at 8% 12%,#b8dcc9 0,transparent 48%),linear-gradient(135deg,#dcebe2 0%,#edf4ef 50%,#b2d7c5 100%);}
+.login-screen::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(150deg,transparent 0 57%,#16754f0c 57% 72%,transparent 72%);}
+.login-layout{position:relative;isolation:isolate;display:grid;grid-template-columns:1fr 1fr;width:min(1480px,100%);min-height:min(800px,calc(100svh - 96px));border:12px solid #ffffffed;border-radius:38px;overflow:hidden;background:linear-gradient(138deg,#62b58d 0%,#20815e 58%,#095840 100%);box-shadow:0 32px 90px #143e2c20,0 4px 16px #173d2d0b;}
+.login-form-panel{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;min-width:0;padding:118px clamp(32px,5.8vw,88px) 64px;background:transparent;}
+.login-form-panel::before{content:"";position:absolute;z-index:-1;inset:0 -25% 0 0;background:linear-gradient(135deg,#f8fbf9,#edf4ef);clip-path:polygon(0 0,78% 0,100% 90%,100% 100%,0 100%);}
+.login-screen .login-brand{position:absolute;top:40px;left:clamp(32px,5.8vw,88px);color:#174c37;font-size:19px;letter-spacing:-.5px;}
+.login-screen .login-brand strong{font-weight:400;color:#607c6d;}
+.login-screen .login-brand-mark{position:relative;width:36px;height:36px;background:var(--login-green);color:#fff;border-radius:11px;font-size:23px;box-shadow:0 4px 10px #16754f1a;}
+.login-brand-mark>span{position:absolute;right:6px;bottom:7px;width:5px;height:5px;border-radius:50%;background:#c5edd8;}
+.login-form-wrap{width:min(100%,380px);margin:0 auto;}
+.login-screen .login-eyebrow{margin-bottom:13px;font-size:11px;letter-spacing:2.4px;}
+.login-form-wrap h2{margin:0;color:#183d2b;font-size:clamp(27px,2.5vw,36px);font-weight:650;line-height:1.25;letter-spacing:-.8px;}
+.login-intro{margin:14px 0 34px;color:#6b7e71;font-size:13px;line-height:1.85;}
+.login-form{display:grid;gap:20px;}
+.login-form label{display:grid;gap:9px;color:#364f3f;font-size:13px;font-weight:600;}
+.login-form input{width:100%;height:50px;padding:0 15px;border:1px solid #dce7df;border-radius:11px;outline:0;background:#ffffffd9;color:#183d2b;font:400 14px "Segoe UI","Microsoft YaHei",sans-serif;transition:border-color .18s,box-shadow .18s;}
+.login-form input::placeholder{color:#94a198;}
+.login-form input:hover{border-color:#aecab9;}
+.login-form input:focus{border-color:#348663;box-shadow:0 0 0 3px #16754f12;background:#fff;}
+.login-password-field{position:relative;display:block;}
+.login-password-field input{padding-right:50px;}
+.login-password-toggle{position:absolute;right:5px;top:5px;display:grid;place-items:center;width:40px;height:40px;border:0;border-radius:7px;background:transparent;color:#6d8977;cursor:pointer;}
+.login-password-toggle:hover{background:#edf5ef;color:#16754f;}
+.login-password-toggle svg{width:20px;height:20px;}
+.login-eye-slash{display:none;}
+.login-password-toggle[aria-pressed="true"] .login-eye-slash{display:block;}
+.login-form #auth-submit{height:49px;border:0;border-radius:10px;background:var(--login-green);color:#fff;font:600 14px "Segoe UI","Microsoft YaHei",sans-serif;cursor:pointer;box-shadow:0 6px 16px #16754f17;transition:background .18s,box-shadow .18s;}
+.login-form #auth-submit:hover{background:#105e3f;box-shadow:0 8px 20px #16754f29;}
+.login-form #auth-submit:disabled{cursor:wait;opacity:.65;}
+.login-screen button:focus-visible,.login-screen a:focus-visible{outline:3px solid #57a880;outline-offset:4px;}
+.login-message{min-height:18px;margin:-9px 0 -7px;color:#af3f32;font-size:12px;line-height:1.5;overflow-wrap:anywhere;}
+.login-access-note{margin-top:27px;padding-top:20px;border-top:1px solid #dce7df;color:#748477;font-size:11px;line-height:1.9;}
+.login-access-note a{display:inline-block;color:#277451;font-weight:600;text-decoration:none;}
+.login-access-note a:hover{text-decoration:underline;}
+.login-brand-panel{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-width:0;padding:48px 48px 35px clamp(120px,13vw,190px);color:#fff;}
+.login-brand-panel::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 90% 0,#c7f3d72b,transparent 65%);pointer-events:none;}
+.login-art{position:absolute;top:1%;left:-5%;width:108%;height:79%;}
+.login-art>svg{width:100%;height:100%;overflow:visible;}
+.login-art-wordmark{position:absolute;top:53%;left:33%;display:flex;align-items:center;gap:12px;color:#f1fff6;font-size:clamp(22px,3vw,43px);font-weight:700;letter-spacing:-1.5px;text-shadow:0 2px 12px #126b4930;}
+.login-art-symbol{display:grid;place-items:center;width:48px;height:48px;border:2px solid #e6ffee9c;border-radius:15px;font-size:35px;}
+.login-art-wordmark small{display:block;margin-top:1px;font-size:10px;font-weight:500;letter-spacing:7px;text-align:right;}
+.login-brand-copy{position:relative;z-index:1;margin-top:450px;}
+.login-brand-copy p{margin:0 0 12px;color:#c0e5d3;font-size:10px;font-weight:600;letter-spacing:2.5px;}
+.login-brand-copy h1{margin:0 0 12px;font-size:clamp(22px,2.15vw,31px);font-weight:500;line-height:1.4;letter-spacing:-.5px;}
+.login-brand-copy>span{color:#c5e4d4;font-size:12px;line-height:1.8;}
+.login-brand-foot{position:relative;margin-top:30px;color:#add4bf;font-size:9px;letter-spacing:1.5px;}
+@media(min-width:1600px){.login-layout{min-height:820px;}.login-brand-copy{margin-top:500px;}}
+@media(max-width:1050px){.login-form-panel{padding-right:30px;padding-left:38px;}.login-screen .login-brand{left:38px;}.login-brand-panel{padding-left:125px;padding-right:24px;}.login-art-symbol{width:36px;height:36px;border-radius:11px;font-size:26px;}.login-art-wordmark{gap:8px;}}
+@media(max-width:760px){body.login-screen{padding:20px 14px;}.login-layout{grid-template-columns:1fr;min-height:calc(100svh - 40px);max-width:500px;border-width:7px;border-radius:25px;background:#f4f8f5;}.login-form-panel{padding:124px 28px 45px;}.login-form-panel::before{inset:0;clip-path:none;}.login-screen .login-brand{top:29px;left:28px;font-size:17px;}.login-screen .login-brand-mark{width:31px;height:31px;font-size:20px;border-radius:9px;}.login-form-wrap{max-width:380px;}.login-form-wrap h2{font-size:29px;}.login-intro{margin-bottom:29px;}.login-brand-panel{display:none;}.login-access-note{font-size:11px;}}
+@media(max-width:370px){.login-form-panel{padding-left:20px;padding-right:20px;}.login-screen .login-brand{left:20px;font-size:15px;gap:7px;}}
+@media(prefers-reduced-motion:reduce){.login-screen *{transition:none!important;}}

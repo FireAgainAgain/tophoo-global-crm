@@ -1,0 +1,63 @@
+<section class="customer-workflow workflow-compact" data-customer-workflow hidden>
+  <section class="workflow-control-card" aria-label="列表工具与筛选">
+    <header class="workflow-header"><div class="workflow-heading"><small data-workflow-eyebrow hidden>客户管理</small><h1 id="workflow-list-title" data-workflow-title>客户列表</h1><span data-workflow-count role="status"></span></div><div class="workflow-tools"><input data-workflow-search type="search" placeholder="搜索公司、联系人、邮箱…" aria-label="搜索客户资料"><button type="button" data-customer-filters-toggle aria-expanded="false" aria-controls="workflow-filter-fields workflow-filter-footer" hidden>筛选</button><button type="button" data-workflow-reset title="清空搜索和筛选，恢复默认排序">重置</button><button type="button" data-followup-mine hidden>我的跟进</button><button type="button" data-leads-export hidden title="导出当前检索结果的公司资料">导出 Excel</button><button type="button" data-workflow-add>＋ 新增</button></div></header>
+    <div class="customer-list-overview" data-customer-list-overview hidden><section class="customer-list-summary" data-customer-list-summary aria-label="客户状态筛选" hidden></section><section class="customer-list-summary lead-facet-summary" data-lead-grade-summary aria-label="线索分级筛选" hidden></section><div data-customer-sort-slot></div></div>
+    <div class="workflow-filters" id="workflow-filter-fields" aria-label="列表筛选">
+      <label class="workflow-country-filter">国家<span class="workflow-country-search"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.25" stroke="currentColor" stroke-width="1.5"/><path d="m12.5 12.5 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg><input type="search" data-filter-country list="workflow-country-options" aria-label="按国家筛选" placeholder="搜索国家" autocomplete="off"></span><datalist id="workflow-country-options" data-country-options></datalist></label>
+      <label data-contacted-filter hidden>当前状态<select data-filter-contacted aria-label="按当前状态筛选" hidden><option value="">全部状态</option><option value="unviewed">未查看</option><option value="contacted">开发中</option><option value="priority_developing">有回复</option></select></label>
+      <label data-manual-research-filter hidden>是否人工背调<select data-filter-manual-research aria-label="按人工背调筛选"><option value="">全部</option><option value="true">已人工背调</option><option value="false">未人工背调</option></select></label>
+      <label data-completeness-filter hidden>资料完整度<select data-filter-completeness aria-label="按资料完整度筛选"><option value="">全部完整度</option><option value="complete">资料齐全 · 100%</option><option value="incomplete">资料待补充</option><option value="email">缺邮箱</option><option value="phone">缺电话</option><option value="contact_name">缺具名联系人</option></select></label>
+      <label data-category-filter hidden>产品类别<input data-filter-product-category aria-label="按产品类别筛选" placeholder="搜索产品类别" maxlength="160"></label>
+      <label data-grade-filter hidden>客户分级<select data-filter-grade aria-label="按客户分级筛选" hidden><option value="">全部分级</option><option value="none">未分级 · 待评估</option><option value="A">A · 订单客户</option><option value="B">B · 样单客户</option><option value="C">C · 重潜客户</option><option value="D">D · 普潜客户</option><option value="E">E · 无潜客户</option></select></label>
+      <label data-followup-filter hidden>跟进<select data-filter-followup aria-label="按是否有跟进筛选" title="按是否有待跟进事项筛选"><option value="">全部</option><option value="scheduled">有跟进</option><option value="unscheduled">暂无跟进</option></select></label>
+      <label data-owner-filter hidden>归属成员<select data-workflow-owner hidden aria-label="按归属筛选"></select></label>
+      <label>企业类型<select data-filter-company-type aria-label="按企业类型筛选"><option value="">全部企业类型</option></select></label>
+      <label>来源方式<select data-filter-source-type aria-label="按来源方式筛选"><option value="">全部来源</option></select></label>
+      <div class="workflow-date-range"><span data-date-range-label>添加日期</span><div><label><span class="workflow-sr-only">开始日期</span><input type="date" data-filter-date-from aria-label="添加日期开始"></label><span>—</span><label><span class="workflow-sr-only">结束日期</span><input type="date" data-filter-date-to aria-label="添加日期结束"></label></div></div>
+      <div class="workflow-date-range" data-development-date-range hidden><span>开发日期</span><div><label><span class="workflow-sr-only">开发日期开始</span><input type="date" data-filter-development-from aria-label="开发日期开始"></label><span>—</span><label><span class="workflow-sr-only">开发日期结束</span><input type="date" data-filter-development-to aria-label="开发日期结束"></label></div></div>
+    </div>
+    <div class="workflow-card-footer" id="workflow-filter-footer"><button type="button" data-reset-filters disabled>清空筛选</button><div data-workflow-sort-slot><div class="workflow-sort-control" role="group" aria-label="列表排序"><label><span>排序</span><select data-workflow-sort aria-label="排序字段"><option value="recent">添加日期</option><option value="name">公司名称</option><option value="grade">客户等级</option></select></label><button type="button" data-sort-direction aria-label="排序方向：从新到旧，点击切换">↓ 新到旧</button></div></div></div>
+  </section>
+  <div class="workflow-batch" data-workflow-batch hidden><span data-workflow-selected>已选择 0 项</span><button type="button" data-workflow-batch-main></button><button type="button" data-clear-selection>取消选择</button><button type="button" class="danger" data-workflow-batch-delete>删除</button></div>
+  <div class="workflow-table-wrap" role="region" aria-labelledby="workflow-list-title" tabindex="0"><table class="workflow-table"><thead data-workflow-head></thead><tbody data-workflow-body><tr><td>正在读取资料…</td></tr></tbody></table></div>
+  <footer class="workflow-pagination"><span data-page-summary></span><label>每页 <select data-page-size aria-label="每页条数"><option>10</option><option>25</option><option>50</option><option>100</option><option value="custom">自定义</option></select> 条</label><form class="workflow-custom-size" data-custom-page-size hidden><label><input type="number" min="10" max="1000" step="1" value="10" data-custom-size-input aria-label="自定义每页条数" required> 条 / 页</label><button type="submit">应用</button></form><button type="button" data-page-prev>上一页</button><span data-page-number></span><button type="button" data-page-next>下一页</button><form class="workflow-page-jump" data-page-jump><label>跳至 <input type="number" min="1" step="1" value="1" data-page-jump-input aria-label="跳转页码"> 页</label><button type="submit">跳转</button></form></footer>
+</section>
+<section class="workflow-dialog" data-workflow-dialog hidden role="dialog" aria-modal="true" aria-labelledby="workflow-form-title"><div class="workflow-dialog-mask" data-workflow-close></div><form class="workflow-dialog-card" data-workflow-form><header><div><small data-form-kicker>客户资料</small><h2 id="workflow-form-title" data-form-title>新增</h2></div><button type="button" data-workflow-close>×</button></header><div data-workflow-form-fields></div><footer><button type="button" data-workflow-close>取消</button><button type="submit">保存</button></footer></form></section>
+<section class="workflow-dialog workflow-action-dialog" data-action-dialog hidden role="dialog" aria-modal="true" aria-labelledby="workflow-action-title"><div class="workflow-dialog-mask" data-action-cancel></div><form class="workflow-dialog-card" data-action-form><header><div><small data-action-kicker>请确认</small><h2 id="workflow-action-title" data-action-title>确认操作</h2></div><button type="button" data-action-cancel>×</button></header><div class="workflow-action-content" data-action-content></div><footer><button type="button" data-action-cancel>取消</button><button type="submit" data-action-submit>确认</button></footer></form></section>
+<div class="workflow-toast" data-workflow-toast hidden role="status"></div>
+<dialog class="followup-dialog followup-notes-dialog" data-contact-records-page aria-labelledby="followup-notes-title">
+  <header><div><h2 id="followup-notes-title">跟进</h2><p data-record-contact-name></p></div><button type="button" data-record-back aria-label="关闭跟进">×</button></header>
+  <form data-record-form>
+    <label>跟进内容<textarea data-record-content rows="5" placeholder="在这里记录并续写所有跟进…"></textarea></label>
+    <p data-record-status class="followup-note-status" role="status" hidden></p>
+    <footer><button type="submit" class="followup-primary" data-record-save>保存跟进</button></footer>
+  </form>
+</dialog>
+
+<section class="workflow-detail-overlay" data-workflow-detail hidden>
+  <div class="workflow-detail-mask" data-detail-close></div>
+  <aside class="workflow-detail-card" role="dialog" aria-modal="true" aria-labelledby="workflow-detail-title"><header><div><small data-detail-kicker>客户资料</small><h2 id="workflow-detail-title" data-detail-title></h2></div><div class="cs-detail-actions"><button type="button" class="cs-reset" data-detail-customer-search hidden>客户查证</button><button type="button" data-detail-close aria-label="关闭详情">×</button></div></header><div data-detail-content></div><footer data-detail-actions></footer></aside>
+</section>
+
+<section class="customer-document-workspace" data-customer-documents-workspace hidden aria-label="客户单据"><header data-customer-document-heading></header><div class="customer-document-body" data-customer-document-body></div></section>
+<dialog class="customer-inquiry-dialog" data-customer-inquiry aria-labelledby="customer-inquiry-title">
+  <header><div><h2 id="customer-inquiry-title">询价</h2><p data-inquiry-customer></p></div><button type="button" data-inquiry-close aria-label="关闭">×</button></header>
+  <div class="customer-inquiry-picker" data-inquiry-picker hidden>
+    <label>已有询价<select data-inquiry-record></select></label>
+    <button type="button" data-inquiry-new>＋ 新增询价</button>
+  </div>
+  <p data-inquiry-status role="status"></p>
+  <form data-inquiry-form hidden>
+    <div class="customer-inquiry-list-head">
+      <label class="customer-inquiry-number">编号<input name="number" maxlength="40" placeholder="如 v261009" autocomplete="off" required></label>
+      <div class="customer-inquiry-list-toolbar">
+        <h3 id="customer-inquiry-items-title">询价明细 <span data-inquiry-item-count></span></h3>
+        <button type="button" data-inquiry-add-item>＋ 添加明细</button>
+      </div>
+    </div>
+    <section class="customer-inquiry-content" aria-labelledby="customer-inquiry-items-title">
+      <ol class="customer-inquiry-items" data-inquiry-items></ol>
+    </section>
+    <footer><small data-inquiry-shortcut>Ctrl / ⌘ + S 保存</small><button type="button" data-inquiry-close>关闭</button><button type="submit">保存询价</button></footer>
+  </form>
+</dialog>

@@ -1,0 +1,19 @@
+<section class="quote-page" data-crm-quotations data-permission-module="quotations" hidden aria-label="报价单">
+  <div class="quote-tools">
+    <header><div><h2>报价单</h2><span data-quote-count>0 份报价</span></div><div class="quote-actions"><button type="button" data-quote-refresh>刷新</button><button type="button" data-quote-templates>模板管理</button><button type="button" class="quote-primary" data-quote-add>＋ 新建报价</button></div></header>
+    <div class="quote-filters"><input type="search" data-quote-search placeholder="搜索报价编号、客户、联系人或产品" aria-label="搜索报价单"></div>
+  </div>
+  <p role="status" class="quote-feedback" data-quote-feedback hidden></p>
+  <div class="quote-applied-filter" data-quote-applied-filter hidden><span data-quote-filter-label></span><button type="button" data-quote-clear-filter>查看全部报价</button></div>
+  <div class="quote-table-wrap"><table class="quote-table"><thead><tr><th>报价单</th><th class="quote-customer-column">客户信息</th><th class="quote-date-column">报价日期</th><th class="quote-action-column">操作</th></tr></thead><tbody data-quote-rows></tbody></table></div>
+  <footer class="quote-pagination"><span data-quote-page-info></span><div><label>每页 <input type="number" min="1" max="200" value="10" data-quote-page-size aria-label="每页数量" list="quote-page-sizes"><datalist id="quote-page-sizes"><option value="10"><option value="20"><option value="30"></datalist></label><button type="button" data-quote-prev>上一页</button><button type="button" data-quote-next>下一页</button></div></footer>
+  <dialog class="quote-editor" data-quote-editor aria-labelledby="quote-editor-title"><header><div><h2 id="quote-editor-title">新建报价单</h2><p>填写报价内容，保存前可预览 PDF</p></div><button type="button" data-quote-close aria-label="关闭报价编辑">✕</button></header><nav class="quote-section-nav" data-quote-section-nav aria-label="报价编辑章节">
+    <button type="button" data-quote-jump="seller">卖方抬头</button><button type="button" data-quote-jump="buyer">买方与报价</button><button type="button" data-quote-jump="items">产品明细</button><button type="button" data-quote-jump="payment">付款与条款</button><button type="button" data-quote-jump="footer">底部联系</button>
+  </nav><form data-quote-form><div class="quote-form-content" data-quote-fields></div><footer><span role="status" data-quote-form-status></span><button type="button" data-quote-preview>预览 PDF</button><button type="submit" class="quote-primary">保存报价</button></footer></form></dialog>
+  <dialog class="quote-detail" data-quote-detail aria-labelledby="quote-detail-title"><header><div><h2 id="quote-detail-title">报价单详情</h2><small>报价单详情</small></div><button type="button" data-quote-detail-close aria-label="关闭报价详情">✕</button></header><p class="quote-feedback" role="status" data-quote-detail-status hidden></p><div class="quote-detail-content" data-quote-detail-content></div></dialog>
+  <dialog class="quote-pdf" data-quote-pdf aria-label="报价 PDF 预览"><header><h2>客户版 PDF 预览</h2><a data-quote-pdf-download download>下载 PDF</a><button type="button" data-quote-pdf-close aria-label="关闭 PDF 预览">✕</button></header><iframe title="报价单 PDF" data-quote-pdf-frame></iframe></dialog>
+</section>
+
+<script src="/static/js/quotation-form.js?v=20261110-quotation-editor" defer></script>
+<script src="/static/js/quotation-templates.js?v=20261110-quotation-editor" defer></script>
+<script src="/static/js/crm-quotations.js?v=20261111-sales-contracts" defer></script>

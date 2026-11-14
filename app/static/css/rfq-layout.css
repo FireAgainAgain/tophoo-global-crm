@@ -1,0 +1,75 @@
+/* RFQ layout follows the CRM list and uses the same surfaces in every window. */
+:root .rfq-page{--rfq-ui-ink:hsl(220 23% 24%);--rfq-ui-muted:hsl(220 13% 46%);--rfq-ui-line:hsl(215 24% 89%);--rfq-ui-soft:hsl(212 40% 98%);padding:16px 20px;color:var(--rfq-ui-ink)}
+:root .rfq-page .rfq-page-head{padding:18px 20px;margin-bottom:14px;border-radius:12px;background:var(--crm-list-tools);border-color:var(--rfq-ui-line);container:rfq-controls / inline-size}
+.rfq-title-row{display:flex;align-items:center;gap:24px;min-width:0}.rfq-list-heading{flex:0 0 auto}.rfq-list-heading h1{font-size:21px;line-height:1.4;font-weight:650;letter-spacing:-.4px;margin:0;color:var(--rfq-ui-ink)}
+:root .rfq-page .rfq-title-row .rfq-toolbar{flex:1;min-width:0;gap:8px;padding:0;margin:0;border:0;background:none}
+:root .rfq-page .rfq-title-row .rfq-toolbar input{height:36px;flex:1 1 220px;min-width:160px;max-width:500px;border-radius:8px;font-size:13px}
+:root .rfq-page .rfq-toolbar-actions{gap:8px;margin-left:auto}
+:root .rfq-page .rfq-toolbar-actions button{height:36px;padding:7px 12px;border-radius:8px;font-size:12px}
+:root .rfq-page .rfq-toolbar-actions [data-rfq-reset],:root .rfq-page .rfq-toolbar-actions [data-rfq-refresh]{background:white;border:1px solid var(--rfq-ui-line);color:var(--rfq-ui-muted)}
+.rfq-list-overview{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;margin-top:16px;padding-top:14px;border-top:1px solid var(--crm-list-divider)}
+:root .rfq-page .rfq-summary-row{flex:1 1 540px;min-width:0;margin:0;padding:0;display:block}
+:root .rfq-page .rfq-dashboard{display:flex;flex-wrap:wrap;gap:6px;max-width:none;width:100%}
+:root .rfq-page .rfq-dashboard>.rfq-metric{display:inline-flex;flex:0 0 auto;flex-direction:row;align-items:center;gap:7px;min-height:32px;padding:5px 10px;margin:0;border:1px solid transparent;border-radius:7px;background:transparent;box-shadow:none;animation:none;transform:none;transition:background .15s,border-color .15s}
+:root .rfq-page .rfq-dashboard>.rfq-metric>span{font-size:12px;color:var(--rfq-ui-muted);font-weight:400}
+:root .rfq-page .rfq-dashboard>.rfq-metric>strong{font-size:13px;line-height:20px;font-weight:650;padding:0;background:none;box-shadow:none}
+:root .rfq-page .rfq-dashboard>.rfq-metric[aria-pressed="true"]{background:color-mix(in srgb,var(--primary,#16754f) 9%,white);border-color:color-mix(in srgb,var(--primary,#16754f) 18%,white);box-shadow:none;animation:none}
+:root .rfq-page .rfq-dashboard>.rfq-metric[aria-pressed="true"]>span,:root .rfq-page .rfq-dashboard>.rfq-metric[aria-pressed="true"]>strong{color:var(--primary,#16754f);background:none;box-shadow:none;font-size:12px;padding:0}
+:root .rfq-page .rfq-filter-controls{flex:0 1 auto;gap:8px}
+:root .rfq-page .rfq-filter-controls select{height:32px;min-width:100px;max-width:140px;border-radius:7px;font-size:12px;border-color:var(--rfq-ui-line);background:white;color:var(--rfq-ui-muted)}
+:root .rfq-page [data-rfq-records]{border-radius:12px;border-color:var(--rfq-ui-line)}
+:root .rfq-page .rfq-list-context{min-height:44px;padding:10px 16px;box-sizing:border-box;background:white;border-bottom:1px solid var(--crm-list-divider)}
+:root .rfq-page .rfq-list-context>strong{font-size:13px;color:var(--rfq-ui-ink)}
+:root .rfq-page .rfq-wrap table{min-width:1120px}
+:root .rfq-page .rfq-wrap th{padding:12px 16px;font-size:12px;font-weight:600;line-height:20px}
+:root .rfq-page .rfq-wrap td{padding:10px 16px;line-height:20px;font-size:13px;vertical-align:middle}
+:root .rfq-page .rfq-wrap tr[data-rfq-row]>td{height:60px;box-sizing:border-box}
+:root .rfq-page .rfq-wrap th:first-child{width:148px}
+:root .rfq-page .rfq-wrap th:nth-child(5){width:auto}
+:root .rfq-page .rfq-wrap th:last-child{width:220px}
+:root .rfq-page .rfq-company{font-weight:600;color:var(--rfq-ui-ink)}
+:root .rfq-page .rfq-wrap td>small,:root .rfq-page .rfq-clock-hint{color:var(--rfq-ui-muted);font-size:11px}
+:root .rfq-page .rfq-pagination{padding:12px 16px;gap:12px;font-size:12px}
+/* The drawer and editor share a single header, card and footer language. */
+:root .rfq-page .rfq-preview-card{width:min(840px,100%);border-radius:14px 0 0 14px;background:white;box-shadow:-16px 0 56px hsl(220 25% 25% / .16)}
+:root .rfq-page .rfq-preview-card>header,:root .rfq-page .rfq-editor-modal .rfq-editor-head{display:flex;flex-direction:row;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:20px;padding:20px 24px;margin:0;border-bottom:1px solid var(--rfq-ui-line);background:white;border-radius:0;flex-shrink:0}
+.rfq-window-heading{min-width:0;flex:1}.rfq-window-heading>small{display:block;font-size:11px;line-height:1.5;color:var(--rfq-ui-muted);margin:0 0 5px}
+:root .rfq-page .rfq-window-heading>h3{font-size:21px;line-height:1.4;font-weight:650;color:var(--rfq-ui-ink);overflow-wrap:anywhere}
+:root .rfq-page .rfq-window-heading [data-rfq-draft-status]{font-size:11px;margin:6px 0 0;color:var(--rfq-ui-muted)}
+:root .rfq-page .rfq-preview-card>header>[data-close-rfq-preview],:root .rfq-page .rfq-editor-head .rfq-editor-close{width:32px;height:32px;min-height:32px;flex:none;padding:0;border:1px solid var(--rfq-ui-line);border-radius:8px;background:white;font-size:20px;line-height:1;color:var(--rfq-ui-muted)}
+:root .rfq-page .rfq-preview-content,:root .rfq-page .rfq-editor-body{padding:20px 24px;background:var(--rfq-ui-soft);gap:16px;overflow:auto;min-height:0}
+:root .rfq-page .rfq-preview-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-content:start;align-items:start}
+:root .rfq-page .rfq-preview-content>.comm-inline,:root .rfq-page .rfq-preview-content>[data-rfq-block="inquiry"],:root .rfq-page .rfq-preview-content>[data-rfq-block="requirements"],:root .rfq-page .rfq-preview-content>[data-rfq-block="notes"]{grid-column:1/-1}
+:root .rfq-page .rfq-block-layout{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+:root .rfq-page .rfq-block-layout>[data-rfq-block="customer"],:root .rfq-page .rfq-block-layout>[data-rfq-block="contact"]{grid-column:auto}
+:root .rfq-page .rfq-block{--rfq-tint:hsl(212 40% 98%);--rfq-ink:hsl(220 23% 24%);--rfq-edge:hsl(215 24% 89%);padding:20px;border:1px solid var(--rfq-ui-line);border-radius:10px;background:white;box-shadow:none}
+:root .rfq-page .rfq-block>header.rfq-block-head{min-height:24px;margin:0 0 18px;padding:0 0 12px;border-bottom:1px solid var(--crm-list-divider);gap:10px;flex-wrap:wrap}
+:root .rfq-page .rfq-block-head h4{font-size:14px;color:var(--rfq-ui-ink);font-weight:650}
+:root .rfq-page .rfq-block-badge{padding:3px 6px;background:var(--rfq-ui-soft);border:0;border-radius:5px;font-size:10px;color:var(--rfq-ui-muted);font-weight:400}
+:root .rfq-page .rfq-facts{gap:16px 20px}
+:root .rfq-page .rfq-fact>span{margin-bottom:5px;color:var(--rfq-ui-muted);font-size:11px}
+:root .rfq-page .rfq-fact>div,:root .rfq-page .rfq-fact h5{font-size:13px;line-height:1.7;font-weight:400;color:var(--rfq-ui-ink)}
+:root .rfq-page .rfq-block :is(input,select,textarea){width:100%;height:40px;padding:9px 11px;border:1px solid var(--rfq-ui-line);border-radius:7px;background:white;box-shadow:none;font-size:13px;color:var(--rfq-ui-ink)}
+:root .rfq-page .rfq-block textarea{height:144px;min-height:112px;line-height:1.75;resize:vertical}
+:root .rfq-page .rfq-field,:root .rfq-page .rfq-customer-picker>label,:root .rfq-page .rfq-generic-row>label{gap:8px;color:var(--rfq-ui-muted);font-size:12px}
+:root .rfq-page .rfq-block .rfq-form-grid{gap:16px;grid-template-columns:repeat(4,minmax(0,1fr))}
+:root .rfq-page .rfq-block button.rfq-secondary{border-radius:7px;background:white;border-color:var(--rfq-ui-line);color:var(--rfq-ui-muted);box-shadow:none}
+:root .rfq-page .rfq-more-info{border-color:var(--crm-list-divider);padding-top:12px;margin-top:16px}
+:root .rfq-page .rfq-more-info summary,:root .rfq-page .rfq-notes-details summary{font-size:12px;color:var(--rfq-ui-muted)}
+:root .rfq-page .rfq-generic-row{grid-template-columns:minmax(0,1fr) 30px;gap:12px}
+:root .rfq-page .rfq-generic-row>label:first-child{grid-column:1;grid-row:1}
+:root .rfq-page .rfq-generic-row>label:nth-child(2){grid-column:1/-1;grid-row:2}
+:root .rfq-page .rfq-generic-row>button[data-remove-generic]{grid-column:2;grid-row:1;width:30px;height:30px;margin-top:26px;border-color:var(--rfq-ui-line);font-size:18px}
+:root .rfq-page .rfq-generic-row+.rfq-generic-row{margin-top:20px;padding-top:20px;border-color:var(--crm-list-divider)}
+:root .rfq-page .rfq-requirement{grid-template-columns:1fr;gap:10px}
+:root .rfq-page .rfq-requirement .rfq-fact>span{display:none}
+:root .rfq-page .rfq-requirement h5{font-weight:600;font-size:13px}
+:root .rfq-page .rfq-requirement .rfq-read-text{padding:14px 16px;background:var(--rfq-ui-soft);border:1px solid var(--crm-list-divider);border-radius:7px;line-height:1.8}
+:root .rfq-page .rfq-detail-footer,:root .rfq-page .rfq-editor-modal .rfq-editor-bottom{padding:16px 24px max(16px,env(safe-area-inset-bottom));gap:12px;border-top:1px solid var(--rfq-ui-line);background:white;box-shadow:none}
+:root .rfq-page .rfq-detail-footer :is(button,select),:root .rfq-page .rfq-editor-bottom button{height:38px;min-height:38px;border-radius:7px;padding:8px 14px;font-size:13px}
+:root .rfq-page .rfq-editor-modal{padding:24px}
+:root .rfq-page .rfq-editor-modal>.rfq-editor{width:min(1000px,100%);height:min(900px,calc(100dvh - 48px));max-height:calc(100dvh - 48px);border-radius:14px;background:var(--rfq-ui-soft);border-color:var(--rfq-ui-line)}
+:root .rfq-page .rfq-editor-backdrop,:root .rfq-page .rfq-preview-backdrop{background:hsl(220 24% 18% / .38);backdrop-filter:blur(2px)}
+@container rfq-controls (max-width:750px){.rfq-title-row{align-items:flex-start;gap:14px;flex-wrap:wrap}.rfq-list-heading{flex-basis:100%}:root .rfq-page .rfq-title-row .rfq-toolbar{flex-basis:100%}:root .rfq-page .rfq-filter-controls{flex:1}:root .rfq-page .rfq-filter-controls select{flex:1;max-width:none;min-width:0}}
+@media(max-width:700px){:root .rfq-page{padding:12px}:root .rfq-page .rfq-page-head{padding:14px}.rfq-list-heading h1{font-size:19px}:root .rfq-page .rfq-toolbar-actions{width:auto;margin-left:0;flex-wrap:wrap}:root .rfq-page .rfq-title-row .rfq-toolbar input{flex-basis:100%;max-width:none}.rfq-list-overview{gap:10px}:root .rfq-page .rfq-dashboard{gap:4px}:root .rfq-page .rfq-dashboard>.rfq-metric{padding:5px 8px}:root .rfq-page .rfq-preview-card{border-radius:0}:root .rfq-page .rfq-preview-card>header,:root .rfq-page .rfq-editor-modal .rfq-editor-head{padding:16px}:root .rfq-page .rfq-preview-content,:root .rfq-page .rfq-editor-body{padding:12px;gap:12px}:root .rfq-page .rfq-preview-content,:root .rfq-page .rfq-block-layout{grid-template-columns:1fr}:root .rfq-page .rfq-block-layout>.rfq-block{grid-column:1/-1}:root .rfq-page .rfq-block{padding:16px}:root .rfq-page .rfq-block .rfq-form-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}:root .rfq-page .rfq-window-heading>h3{font-size:19px}:root .rfq-page .rfq-detail-footer,:root .rfq-page .rfq-editor-modal .rfq-editor-bottom{padding:12px 16px max(12px,env(safe-area-inset-bottom));gap:8px}:root .rfq-page .rfq-editor-modal{padding:0}:root .rfq-page .rfq-editor-modal>.rfq-editor{height:100dvh;max-height:100dvh;border-radius:0;border:0}:root .rfq-page .rfq-pagination{flex-wrap:wrap}:root .rfq-page .rfq-pagination>div{flex-wrap:wrap}:root .rfq-page .rfq-block :is(input,select,textarea){font-size:16px}}
+@media(max-width:380px){:root .rfq-page .rfq-block .rfq-form-grid{grid-template-columns:1fr}:root .rfq-page .rfq-facts{gap:12px}:root .rfq-page .rfq-detail-footer :is(button,select){padding-inline:9px;font-size:12px}}

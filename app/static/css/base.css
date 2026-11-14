@@ -1,0 +1,30 @@
+/* base */
+*{box-sizing: border-box}
+:root{--primary: #16754f;--primary-hover: #105d3d;--bg: #f4f7f5;--sidebar: #ffffff;--card: #ffffff;--border: #dce6df;--border-light: #edf1ee;--text: #14231a;--text-secondary: #4a5c52;--text-muted: #829087;--success: #16754f;--danger: #dc2626;--primary-rail-width: 78px;--secondary-nav-width: 264px;--sidebar-width: calc(var(--primary-rail-width) + var(--secondary-nav-width))}
+html,body{margin: 0;padding: 0;min-height: 100%}
+body{font-family:
+                "Microsoft YaHei",
+                "Segoe UI",
+                Arial,
+                sans-serif;background: var(--bg);color: var(--text)}
+button,input{font-family: inherit}
+.app{display: flex;min-height: 100vh}
+.sidebar{position: fixed;left: 0;top: 0;bottom: 0;width: var(--sidebar-width);display: flex;flex-direction: column;background: var(--sidebar);border-right: 1px solid var(--border);z-index: 100}
+.main{width: calc(100% - var(--sidebar-width));margin-left: var(--sidebar-width);min-height: 100vh}
+.main-inner{max-width: none;margin: 0;padding: 32px 34px 50px}
+.page{display: none}
+.page.active{display: block}
+.workflow{display: flex;align-items: center;flex-wrap: wrap;gap: 7px;margin-top: 10px}
+.result{min-height: 17px;margin-top: 9px;font-size: 11px;text-align: center}
+.result.success{color: var(--success)}
+.result.error{color: var(--danger)}
+.result.loading{color: var(--text-muted)}
+.footer{margin-top: 35px;color: #a1a7b0;font-size: 10px;text-align: center}
+@media (max-width: 760px){
+:root{--sidebar-width: 0px}
+.sidebar{position: static;width: 100%;height: auto}
+.app{display: block}
+.main{width: 100%;margin-left: 0}
+.main-inner{padding: 28px 18px 40px}
+
+}

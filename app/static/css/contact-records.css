@@ -1,0 +1,32 @@
+/* contact-records */
+.workflow-dialog-card [data-workflow-form-fields]{grid-template-columns:1fr 1fr!important}
+.workflow-dialog-card .form-group:first-child{grid-column:auto!important}
+.form-key-fields{grid-column:1/-1;display:flex;gap:14px;padding:14px 18px;border:1px solid #d5ebdd;border-radius:16px;background:linear-gradient(110deg,#e5f7ed,#f9fffb)}
+.form-key-fields label{display:grid;gap:6px;min-width:180px;color:#3d6d56;font-size:13px;font-weight:700}
+.form-key-fields select{height:39px;border:1px solid #c7e3d3;border-radius:9px;padding:0 10px;background:#fff;color:#285b42;font:inherit}
+.workflow-dialog-card .form-group{min-width:0}
+.workflow-dialog-card .form-group h3{margin-top:0}
+.crm-contact-records{max-width:1400px;margin:0 auto;padding:20px 24px 32px;color:#253044;min-width:0}
+.crm-contact-records[hidden]{display:none!important}
+.records-hero{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 24px;border:1px solid #dfe5ed;border-radius:12px;background:#fff}
+.records-hero [data-record-back]{display:block;margin-bottom:12px;padding:0;border:0;background:transparent;color:#526174;font:inherit;font-size:13px;cursor:pointer}
+.records-hero small{display:none}.records-hero h1{margin:0;font-size:23px;line-height:1.5;color:#253044;overflow-wrap:anywhere}.records-hero p{margin:7px 0 0;font-size:13px;color:#526174;overflow-wrap:anywhere}
+.records-hero>button:last-child,.record-editor footer button{flex-shrink:0;border:1px solid var(--primary,#16754f);border-radius:8px;padding:9px 14px;background:var(--primary,#16754f);color:#fff;font:inherit;font-size:13px;font-weight:600;cursor:pointer}
+.records-timeline{max-width:980px;margin:20px auto 0;padding:0}
+.record-card{margin:0 0 14px;padding:18px 20px;border:1px solid #dfe5ed;border-radius:10px;background:#fff;min-width:0}
+.record-card>header{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}.record-card>header>div:first-child{min-width:0}
+.record-card h3{margin:0;color:#253044;font-size:15px;font-weight:650;line-height:1.6;overflow-wrap:anywhere}
+.record-card header .record-meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:7px;color:#526174;font-size:12px;line-height:1.7}
+.record-card>p,.record-long-content>p{margin:14px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;color:#334155;font-size:14px;line-height:1.8}
+.record-card-actions{display:flex;gap:6px;flex-shrink:0}.record-card-actions button,.record-editor header button{border:1px solid #d5dee8;border-radius:6px;padding:5px 9px;background:#fff;color:#40546a;font:inherit;font-size:12px;cursor:pointer}.record-card-actions .danger{border-color:#f0d2d0;color:#ad4f4b}
+.record-translation{margin-top:13px;padding:10px 12px;border:1px solid #e1e7ee;border-radius:7px;background:#f7f9fc;color:#526174;font-size:12px}
+.record-translation summary,.record-long-content summary{cursor:pointer;line-height:1.8;overflow-wrap:anywhere}.record-translation p{margin:10px 0 0;white-space:pre-wrap;overflow-wrap:anywhere;color:#40546a;font-size:13px;line-height:1.8}
+.record-long-content{margin-top:13px;color:#334155;font-size:14px;line-height:1.8;min-width:0}.record-long-content summary>span{display:inline-block;color:var(--primary,#16754f);font-size:12px}.record-long-content[open] summary{font-size:0}.record-long-content[open] summary>span{font-size:12px}
+.record-editor{border-color:#b8cddf;background:#fff}.record-editor>header>span{color:#253044;font-size:15px;font-weight:650}
+.record-editor-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}.record-editor-grid label{display:grid;gap:7px;min-width:0;color:#40546a;font-size:13px;font-weight:500}.record-editor-grid .wide{grid-column:1/-1}
+.record-editor-grid input,.record-editor-grid select,.record-editor-grid textarea{width:100%;min-width:0;box-sizing:border-box;border:1px solid #cdd7e2;border-radius:7px;padding:9px 10px;background:#fff;color:#253044;font:inherit;font-size:14px}.record-editor-grid input{min-height:39px}.record-editor-grid :is(input,textarea)::placeholder{color:#64748b;font-size:13px}.record-editor-grid textarea{min-height:160px;resize:vertical;line-height:1.8}
+.record-editor footer{display:flex;justify-content:flex-end;margin-top:18px;padding-top:15px;border-top:1px solid #e7ecf2}
+.records-empty{padding:40px 22px;border:1px dashed #cdd7e2;border-radius:10px;background:#fff;color:#526174;text-align:center;font-size:14px;line-height:1.8}
+.crm-contact-records :focus-visible{outline:2px solid var(--primary,#16754f);outline-offset:3px}
+@media(max-width:820px){.workflow-dialog-card [data-workflow-form-fields]{grid-template-columns:1fr!important}.form-key-fields{flex-direction:column}.workflow-dialog-card .form-group:first-child{grid-column:auto!important}}
+@media(max-width:600px){.crm-contact-records{padding:16px}.records-hero{align-items:flex-start;flex-direction:column;padding:18px}.records-hero h1{font-size:20px}.record-editor-grid{grid-template-columns:1fr}.record-editor-grid .wide{grid-column:auto}.record-card{padding:15px}.record-card>header{flex-wrap:wrap;gap:10px}.record-meta{gap:4px 10px}.record-card-actions{margin-left:auto}}

@@ -1,0 +1,29 @@
+<section class="communication-assistant" data-communication-assistant hidden aria-label="全球时间">
+  <header class="comm-page-heading"><div><h1>全球时间 <span class="comm-live-label" data-comm-mode>实时</span></h1><p>跨时区沟通，先看一眼当地时间</p></div><div class="comm-heading-actions"><button type="button" data-comm-home>我的时区与作息</button><button type="button" data-comm-refresh aria-label="刷新地区时间">↻ 刷新</button></div></header>
+  <section class="comm-time-console" aria-label="全球时间对照">
+    <div class="comm-home-clock"><span>北京时间 <small>UTC+08:00</small></span><time data-comm-beijing>--:--</time><small data-comm-beijing-date></small></div>
+    <div class="comm-compare"><div class="comm-compare-heading"><label>时间对照 <input type="datetime-local" data-comm-compare aria-label="选择北京时间进行对照" min="2000-01-01T00:00" max="2100-12-31T23:59"></label><button type="button" data-comm-now hidden>回到现在</button></div><input class="comm-time-slider" type="range" min="0" max="1439" step="15" data-comm-slider aria-label="调整北京时间"><div class="comm-axis-labels"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>24:00</span></div></div>
+  </section>
+  <section class="comm-directory"><header class="comm-directory-toolbar"><div class="comm-view-tabs" role="group" aria-label="地区范围"><button type="button" data-comm-tab="favorites" aria-pressed="true">常用城市 <span data-comm-favorite-count></span></button><button type="button" data-comm-tab="all" aria-pressed="false">全部地区</button></div><div class="comm-directory-filters"><input type="search" data-comm-search aria-label="搜索国家或城市" placeholder="＋ 查找并关注国家、城市"><select data-comm-status aria-label="筛选当前已加载地区的状态"><option value="all">全部状态</option><option value="working">工作时段</option><option value="rest">休息／假日</option></select></div></header>
+    <p class="comm-error" data-comm-error role="alert" hidden></p>
+    <div class="comm-clock-grid" data-comm-rows aria-label="城市时钟"><p class="comm-empty">正在读取地区资料…</p></div>
+    <footer class="comm-directory-footer"><span data-comm-count></span><button type="button" data-comm-more hidden>加载更多地区</button></footer>
+  </section>
+  <footer class="comm-page-footer"><span>日夜按当地 06:00–18:00 示意；工作时段仅作参考，不代表客户在线。点击城市可查看假日、换算与作息。</span><span data-comm-source></span></footer>
+</section>
+
+<dialog class="comm-panel" data-comm-panel aria-labelledby="comm-panel-title">
+  <header class="comm-panel-heading"><div><p class="comm-eyebrow" data-comm-panel-kicker>沟通参考</p><h2 id="comm-panel-title">地区安排</h2><p data-comm-panel-subtitle></p></div><button type="button" data-comm-close aria-label="关闭时间详情">×</button></header>
+  <div class="comm-panel-body"><label class="comm-person-picker" data-comm-person-label hidden>查看对象<select data-comm-person aria-label="选择公司或联系人"></select></label><p class="comm-error" data-comm-panel-error role="alert" hidden></p><div data-comm-panel-content></div>
+    <form class="comm-settings" data-comm-settings hidden><header><h3 data-comm-settings-title>作息设置</h3><button type="button" data-comm-settings-cancel>返回</button></header><p class="comm-muted" data-comm-settings-hint></p>
+      <div class="comm-form-grid"><label>国家／地区<select name="country" required></select></label><label>城市／时区<select name="timezone" required></select></label><label>城市名称（选填）<input name="city" maxlength="100" placeholder="可填写客户实际所在城市"></label><label>地方假日<select name="subdivision"><option value="">仅全国公共假日</option></select></label></div>
+      <fieldset><legend>每周工作日</legend><div class="comm-weekdays" data-comm-weekdays></div></fieldset><fieldset><legend>工作时段 <small>按当地时间，可跨午夜</small></legend><div data-comm-periods></div><button type="button" class="comm-text-button" data-comm-add-period>＋ 添加时段</button></fieldset>
+      <fieldset><legend>临时休假 <small>客户告知的实际休假安排</small></legend><div data-comm-closures></div><button type="button" class="comm-text-button" data-comm-add-closure>＋ 添加休假</button></fieldset>
+      <label class="comm-check"><input type="checkbox" name="respect_public_holidays" checked>公共假日按休息处理，可按客户实际情况关闭</label>
+      <label class="comm-check" data-comm-confirmed-label><input type="checkbox" name="confirmed">客户已确认此作息</label><p class="comm-error" data-comm-settings-error role="alert" hidden></p>
+      <div class="comm-settings-actions"><button type="button" data-comm-preview-settings>仅预览</button><button type="submit" class="comm-primary" data-comm-save-settings>保存设置</button></div>
+    </form>
+  </div>
+</dialog>
+
+<dialog class="comm-home-dialog" data-comm-home-dialog aria-labelledby="comm-home-title"><form data-comm-home-form><header><div><p class="comm-eyebrow">PERSONAL SCHEDULE</p><h2 id="comm-home-title">我的作息</h2><p>用于计算双方共同工作时段，仅本人可见。</p></div><button type="button" data-comm-home-close aria-label="关闭我的作息设置">×</button></header><label>我的时区<select name="home_timezone" required></select></label><fieldset><legend>每周工作日</legend><div class="comm-weekdays" data-comm-home-weekdays></div></fieldset><fieldset><legend>工作时段（当地时间）</legend><div data-comm-home-periods></div><button type="button" class="comm-text-button" data-comm-home-add-period>＋ 添加时段</button></fieldset><p class="comm-error" data-comm-home-error role="alert" hidden></p><footer><button type="button" data-comm-home-close>取消</button><button type="submit" class="comm-primary">保存我的作息</button></footer></form></dialog>

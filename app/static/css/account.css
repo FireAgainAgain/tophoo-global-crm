@@ -1,0 +1,47 @@
+*{box-sizing:border-box}
+body.account-page{margin:0;background:#f5f7f9;color:#20332d;font-family:"Segoe UI","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+.account-layout{max-width:1160px;margin:0 auto;padding:28px 40px 64px}
+.account-top{display:flex;align-items:center;gap:18px;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid #e1e7e5}
+.account-brand{display:flex;align-items:center;gap:10px;color:#203c31;font-size:17px;font-weight:750;text-decoration:none;white-space:nowrap}
+.account-brand-mark{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#1b6249;color:white;font-size:19px}
+.account-back{color:#65736e;text-decoration:none;font-size:13px;white-space:nowrap}
+.account-back:hover{color:#16754f}
+.account-heading{padding:38px 0 28px}
+.account-eyebrow{margin:0 0 10px;color:#53816d;font-size:10px;font-weight:700;letter-spacing:2px}
+.account-heading h1{margin:0;font-size:30px;font-weight:650;letter-spacing:-.8px}
+.account-heading>p:last-child{margin:10px 0 0;color:#7a8781;font-size:13px;line-height:1.7}
+.account-grid{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:24px;align-items:start}
+.account-card{background:white;border:1px solid #e2e8e5;border-radius:18px;box-shadow:0 4px 20px #203b2e04;overflow:hidden}
+.account-profile-card{padding:28px 30px 0}
+.account-card-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:26px}
+.account-card h2{margin:0;font-size:17px;font-weight:650}
+.account-card-heading p{margin:8px 0 0;color:#7a8781;font-size:12px;line-height:1.7}
+.account-status{display:inline-flex;align-items:center;gap:6px;flex-shrink:0;padding:5px 9px;border-radius:20px;background:#edf7f0;color:#39815c;font-size:11px}
+.account-status:before{content:"";width:5px;height:5px;border-radius:50%;background:#4d9c6e}
+.account-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 20px}
+.account-form label{display:flex;flex-direction:column;gap:9px;color:#52615a;font-size:12px;font-weight:600;min-width:0}
+.account-form input{width:100%;height:44px;min-width:0;padding:0 13px;border:1px solid #dde5e0;border-radius:8px;background:#fff;color:#293f34;font:inherit;font-size:13px;transition:border-color .15s,box-shadow .15s}
+.account-form input::placeholder{color:#a2aba6;font-size:12px;font-weight:400}
+.account-form input:focus{outline:none;border-color:#438967;box-shadow:0 0 0 3px #21835712}
+.account-form input:disabled{background:#f4f6f5;color:#88958d;cursor:not-allowed}
+.account-security{margin-top:30px;padding-top:24px;border-top:1px solid #edf0ee}
+.account-section-heading{margin-bottom:20px}
+.account-section-heading h3{margin:0;font-size:14px;font-weight:650}
+.account-section-heading p{margin:7px 0 0;color:#8a958e;font-size:12px;line-height:1.6}
+.account-form-footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:28px -30px 0;padding:18px 30px;background:#fcfdfc;border-top:1px solid #edf0ee}
+.account-message{margin:0;color:#b64035;font-size:12px;line-height:1.6;overflow-wrap:anywhere}
+.account-form button{display:flex;align-items:center;justify-content:center;gap:18px;flex-shrink:0;min-height:42px;padding:0 20px;border:0;border-radius:8px;background:#1e6a4d;color:white;font:600 13px "Segoe UI","Microsoft YaHei",sans-serif;cursor:pointer;transition:background .15s}
+.account-form button:hover{background:#155338}
+.account-form button:disabled{opacity:.55;cursor:wait}
+.account-form button span{font-size:17px;font-weight:400}
+.account-access-card{padding:26px}
+.account-access-icon{display:grid;place-items:center;width:42px;height:42px;margin-bottom:24px;border:1px solid #deece4;border-radius:12px;background:#f0f7f3;color:#3d7959}
+.account-access-icon svg{width:24px;height:24px}
+.account-card-label{display:block;margin-bottom:9px;color:#849189;font-size:11px;letter-spacing:.6px}
+.account-access-card p{margin:12px 0 0;color:#7a8780;font-size:12px;line-height:1.9}
+.account-secondary-link{display:block;margin-top:24px;padding-top:18px;border-top:1px solid #eaf0ec;color:#327454;font-size:12px;font-weight:600;text-decoration:none}
+.account-secondary-link:hover{color:#154e33}
+a:focus-visible,button:focus-visible{outline:3px solid #89bca2;outline-offset:4px}
+@media(max-width:900px){.account-grid{grid-template-columns:minmax(0,1fr) 230px;gap:18px}.account-layout{padding:24px}.account-profile-card{padding:24px 24px 0}.account-form-footer{margin-left:-24px;margin-right:-24px;padding:18px 24px}.account-access-card{padding:22px}}
+@media(max-width:700px){.account-grid{grid-template-columns:1fr}.account-top{flex-wrap:wrap;gap:14px;padding-bottom:18px}.account-brand{font-size:15px}.account-back{font-size:12px}.account-layout{padding:20px 18px 36px}.account-heading{padding:28px 0 24px}.account-heading h1{font-size:27px}.account-access-icon{margin-bottom:18px}.account-card-heading{align-items:flex-start}.account-fields{gap:20px}.account-access-card{padding:24px}}
+@media(max-width:440px){.account-fields{grid-template-columns:1fr}.account-profile-card{padding:22px 20px 0}.account-form-footer{margin-left:-20px;margin-right:-20px;padding:16px 20px;flex-wrap:wrap}.account-form button{margin-left:auto}.account-card-heading p{max-width:210px}.account-back{margin-left:auto}}

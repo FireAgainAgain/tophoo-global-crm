@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOPHOO Global</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/tophoo-global.ico">
+    <link rel="manifest" href="/static/tophoo-app.json">
+    <link rel="stylesheet" href="/static/css/workbench.css?v=20261113-development-date-picker">
+    <link rel="stylesheet" href="/static/css/ui-themes.css?v=20261113-product-seo">
+    <link rel="stylesheet" href="/static/css/appearance.css?v=20261023-knowledge-fullscreen-preview">
+    <link rel="stylesheet" href="/static/css/mail-send-review.css?v=20261030-compact">
+    <link rel="stylesheet" href="/static/css/lead-detail-actions.css?v=20261030-left-actions">
+    <link rel="stylesheet" href="/static/css/contact-outreach-history.css?v=20261030">
+    <link rel="stylesheet" href="/static/css/lead-contact-scan.css?v=20261031-result-management">
+    <script src="/static/js/ui-theme.js?v=20261017-crm-permissions"></script>
+</head>
+<body data-workspace="crm" class="global-shell">
+    <div class="app">
+        {% include "partials/sidebar.html" %}
+        <main class="main">
+            <header class="crm-topbar" aria-label="全局工具栏">
+                <div class="crm-breadcrumb">
+                    <button id="sidebar-toggle" class="crm-pane-toggle" type="button" title="收起 / 展开二级导航" aria-label="收起 / 展开二级导航">
+                        <svg class="crm-pane-toggle-collapse" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4.5h14v11H3zM7 4.5v11M12 7.5 9.5 10 12 12.5"/></svg>
+                        <svg class="crm-pane-toggle-expand" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4.5h14v11H3zM7 4.5v11M9.5 7.5 12 10l-2.5 2.5"/></svg>
+                    </button>
+                    <button type="button" class="crm-home-crumb" data-crm-go-home aria-label="返回项目管理" title="返回项目管理">
+                        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="m3.5 9 6.5-5.5L16.5 9v7H12v-4H8v4H3.5z"/></svg>
+                    </button>
+                    <span id="crm-breadcrumb-group">项目</span>
+                    <i>›</i>
+                    <strong id="crm-breadcrumb-current">项目管理</strong>
+                </div>
+                <div class="crm-topbar-actions">
+                    <div class="appearance" data-appearance>
+                        <button type="button" class="appearance-trigger" data-appearance-trigger aria-expanded="false" aria-controls="appearance-panel" aria-label="外观设置">
+                            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M10 2.5a7.5 7.5 0 1 0 0 15h1a1.8 1.8 0 0 0 1.3-3.1 1 1 0 0 1 .7-1.7h1a3.5 3.5 0 0 0 3.5-3.5A6.7 6.7 0 0 0 10 2.5Z"/><circle cx="6" cy="8" r=".7"/><circle cx="9" cy="5.7" r=".7"/><circle cx="12.5" cy="6.2" r=".7"/></svg><span>外观</span>
+                        </button>
+                        <section id="appearance-panel" class="appearance-panel" data-appearance-panel aria-label="外观设置" hidden>
+                            <header><div><strong>外观设置</strong><p>浅色界面 · 选择强调色</p></div><button type="button" data-appearance-close aria-label="关闭外观设置">×</button></header>
+                            <div class="appearance-options" role="group" aria-label="强调色">
+                                <button type="button" data-ui-theme="green" aria-pressed="true" style="--preview-accent:#16754f;--preview-soft:#eaf5ef"><span class="appearance-preview" aria-hidden="true"><i></i><span><b></b><em></em><em></em></span></span><span class="appearance-option-label"><i></i>松绿<b>✓</b></span></button>
+                                <button type="button" data-ui-theme="blue" aria-pressed="false" style="--preview-accent:#2563b9;--preview-soft:#edf3fc"><span class="appearance-preview" aria-hidden="true"><i></i><span><b></b><em></em><em></em></span></span><span class="appearance-option-label"><i></i>湖蓝<b>✓</b></span></button>
+                                <button type="button" data-ui-theme="purple" aria-pressed="false" style="--preview-accent:#7151b5;--preview-soft:#f2eef9"><span class="appearance-preview" aria-hidden="true"><i></i><span><b></b><em></em><em></em></span></span><span class="appearance-option-label"><i></i>鸢紫<b>✓</b></span></button>
+                            </div>
+                            <footer>自动记住选择 · 状态颜色保持一致</footer>
+                        </section>
+                    </div>
+                    <div id="sidebar-current-project" class="crm-project-switch" hidden aria-label="当前项目">
+                        <span id="sidebar-current-project-mark" class="crm-project-mark" aria-hidden="true">P</span>
+                        <span class="crm-project-copy"><small>当前项目</small><strong id="sidebar-current-project-name"></strong></span>
+                    </div>
+                    <div id="sidebar-project-manager" class="crm-project-switch is-empty" hidden aria-label="当前项目">
+                        <span class="crm-project-mark" aria-hidden="true">+</span>
+                        <span class="crm-project-copy"><small>工作空间</small><strong>选择项目</strong></span>
+                    </div>
+                    <a id="sidebar-login" class="crm-login-link" href="/login">登录</a>
+                    <div class="crm-user-menu">
+                        <button id="sidebar-user" class="crm-user-trigger" type="button" hidden aria-expanded="false">
+                            <span id="sidebar-user-avatar" class="crm-user-avatar">U</span>
+                            <span id="sidebar-user-name"></span>
+                            <i>⌄</i>
+                        </button>
+                        <div id="crm-user-menu-popover" class="crm-user-popover" hidden>
+                            <div class="crm-user-popover-header"><span>账户</span><span id="sidebar-user-role" class="sidebar-user-role" hidden>管理员</span></div>
+                            <a id="sidebar-profile" class="sidebar-profile" href="/account" hidden>个人设置</a>
+                            <a id="sidebar-admin-users" class="sidebar-profile" href="/admin/users" hidden>用户管理</a>
+                            <a id="sidebar-admin-plans" class="sidebar-profile" href="/admin/plans" hidden>工作区授权</a>
+                            <button id="auth-logout" class="sidebar-logout" type="button" hidden>退出登录</button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <div class="main-inner">
+                <section class="page active" id="page-crm"><div id="global-crm-content">{% include "partials/crm_workspace.html" %}</div></section>
+            </div>
+        </main>
+    </div>
+    <script src="/static/js/auth.js?v=20261107-session-expiry"></script>
+    <script src="/static/js/crm-project-context.js?v=20261113-navigation"></script>
+    <script src="/static/js/user-links.js?v=20261103-project-scope"></script>
+    <script src="/static/js/global-shell.js?v=20261113-product-seo"></script>
+    <script src="/static/js/module-permissions.js?v=20261112-project-crm"></script>
+    <script src="/static/js/crm-topbar.js"></script>
+
+    <script src="/static/js/company-types.js?v=20261017-crm-permissions"></script>
+    <script src="/static/js/lead-development.js?v=followup-notes-20261030-record-kind"></script>
+    <script src="/static/js/lead-contact-scan.js?v=20261031-result-management"></script>
+    <script src="/static/js/mail-rich-editor.js?v=20261019-outreach-close-reset"></script>
+    <script src="/static/js/contact-outreach-history.js?v=20261030"></script>
+    <script src="/static/js/mail.js?v=20261031-quotation-templates"></script>
+    <script src="/static/js/lead-contacts.js?v=20261030-contact-outreach-counts"></script>
+    <script src="/static/js/lead-outreach.js?v=followup-notes-20261031-quotation-templates"></script>
+    <script src="/static/js/crm-customer-workflow.js?v=20261113-lead-excel-contacts"></script>
+    <script src="/static/js/lead-detail-outreach.js?v=20261103"></script>
+    <script src="/static/js/customer-documents.js?v=20261112-crm-integrity"></script>
+    <script src="/static/js/communication-assistant.js?v=20261107-retire-statistics"></script>
+    <script src="/static/js/follow-up.js?v=20261102-followup-date"></script>
+    <script src="/static/js/auto-prospecting.js?v=20261107-retire-statistics"></script>
+    <script src="/static/js/customer-search.js?v=20261112-verification-actions"></script>
+    <script src="/static/js/ai-config.js?v=20261017-crm-permissions"></script>
+    <script src="/static/js/customer-workflow-form-defaults.js?v=20261017-crm-permissions"></script>
+    <script src="/static/js/contact-records.js?v=20261105-followup-save-shortcut"></script>
+    <script src="/static/js/sidebar-resize.js?v=20261031-rfq-columns"></script>
+    <script src="/static/js/keyword-library.js?v=20261112-crm-integrity"></script>
+    <script src="/static/js/mic-title-social.js?v=20261112-product-editor-layout"></script>
+    <script src="/static/js/mic-products.js?v=20261113-product-seo"></script>
+</body>
+</html>

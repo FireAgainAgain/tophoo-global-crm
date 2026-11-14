@@ -1,0 +1,19 @@
+/* Keep the original navigation hierarchy and appearance; reduce only its footprint. */
+:root{--primary-rail-width:64px;--secondary-nav-width:208px}
+@media(min-width:761px){
+body.global-shell .crm-primary-rail{width:var(--primary-rail-width);min-width:var(--primary-rail-width);padding:12px 6px;box-sizing:border-box}
+body.global-shell .crm-rail-brand{width:36px;height:36px;flex-basis:36px;margin:2px 0 18px;border-radius:10px;font-size:17px}
+body.global-shell .crm-primary-navigation{gap:6px}
+body.global-shell .crm-primary-item{min-height:56px;padding:7px 2px;gap:3px;font-size:11px;line-height:16px}
+body.global-shell .crm-primary-icon{width:21px;height:21px;font-size:18px}
+body.global-shell .crm-secondary-panel{width:var(--secondary-nav-width)}
+body.global-shell .crm-secondary-heading{min-height:64px;padding:13px 16px;box-sizing:border-box}
+body.global-shell .crm-secondary-heading small{font-size:8px}
+body.global-shell .crm-secondary-heading strong{font-size:18px;margin-top:4px}
+body.global-shell .global-nav-body .crm-navigation{padding:8px 8px 14px}
+body.global-shell .global-nav-body .crm-nav-item{min-height:36px;margin:2px 0;line-height:20px;font-size:12px;padding-top:7px;padding-bottom:7px}
+body.global-shell .crm-nav-label{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
+@media(max-width:760px){
+body.global-shell.secondary-nav-collapsed .crm-secondary-panel{width:100%;flex:1 1 auto;opacity:1;pointer-events:auto}
+}

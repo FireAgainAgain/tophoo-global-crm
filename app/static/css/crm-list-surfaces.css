@@ -1,0 +1,99 @@
+/* Shared, quiet reading surfaces for RFQ and CRM customer workflow lists.
+   Fixed HSL tokens keep these surfaces neutral across accent themes. */
+:root{
+  --crm-list-tools:hsl(220 14% 98%);
+  --crm-list-input:hsl(0 0% 100%);
+  --crm-list-head:hsl(212 52% 97%);
+  --crm-list-body:hsl(212 60% 99%);
+  --crm-list-hover:hsl(212 58% 96%);
+  --crm-list-selected:hsl(212 62% 94%);
+  --crm-list-border:hsl(215 24% 89%);
+  --crm-list-divider:hsl(215 30% 93%);
+  --crm-list-text:hsl(220 23% 24%);
+  --crm-list-muted:hsl(220 13% 43%);
+}
+:root .rfq-page .rfq-page-head,
+:root .customer-workflow.workflow-compact .workflow-control-card{
+  background:var(--crm-list-tools);border:1px solid var(--crm-list-border);box-shadow:none;
+}
+:root .customer-workflow.workflow-compact .workflow-header,
+:root .customer-workflow.workflow-compact .workflow-tools,
+:root .customer-workflow.workflow-compact .workflow-filters,
+:root .customer-workflow.workflow-compact .workflow-card-footer{
+  background:transparent;background-image:none;box-shadow:none;border-color:var(--crm-list-divider);
+}
+:root .customer-workflow.workflow-compact .workflow-header::before,
+:root .customer-workflow.workflow-compact .workflow-header::after{display:none}
+:root .customer-workflow.workflow-compact .workflow-header h1{color:var(--crm-list-text)}
+:root .rfq-page .rfq-toolbar{background:var(--crm-list-tools);border-color:var(--crm-list-divider)}
+:root .rfq-page .rfq-toolbar input,
+:root .rfq-page .rfq-toolbar select,
+:root .customer-workflow.workflow-compact .workflow-tools input,
+:root .customer-workflow.workflow-compact .workflow-filters select,
+:root .customer-workflow.workflow-compact .workflow-filters input{
+  background:var(--crm-list-input);color:var(--crm-list-text);border-color:var(--crm-list-border);box-shadow:none;
+}
+:root .rfq-page [data-rfq-records],
+:root .customer-workflow.workflow-compact .workflow-table-wrap{
+  background:var(--crm-list-body);border-color:var(--crm-list-border);box-shadow:none;
+}
+:root .rfq-page .rfq-wrap,
+:root .rfq-page .rfq-wrap table,
+:root .customer-workflow.workflow-compact .workflow-table{
+  background:var(--crm-list-body);color:var(--crm-list-text);
+}
+:root .rfq-page .rfq-wrap th,
+:root .customer-workflow.workflow-compact .workflow-table th{
+  background:var(--crm-list-head);color:var(--crm-list-muted);border-color:var(--crm-list-border);font-weight:600;
+}
+:root .rfq-page .rfq-wrap td,
+:root .customer-workflow.workflow-compact .workflow-table td{
+  background:var(--crm-list-body);color:var(--crm-list-text);border-color:var(--crm-list-divider);
+}
+:root .rfq-page .rfq-wrap tbody tr,
+:root .customer-workflow.workflow-compact .workflow-table tbody tr{box-shadow:none;border-left:0}
+:root .rfq-page .rfq-wrap tbody tr:hover td,
+:root .customer-workflow.workflow-compact .workflow-table tbody tr:hover td{background:var(--crm-list-hover)}
+:root .customer-workflow.workflow-compact .workflow-table tbody tr:hover{box-shadow:none}
+:root .customer-workflow.workflow-compact .workflow-table tbody tr:has([data-select]:checked) td{
+  background:var(--crm-list-selected);
+}
+:root .rfq-page .rfq-wrap td>small,
+:root .rfq-page .rfq-metric>span,
+:root .customer-workflow.workflow-compact .workflow-table small,
+:root .customer-workflow.workflow-compact .workflow-filters>label,
+:root .customer-workflow.workflow-compact .workflow-date-range{color:var(--crm-list-muted)}
+:root .rfq-page .rfq-pagination,
+:root .customer-workflow.workflow-compact .workflow-pagination{
+  background:var(--crm-list-tools);border-color:var(--crm-list-divider);color:var(--crm-list-muted);box-shadow:none;
+}
+:root .customer-workflow.workflow-compact .workflow-batch{
+  background:var(--crm-list-tools);background-image:none;border:1px solid var(--crm-list-border);box-shadow:none;
+}
+:root .rfq-page .rfq-row-actions>button{background:hsl(0 0% 100%);box-shadow:none}
+:root .rfq-page .rfq-row-actions>button.rfq-danger{background:hsl(8 70% 98%);box-shadow:none}
+
+/* Searchable country control follows the compact filter fields. */
+:root .customer-workflow.workflow-compact .workflow-filters>.workflow-country-filter{flex-basis:150px}
+.workflow-country-search{position:relative;display:flex;align-items:center;min-width:0;width:100%}
+.workflow-country-search>svg{position:absolute;left:10px;width:15px;height:15px;color:var(--crm-list-muted);pointer-events:none}
+:root .customer-workflow.workflow-compact .workflow-country-search>[data-filter-country]{
+  box-sizing:border-box;width:100%;min-width:0;height:35px;min-height:35px;margin:0;padding:0 9px 0 32px;
+  border:1px solid var(--crm-list-border);border-radius:7px;outline:none;
+  background:var(--crm-list-input);color:var(--crm-list-text);font:inherit;font-size:12px;font-weight:400;
+  transition:border-color .15s,box-shadow .15s;
+}
+.workflow-country-search>[data-filter-country]::placeholder{color:#8a94a3;opacity:1}
+:root .customer-workflow.workflow-compact .workflow-country-search>[data-filter-country]:hover{border-color:#b6c2cf}
+:root .customer-workflow.workflow-compact .workflow-country-search>[data-filter-country]:focus{
+  border-color:var(--primary,#137a55);box-shadow:0 0 0 3px color-mix(in srgb,var(--primary,#137a55) 12%,transparent);
+}
+
+/* Direct outreach entry stays compact in the lead list. */
+:root .customer-workflow .workflow-outreach-button{
+  display:inline-flex;align-items:center;justify-content:center;min-height:30px;padding:4px 12px;
+  border:1px solid var(--crm-list-border);border-radius:6px;background:var(--crm-list-input);
+  color:var(--primary,#137a55);font:inherit;font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer;
+}
+:root .customer-workflow .workflow-outreach-button:hover{border-color:var(--primary,#137a55);background:var(--crm-list-hover)}
+:root .customer-workflow .workflow-outreach-button:focus-visible{outline:2px solid var(--primary,#137a55);outline-offset:2px}

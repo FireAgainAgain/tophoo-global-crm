@@ -1,0 +1,30 @@
+/* Lead drawer footer only; independent from customer and list action bars. */
+:root [data-workflow-detail][data-detail-view="leads"] .workflow-detail-card>footer{
+  justify-content:flex-start;flex-wrap:wrap;gap:0;padding:15px 22px;
+  background:linear-gradient(180deg,#fff 0%,#fafcfb 100%);border-top:1px solid #e4eae6;
+}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions{
+  display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:10px;max-width:100%;margin:0;
+}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions button{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:38px;
+  margin:0;padding:8px 14px;border:1px solid transparent;border-radius:9px;
+  font-family:inherit;font-size:12px;font-weight:500;line-height:20px;cursor:pointer;transition:background .15s,border-color .15s,box-shadow .15s;
+}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions button svg{
+  width:15px;height:15px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
+}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions .lead-action-edit{background:#eff5ff;border-color:#d5e3f8;color:#3867a4}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions .lead-action-convert{background:#237450;border-color:#237450;color:#fff;box-shadow:0 2px 4px #23745018}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions .lead-action-delete{background:#fff3f1;border-color:#f0d8d3;color:#b7554e;margin-left:4px}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions .lead-action-edit:hover:not(:disabled){background:#e3edfd;border-color:#bed2f0}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions .lead-action-convert:hover:not(:disabled){background:#1b6242;border-color:#1b6242;box-shadow:0 3px 7px #23745028}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions .lead-action-delete:hover:not(:disabled){background:#fce8e4;border-color:#e8bdb5}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions button:focus-visible{outline:2px solid #8aaea0;outline-offset:3px}
+:root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions button:disabled{opacity:.45;cursor:default;box-shadow:none}
+@media(max-width:600px){
+  :root [data-workflow-detail][data-detail-view="leads"] .workflow-detail-card>footer{padding:12px 14px}
+  :root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions{gap:8px}
+  :root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions button{padding:7px 10px;gap:5px;min-height:36px}
+  :root [data-workflow-detail][data-detail-view="leads"] .lead-detail-actions .lead-action-delete{margin-left:0}
+}
