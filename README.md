@@ -2,6 +2,8 @@
 
 一个可自行部署的中文外贸 CRM。按项目管理线索、客户、联系人、跟进、报价和合同，也可以集中维护产品记录、关键词和知识库。
 
+GitHub 源码仓库：[FireAgainAgain/tophoo-global-crm](https://github.com/FireAgainAgain/tophoo-global-crm)
+
 | 模块 | 功能 |
 | --- | --- |
 | 项目 | 切换工作区和项目，管理成员、角色与个人网址 |
@@ -70,6 +72,8 @@ DATABASE_URL=sqlite:///data/demo.sqlite3 AUTH_COOKIE_NAME=tophoo_global_demo_tok
 ## 开发与测试
 
 技术栈为 FastAPI、SQLAlchemy、Jinja2、SQLite 和原生 JavaScript。应用代码在 `app/`，维护工具在 `scripts/`，回归测试在 `tests/`。
+
+代码职责、目录与文档维护见[项目架构说明](docs/architecture/OVERVIEW.md)。
 
 ```bash
 python -m pip install pytest httpx

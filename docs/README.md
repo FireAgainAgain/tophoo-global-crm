@@ -2,6 +2,8 @@
 
 安装和演示方法见 [README](../README.md)。
 
+开发前可先查看[项目架构与目录](architecture/OVERVIEW.md)，其中也列出了各类变更对应的文档。
+
 ## 模块操作说明
 
 | 文档 | 内容 |
@@ -24,5 +26,5 @@
 
 - [部署说明](deployment/DEPLOYMENT.md)：环境、账号初始化与运行方式。
 - [局域网访问](deployment/LAN_ACCESS.md)：同一网络中的设备访问。
-- [新项目母版](PROJECT_TEMPLATE.md)：导出无业务数据、无密钥的代码副本，以及统一样式维护方式。
+- [GitHub 发布流程](PROJECT_TEMPLATE.md)：打包、核对、提交及推送。
 
